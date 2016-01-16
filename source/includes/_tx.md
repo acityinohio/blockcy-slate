@@ -2186,6 +2186,20 @@ payload = JSON.parse('{ "inputs": [{
 	}] }')
 ```
 
+```python
+from blockcypher import create_unsigned_tx, make_tx_signatures, broadcast_signed_transaction
+# Creating unsigned transaction:
+pubkey_list = [pubkey1, pubkey2, pubkey3]
+inputs = [{'pubkeys':pubkey_list, 'script_type': 'multisig-2-of-3'}]
+outputs = [{'address': dest_address, 'value':10000000 }]
+
+unsigned_tx = create_unsigned_tx(inputs=inputs, outputs=outputs, coin_symbol='bcy')
+# signing with 2 of the 3 private keys (it's possible to sign only with one of them in a first phase, and broadcasting it. The transaction will be validated only when the network will receive 2 signatures):
+tx_signatures = make_tx_signatures(txs_to_sign=unsigned_tx['tosign'], privkey_list=[privkey1,privkey3], pubkey_list=[pubkey1,pubkey3])
+# and broadcasting it: 
+broadcast_signed_transaction(unsigned_tx, tx_signatures, [pubkey1,pubkey3], coin_symbol='bcy')
+```
+
 ```go
 package main
 
