@@ -2312,3 +2312,55 @@ While some miners have a patch allowing 80 byte <i>null-data</i> outputs on Bitc
 </aside>
 
 To view the data output on the blockchain, simply [query the transaction](#transaction-hash-endpoint) via the **hash** returned, and check the *null-data* [output](#txoutput) within the returned transaction. Please keep in mind that it will always be represented by hex-encoding on the blockchain, even if you selected *string* as your data **encoding**; to see it as your original plaintext, you have to convert it client-side.
+
+## Transaction Propagation Endpoint
+
+```shell
+curl https://api.blockcypher.com/v1/btc/main/txs/5cad31bd8baf5d10ecdc275193f878226bb51f549c2357658f3dd0d7c5402a7b/propagation?token=YOURTOKEN
+
+{
+  "transaction": "5cad31bd8baf5d10ecdc275193f878226bb51f549c2357658f3dd0d7c5402a7b",
+  "first_location": {
+    "latitude": 43.171,
+    "longitude": -71.8229
+  },
+  "first_city": "Henniker",
+  "first_country": "United States",
+  "aggregated_origin": {
+    "latitude": 44.283110947350366,
+    "longitude": -69.82911485365968
+  },
+  "aggregated_origin_radius": 1023192,
+  "first_received": "2016-08-30T21:25:37.427Z"
+}
+```
+
+By operating a well-connected node, we collect a lot of information about how transactions propagate; for example, our [Confidence Factor](#confidence-factor) relies on this connectivity. With this endpoint, you can leverage our connectivity to get an approximation of a transaction's location of origin.
+
+Resource | Method | Return Object
+-------- | ------ | -------------
+/txs/$TXHASH/propagation | GET | ***Described Below***
+
+TXHASH is a *string* representing the hex-encoded transaction hash you're interested in querying for propagation information. The return object is described below:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+**transaction** | *string* | The hash of the transaction you queried.
+**first_location** | *Object* | An object containing **latitude** and **longitude** *floats* representing the first location to broadcast this transaction to BlockCypher.
+**first_city** | *string* | The name of the city closest to the **first_location**.
+**first_country** | *string* | The name of the country containing the **first_location.**
+**aggregated_origin** | *Object* | An object containing **latitude** and **longitude** *floats* representing BlockCypher's best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this **transaction**, the fifth peer, and the tenth peer.
+**aggregated_origin_radius** | *integer* | The radius (in meters) of the smallest circle containing the first peer from which we detect this **transaction**, the fifth peer, and the tenth peer. In a general sense, this represents an approximate confidence interval in our calculated **aggregated_origin**; the smaller the radius, the more confidence in our **aggregated_origin** assessment.
+**first_received** | [*time*](https://tools.ietf.org/html/rfc3339) | The timestamp when BlockCypher first received this transaction.
+
+<aside class="notice">
+Want more information about transaction propagation? (e.g., IP addresses) Reach out to us to discuss <a href="mailto:contact@blockcypher.com">custom endpoints.</a>
+</aside>
+
+### Transaction Propagation WebSocket
+
+You can get a live view of unconfirmed transaction propagation analysis on Bitcoin by connecting to our Transaction Propagation WebSocket, at the following address:
+
+`wss://socket.blockcypher.com/v1/btc/main/txs/propagation`
+
+As soon as an unconfirmed transaction hits 10 peers, we send the object described above through this WebSocket. For more WebSocket implementation details, check [Using WebSockets](#using-websockets).
