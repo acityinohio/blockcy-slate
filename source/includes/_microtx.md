@@ -11,7 +11,7 @@ In order for us to keep track of mining fees, we require that all calls to the M
 </aside>
 
 <aside class="warning">
-The Microtransaction API will accept values between <b>2,000 satoshis (~$0.005)</b> and <b>4,000,000 satoshis (~$9.50)</b>. Anything below or above these thresholds will return an error. If you need to transfer larger values, use the <a href="#creating-transactions">standard Transaction process.</a> If you need to transfer lower values, you may want to reevaluate your application.
+The Microtransaction API will accept values between <b>7,000 satoshis (~$0.04)</b> and <b>4,000,000 satoshis (~$20)</b>. Anything below or above these thresholds will return an error. If you need to transfer larger values, use the <a href="#creating-transactions">standard Transaction process.</a> If you need to transfer lower values, you may want to reevaluate your application.
 </aside>
 
 <aside class="warning">
