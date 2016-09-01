@@ -2347,10 +2347,10 @@ Attribute | Type | Description
 --------- | ---- | -----------
 **transaction** | *string* | The hash of the transaction you queried.
 **first_location** | *Object* | An object containing **latitude** and **longitude** *floats* representing the first location to broadcast this transaction to BlockCypher.
-**first_city** | *string* | The name of the city closest to the **first_location**.
+**first_city** | *string* | ***Optional*** The name of the city closest to the **first_location**. If no nearby city can be found, this is not returned.
 **first_country** | *string* | The name of the country containing the **first_location.**
-**aggregated_origin** | *Object* | An object containing **latitude** and **longitude** *floats* representing BlockCypher's best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this **transaction**, the fifth peer, and the tenth peer.
-**aggregated_origin_radius** | *integer* | The radius (in meters) of the smallest circle containing the first peer from which we detect this **transaction**, the fifth peer, and the tenth peer. In a general sense, this represents an approximate confidence interval in our calculated **aggregated_origin**; the smaller the radius, the more confidence in our **aggregated_origin** assessment.
+**aggregated_origin** | *Object* | An object containing **latitude** and **longitude** *floats* representing BlockCypher's best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this **transaction**, the average of the first five peers, and the average of the first ten peers.
+**aggregated_origin_radius** | *integer* | The radius (in meters) of the smallest circle containing the first peer from which we detect this **transaction**, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated **aggregated_origin**; the smaller the radius, the more confidence in our **aggregated_origin** assessment.
 **first_received** | [*time*](https://tools.ietf.org/html/rfc3339) | The timestamp when BlockCypher first received this transaction.
 
 <aside class="notice">
