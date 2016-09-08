@@ -779,9 +779,9 @@ import (
 func main() {
 	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
 	//normal wallet
-	alice, err := btc.GetAddrWallet("alice", false, false, false, false)
+	alice, err := btc.GetAddrWallet("alice", nil)
 	//hdwallet
-	bob, err := btc.GetAddrHDWallet("bob", false, false, false, false)
+	bob, err := btc.GetAddrHDWallet("bob", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -1100,7 +1100,7 @@ import (
 func main() {
 	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
 	//hdwallet only
-	bob, err := btc.DeriveAddrHDWallet("bob", 1, false, 0)
+	bob, err := btc.DeriveAddrHDWallet("bob", map[string]string{"count": "1"})
 	if err != nil {
 		fmt.Println(err)
 	}
