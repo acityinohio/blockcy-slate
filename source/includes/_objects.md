@@ -802,7 +802,7 @@ Attribute | Type | Description
 **callback_url** | *url* | ***Optional*** The URL to call anytime a new payment is forwarded.
 **enable_confirmations** | *bool* | ***Optional*** Whether to also call the **callback_url** with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
 **mining_fees_satoshis** | *int* | ***Optional*** Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.
-**transactions** | *array[string]* | ***Optional*** History of forwarding transaction hashes for this payment forwarding request.
+**txs** | *array[string]* | ***Optional*** History of forwarding transaction hashes for this payment forward; not present if this request has yet to forward any transactions.
 
 ## PaymentForwardCallback
 
