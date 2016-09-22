@@ -8,7 +8,7 @@ One of the well-known benefits of cryptocurrency is the ability to allow users t
 We do not take a fee on payment forwarding, other than the required 10,000 satoshi miner fee; payments are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.
 
 <aside class="notice">
-Payment forwarding is tied to your usage token, you can't create a payment forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token here.</a>
+Payment forwarding is only available for paid plans with an active token, you can't create a payment forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
 </aside>
 
 <aside class="notice">

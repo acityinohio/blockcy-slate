@@ -552,7 +552,7 @@ We do rate-limit our free tier, with or without a token (though tokens are requi
 
 - Classic requests, up to 3 requests/sec and 200 requests/hr
 - WebHooks and WebSockets, up to 200 requests sent to your servers/hr
-- WebHooks and Payments, up to 200 stored on our servers
+- WebHooks, up to 200 stored on our servers
 - Confidence lookups, up to 15 requests/hour
 
 The hourly rate limits reset on the top of the hour UTC. For example, if you're under the free tier, and you have used 200 regular requests by 03:58 UTC, you'll hit a rate limit until it resets at 04:00 UTC.
