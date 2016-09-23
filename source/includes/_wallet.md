@@ -921,7 +921,7 @@ Resource | Method | Return Object
 -------- | ------ | -------------
 /wallets/$NAME/addresses?address=$ADDRESS | DELETE | *nil*
 
-This endpoint allows you to delete an $ADDRESS associated with the $NAME wallet. As a reminder, you [can batch](#http://dev.blockcypher.com/#batching) multiple addresses by appending them with semicolons within the $ADDRESS URL parameter. If successful, it will return an HTTP 204 status code with no return object.
+This endpoint allows you to delete an $ADDRESS associated with the $NAME wallet. As a reminder, you [can batch](#batching) multiple addresses by appending them with semicolons within the $ADDRESS URL parameter. If successful, it will return an HTTP 204 status code with no return object.
 
 <aside class="notice">
 You cannot remove addresses from HD Wallets.
