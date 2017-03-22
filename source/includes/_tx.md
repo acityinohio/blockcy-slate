@@ -2235,6 +2235,10 @@ Then you'd need to return each piece of data signed twice, preserving order betw
 
 ## Data Endpoint
 
+<aside class="warning">
+Due to congestion on the Bitcoin network and the drastic increase in miner fees, data embedding has become uneconomical. As a result, our data endpoint isn't supported on bitcoin anymore. To continue embedding data on the bitcoin blockchain, use our <a href="#creating-transactions">transaction API</a> to build transactions with an OP_RETURN output instead.
+</aside>
+
 ```shell
 # Embedding (Hash) Data
 curl -d '{"data":"6cbe5d6c75bc36879b5fd32e29b325e288599d31edc76327c7889d407985e2aa"}' https://api.blockcypher.com/v1/btc/main/txs/data?token=YOURTOKEN

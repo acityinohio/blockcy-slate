@@ -1,5 +1,9 @@
 # Microtransaction API
 
+<aside class="warning">
+Due to congestion on the Bitcoin network and the drastic increase in miner fees, microtransactions have become uneconomical. As a result, our microtransaction API isn't supported on bitcoin anymore.
+</aside>
+
 In addition to our normal [Transaction API](#transaction-api), we offer a unique, on-chain microtransaction endpoint that makes it easy to propagate smaller, nearly-instantly guaranteed, more frequent transactions that are still publicly auditable and trusted through their existence on the blockchain. How can we do what others claim require off-chain, centralized services?
 
 Simple. We leverage our own infrastructure; in particular, our [Confidence Factor](#confidence-factor). When we reach 98% confidence that a microtransaction will reach the next block (usually ~8 seconds), we guarantee its value and return the completed microtransaction. As of this writing, we haven't had a single failed mictrotransaction, and we're improving our confidence data all the time.
