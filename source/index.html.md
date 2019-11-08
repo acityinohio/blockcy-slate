@@ -3,15 +3,16 @@ title: Blockchain Developer API for Bitcoin, Ethereum, Testnet, Litecoin and Mor
 seo_description: Build blockchain applications easily with our web APIs and callbacks. High throughputs, linear scaling, low-latency. Over 99.99% uptime with no single point of failure.
 
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+language_tabs:
+  - shell: cURL
+  - javascript: JavaScript
+  - ruby: Ruby
+  - python: Python
+  - go: Go
+  - php: PHP
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://accounts.blockcypher.com/'>Sign Up/Login</a>
 
 includes:
   - objects
@@ -85,9 +86,14 @@ BlockCypher's API provides a superset of the endpoints you'd find in reference i
 
 Consequently, if you're familiar with a blockchain's reference implementation, you'll feel at home using BlockCypher, but without worrying about scaling or implementation challenges. And if you're not familiar---with the reference implementations or blockchains in general---BlockCypher's API is a great way to dip your toes into blockchain development, without a lengthy setup process. In either case, BlockCypher has 99.99% up-time, and maintains an expressive, logical API that you'll love.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+## Documentation Structure
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+```shell
+man curl | grep -A 3 "DESCRIPTION"
+
+DESCRIPTION
+curl is a tool to transfer data from or to a server, using one of the supported protocols (DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET and TFTP). The command is designed to work without user interaction.
+```
 
 ```javascript
 // JavaScript examples use JQuery and can be run directly in your browser
@@ -408,13 +414,7 @@ $blockchain = $blockchainClient->get('BTC.main');
 }
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
+Almost all resources exist under a given blockchain, and follow this pattern:
 
 `https://api.blockcypher.com/$API_VERSION/$COIN/$CHAIN/`
 
@@ -610,13 +610,41 @@ curl 'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'
 ```
 
 ```javascript
-const kittn = require('kittn');
+// Batching blocks 5, 6, and 7
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+$.get('https://api.blockcypher.com/v1/btc/main/blocks/5;6;7')
+  .then(function(d) {console.log(d);});
+> [{
+> "hash": "000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d",
+> "height": 6,
+> "chain": "BTC.main",
+> "total": 0,
+> "fees": 0,
+> "ver": 1,
+> "time": "2009-01-09T03:29:49Z",
+> ...,
+> },
+> {
+> "hash": "000000009b7262315dbf071787ad3656097b892abffd1f95a1a022f896f533fc",
+> "height": 5,
+> "chain": "BTC.main",
+> "total": 0,
+> "fees": 0,
+> "ver": 1,
+> "time": "2009-01-09T03:23:48Z",
+> ...,
+> },
+> {
+> "hash": "0000000071966c2b1d065fd446b1e485b2c9d9594acd2007ccbd5441cfc89444",
+> "height": 7,
+> "chain": "BTC.main",
+> "total": 0,
+> "fees": 0,
+> "ver": 1,
+> "time": "2009-01-09T03:39:29Z",
+> ...,
+> }]
 ```
-
-> The above command returns JSON structured like this:
 
 ```ruby
 # Batching blocks 5, 6, and 7
@@ -870,14 +898,22 @@ $.post('https://api.blockcypher.com/v1/bcy/test/faucet?token=$YOUR_TOKEN', JSON.
 > }
 ```
 
-```javascript
-const kittn = require('kittn');
+```ruby
+# Create new api object on BlockCypher Testnet
+> bc_test = BlockCypher::Api.new(currency:BlockCypher::BCY, network:BlockCypher::TEST_NET, api_token:"YOURTOKEN")
+=> #<BlockCypher::Api:0x000000030169b0 @api_token="YOURTOKEN", @currency="bcy", @network="test", @version="v1">
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+# Generate new test address
+> bc_test.address_generate
+=> {"private"=>"5a3675bbc7e24e63224bff60a3850a77d5a494419735e3b94173eac5379437c9",
+ "public"=>"0311ab9780760dd8c5d2d9319f1eee9c9328eddd503d0b86e3af253b1665638b8a",
+ "address"=>"Bv6rJzFmSg41nhibjfEfqSeeb2Te1Hh3FG",
+ "wif"=>"BrMPimGAWyUUuGduxHZi1Q9n9Nveunton8sC5ouZeJp6EhKNaAcZ"}
+
+# Fund with faucet
+> bc_test.faucet("Bv6rJzFmSg41nhibjfEfqSeeb2Te1Hh3FG", 1000000)
+=> {"tx_ref"=>"59ddf03d9e292da5b3160e6ac341c9773873b693203c799a4ba8a4e05ef5a0d7"}
 ```
-
-> The above command returns JSON structured like this:
 
 ```python
 # Fund existing address with faucet
@@ -947,53 +983,12 @@ $faucetResponse = $faucetClient->fundAddress('Bxi1GmU6xgqgyBEzugcqFZRLyJd1cpEv2S
 
 To help facilitate automated testing in your applications, a faucet endpoint is available on both BlockCypher's Test Chain and Bitcoin Testnet3. Calling the faucet endpoint, along with passing a valid address, will automatically create---and propagate---a new transaction funding the address with the amount you provide.
 
-## Delete a Specific Kitten
+This example shows how to leverage the faucet to programmatically fund addresses, to test your applications. While the example used BlockCypher's Test Chain, the same example could have used Bitcoin Testnet3 and worked the exact same way.
 
-```ruby
-require 'kittn'
+<aside class="notice">
+You need <a href="https://accounts.blockcypher.com/">a token</a> to use test faucets.
+</aside>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+<aside class="warning">
+On the BlockCypher Test Chain, the faucet will refuse to fund an address with more than 500 billion BlockCypher satoshis and will not fund more than 100 million BlockCypher satoshis at a time. On Bitcoin Testnet3 those numbers are adjusted to 10 million and 500,000 testnet satoshis respectively.
+</aside>
