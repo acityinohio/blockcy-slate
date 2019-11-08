@@ -1124,7 +1124,7 @@ $hdWalletGenerateAddressResponse = $walletClient->generateAddress('bob');
 
 $walletClient = new HDWalletClient($apiContexts['BTC.main']);
 $params = array('subchain_index' => 1);
-$hdWalletGenerateAddressResponse = $walletClient->generateAddress('bob', $params);
+$hdWalletGenerateAddressResponse = $walletClient->deriveAddress('bob', $params);
 ```
 
 Resource | Method | Request Object | Return Object
