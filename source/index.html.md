@@ -27,6 +27,8 @@ includes:
   - asset
   - payfwd
   - events
+
+search: true
 ---
 
 # Introduction
