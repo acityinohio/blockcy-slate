@@ -808,6 +808,18 @@ curl -X POST https://api.blockcypher.com/v1/btc/test3/addrs
 }
 ```
 
+```shell
+# generate bech32 p2wpkh 
+curl -X POST https://api.blockcypher.com/v1/btc/test3/addrs?bech32=true
+
+{
+  "private": "516c110f271f2b26ad8ed2d72c469d2dde0db5030241926b6b0388c602cf572c",
+  "public": "023766804d9c34ead560be1d1f819127cb2636305ac9ba2f76c176efd2b3913a25",
+  "address": "tb1q2u0dzlwf805qy62w099p06f8z5nxz5kk34a456",
+  "wif": "cQJyYH6rjkV2W9jR9PjnJftBmGt93Yi4gpn494oEAiWvoUJoEpCs"
+}
+```
+
 ```javascript
 $.post('https://api.blockcypher.com/v1/btc/test3/addrs')
   .then(function(d) {console.log(d)});
@@ -882,6 +894,10 @@ Always use HTTPS for Address Generation requests. Otherwise, your generated priv
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /addrs | POST | *nil* | [AddressKeychain](#addresskeychain)
+
+Flag | Type | Effect
+---- | ---- | ------
+**bech32** | *bool* | Whether or not to generate a p2wpkh bech32 address. Default is false.
 
 The returned object contains a private key in hex-encoded and wif-encoded format, a public key, and a public address.
 
