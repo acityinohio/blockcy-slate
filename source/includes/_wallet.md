@@ -22,7 +22,13 @@ If you want to use [BIP32 default wallet layout](https://github.com/bitcoin/bips
 
 If you want to use [BIP 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) layout (for BTC), you can submit the extended public key of m/44'/0'/0'. (which can only be derived from your master private key) with subchain indexes = [0, 1]. Subchain index 0 represents the external chain (of account 0) and will discover all k keypairs in m/44'/0'/0'/0/k. Subchain index 1 represents the internal chain (of account 0) and will discover all k keypairs in m/44'/0'/0'/1/k.
 
+If you want to use [BIP 84](https://github.com/bitcoin/bips/blob/master/bip-0084.mediawiki) layout (for BTC), you can submit the extended public key of m/84'/0'/0'. (which can only be derived from your master private key) with subchain indexes = [0, 1]. Subchain index 0 represents the external chain (of account 0) and will discover all k keypairs in m/84'/0'/0'/0/k. Subchain index 1 represents the internal chain (of account 0) and will discover all k keypairs in m/84'/0'/0'/1/k.
+
 If an address ahead of current addresses listed in an HD Wallet receives a transaction, it will be added, along with any addresses between the new address and the last used one. We limit looking ahead to 20 addresses; if more than 20 addresses are skipped for the next payment to an HD Wallet, it won't be detected/added to the HD Wallet.
+
+<aside class="notice">
+When creating a BIP84 HD wallet, be sure to submit the extended public key with the correct prefix. For example <code>zpub</code> for Bitcoin Mainnet, <code>vpub</code> for Bitcoin Testnet, <code>vpub</code> for BlockCypher Testnet...
+</aside>
 
 ## Using Wallets
 
@@ -76,6 +82,22 @@ curl -d '{"name": "bob", "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9
 			"path": "m/2"
 		}
 	]}
+]}
+
+# hd wallet BIP84
+curl -d '{"name": "charlie", "extended_public_key": "vpub5bJX9NkmSDP33H5PxJXmehqyV7aDaVWxudzDW3kP4c5Z5KFEaUNtJ9CLebEiEssZJyZa7AE9zR5Q7nqPAmk6xgRpRvXRMKj6WPfBGBi3fR"}' https://api.blockcypher.com/v1/btc/test3/wallets/hd?token=YOURTOKEN
+
+{"token": "YOURTOKEN",
+"name": "charlie",
+"hd": true,
+"extended_public_key": "vpub5bJX9NkmSDP33H5PxJXmehqyV7aDaVWxudvzDW3kP4c5Z5KFEaUNtJ9CLebEiEssZJyZa7AE9zR5Q7nqPAmk6xgRpRvXRMKj6WPfBGBi3fR",
+"chains": [
+	{"chain_addresses": [
+        {
+          "address": "tb1q4a9vav7vq4gp7ca9emddr66dvk099vdhh5srhp",
+          "path": "m/0"
+        }
+    ]}
 ]}
 
 # hd wallet with subchains
@@ -1025,6 +1047,10 @@ $walletGenerateAddressResponse = $walletClient->generateAddress('alice');
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /wallets/$NAME/addresses/generate | POST | *nil* | [Wallet](#wallet) + [AddressKeychain](#addresskeychain)
+
+Flag | Type | Effect
+---- | ---- | ------
+**bech32** | *bool* | Whether or not to generate a p2wpkh bech32 address. Default is false.
 
 This endpoint allows you to generate a new address associated with the $NAME wallet, similar to the [Generate Address Endpoint](#generate-address-endpoint). If successful, it will returned the newly modified [Wallet](#wallet) composed with an [AddressKeychain](#addresskeychain).
 
