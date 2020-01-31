@@ -781,6 +781,7 @@ Flag | Type | Effect
 **txlimit** | *integer* | This filters the TXInputs/TXOutputs within the returned TXs to include a maximum of **txlimit** items.
 **confirmations** | *integer* | If set, only returns the **balance** and TXs that have *at least* this number of **confirmations**.
 **confidence** | *integer* | Filters response to only include TXs above **confidence** in percent; e.g., if this is set to 99, will only return TXs with 99% confidence or above (including all confirmed TXs). For more detail on confidence, check the [Confidence Factor](#confidence-factor) documentation.
+**maddrs** | *bool* | **Litecoin Only.** Replaces P2SH prefix with M instead of legacy 3. Disabled by default.
 **includeHex** | *bool* | If *true*, includes hex-encoded raw transaction for each TX; *false* by default.
 **includeConfidence** | *bool* | If *true*, includes the **confidence** attribute (useful for unconfirmed transactions) within returned TXs. For more info about this figure, check the [Confidence Factor](#confidence-factor) documentation.
 **omitWalletAddresses** | *bool* | If **omitWalletAddresses** is *true* and you're querying a [Wallet](#wallet) or [HDWallet](#hdwallet), the response will omit address information (useful to speed up the API call for larger wallets).
@@ -793,6 +794,14 @@ The returned object contains information about the address, including its balanc
 
 <aside class="notice">
 If your returned <a href="#address">Address</a> object includes the <b>hasMore</b> attribute, there are more transactions associated with the address than transfered through this endpoint. If this happens, note the block height of the last transaction in the array, and then you can use the <b>before</b> flag to page through results.
+</aside>
+
+<aside class="warning">
+Please note that, <b>for Litecoin only</b>, after July 1 2020:
+<ul>
+<li><code>maddrs</code> flag will no longer exist.</li>
+<li>By default, P2SH address will have a M prefix instead of the legacy 3.</li>
+</ul>
 </aside>
 
 ## Generate Address Endpoint
