@@ -312,6 +312,7 @@ Flag | Type | Effect
 **limit** | *integer* | Filters TXInputs/TXOutputs, if unset, default is 20.
 **instart** | *integer* | Filters TX to only include TXInputs from this input index and above.
 **outstart** | *integer* | Filters TX to only include TXOutputs from this output index and above.
+**maddrs** | *bool* | **Litecoin Only.** Replaces P2SH prefix with M instead of legacy 3. Disabled by default.
 **includeHex** | *bool* | If *true*, includes hex-encoded raw transaction; *false* by default.
 **includeConfidence** | *bool* | If *true*, includes the **confidence** attribute (useful for unconfirmed transactions). For more info about this figure, check the [Confidence Factor](#confidence-factor) documentation.
 
@@ -320,6 +321,14 @@ TXHASH is a *string* representing the hex-encoded transaction hash you're intere
 `f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449`
 
 The returned object contains detailed information about the transaction, including the value transfered, date received, and a full listing of inputs and outputs.
+
+<aside class="warning">
+Please note that, <b>for Litecoin only</b>, after July 1 2020:
+<ul>
+<li><code>maddrs</code> flag will no longer exist.</li>
+<li>By default, P2SH address will have a M prefix instead of the legacy 3.</li>
+</ul>
+</aside>
 
 ## Unconfirmed Transactions Endpoint
 
