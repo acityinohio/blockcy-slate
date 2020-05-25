@@ -2374,6 +2374,6 @@ Want more information about transaction propagation? (e.g., IP addresses) Reach 
 
 You can get a live view of unconfirmed transaction propagation analysis on Bitcoin by connecting to our Transaction Propagation WebSocket, at the following address:
 
-`wss://socket.blockcypher.com/v1/btc/main?TOKEN/txs/propagation`
+`wss://socket.blockcypher.com/v1/btc/main?token=$TOKEN/txs/propagation`
 
 As soon as an unconfirmed transaction hits 10 peers, we send the object described above through this WebSocket. For more WebSocket implementation details, check [Using WebSockets](#using-websockets).
