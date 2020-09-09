@@ -312,7 +312,7 @@ Flag | Type | Effect
 **limit** | *integer* | Filters TXInputs/TXOutputs, if unset, default is 20.
 **instart** | *integer* | Filters TX to only include TXInputs from this input index and above.
 **outstart** | *integer* | Filters TX to only include TXOutputs from this output index and above.
-**maddrs** | *bool* | **Litecoin Only.** Replaces P2SH prefix with M instead of legacy 3. Disabled by default.
+**legacyaddrs** | *bool* | **Litecoin Only.** Replaces P2SH prefix with legacy 3 instead of M. Disabled by default.
 **includeHex** | *bool* | If *true*, includes hex-encoded raw transaction; *false* by default.
 **includeConfidence** | *bool* | If *true*, includes the **confidence** attribute (useful for unconfirmed transactions). For more info about this figure, check the [Confidence Factor](#confidence-factor) documentation.
 
@@ -323,10 +323,10 @@ TXHASH is a *string* representing the hex-encoded transaction hash you're intere
 The returned object contains detailed information about the transaction, including the value transfered, date received, and a full listing of inputs and outputs.
 
 <aside class="warning">
-Please note that, <b>for Litecoin only</b>, after July 1 2020:
+Please note that, <b>for Litecoin only</b>, since July 1 2020:
 <ul>
-<li><code>maddrs</code> flag will no longer exist.</li>
-<li>By default, P2SH address will have a M prefix instead of the legacy 3.</li>
+<li><code>maddrs</code> flag no longer exist. Use <code>legacyaddrs</code> to display legacy 3 prefix.</li>
+<li>By default, P2SH addresses have a M prefix instead of the legacy 3.</li>
 </ul>
 </aside>
 
