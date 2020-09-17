@@ -4,8 +4,8 @@
 # All cURL'd Objects are JSON:
 
 {
-	key: value,
-	key: value,
+    key: value,
+    key: value,
 }
 ```
 
@@ -42,19 +42,19 @@ curl https://api.blockcypher.com/v1/btc/main
 >>> from blockcypher import get_blockchain_overview
 >>> get_blockchain_overview()
 {
-    "hash": "000000000000000006c488791bafc490efb365ad609ed39e6ee51d1afbc8ed83", 
-    "height": 379780, 
-    "high_fee_per_kb": 57607, 
-    "last_fork_hash": "00000000000000000aef777b65b5d32301c914e7d9f2c4cf1f7366e1eb217124", 
-    "last_fork_height": 280959, 
-    "latest_url": "https://api.blockcypher.com/v1/btc/main/blocks/000000000000000006c488791bafc490efb365ad609ed39e6ee51d1afbc8ed83", 
-    "low_fee_per_kb": 24554, 
-    "medium_fee_per_kb": 28847, 
-    "name": "BTC.main", 
-    "peer_count": 817, 
-    "previous_hash": "0000000000000000026727709d704d20de7d756427a10a86cd0b084066632e55", 
-    "previous_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000026727709d704d20de7d756427a10a86cd0b084066632e55", 
-    "time": "datetime.datetime(2015, 10, 20, 19, 35, 50, 174235, tzinfo=tzutc())", 
+    "hash": "000000000000000006c488791bafc490efb365ad609ed39e6ee51d1afbc8ed83",
+    "height": 379780,
+    "high_fee_per_kb": 57607,
+    "last_fork_hash": "00000000000000000aef777b65b5d32301c914e7d9f2c4cf1f7366e1eb217124",
+    "last_fork_height": 280959,
+    "latest_url": "https://api.blockcypher.com/v1/btc/main/blocks/000000000000000006c488791bafc490efb365ad609ed39e6ee51d1afbc8ed83",
+    "low_fee_per_kb": 24554,
+    "medium_fee_per_kb": 28847,
+    "name": "BTC.main",
+    "peer_count": 817,
+    "previous_hash": "0000000000000000026727709d704d20de7d756427a10a86cd0b084066632e55",
+    "previous_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000026727709d704d20de7d756427a10a86cd0b084066632e55",
+    "time": "datetime.datetime(2015, 10, 20, 19, 35, 50, 174235, tzinfo=tzutc())",
     "unconfirmed_count": 100231
 }
 ```
@@ -99,9 +99,9 @@ curl https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a6
 "prev_block": "0000000000000000ced0958bd27720b71d3...",
 "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d...",
 "txids": [
-	"32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
-	"1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
-	...,
+    "32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
+    "1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
+    ...,
 ],
 "depth": 61793,
 "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
@@ -113,34 +113,34 @@ curl https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a6
 >>> from blockcypher import get_block_overview
 >>> get_block_overview('0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412')
 {
-    "bits": 419486617, 
-    "chain": "BTC.main", 
-    "depth": 85570, 
-    "fees": 130999, 
-    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412", 
-    "height": 294322, 
-    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952", 
-    "n_tx": 10, 
-    "nonce": 1225187768, 
-    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "relayed_by": "", 
-    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "total": 1146652915, 
-    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/", 
+    "bits": 419486617,
+    "chain": "BTC.main",
+    "depth": 85570,
+    "fees": 130999,
+    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412",
+    "height": 294322,
+    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952",
+    "n_tx": 10,
+    "nonce": 1225187768,
+    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "relayed_by": "",
+    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "total": 1146652915,
+    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/",
     "txids": [
-        "32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277", 
-        "1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287", 
-        "dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0", 
-        "749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e", 
-        "c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c", 
-        "5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f", 
-        "077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1", 
-        "6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9", 
-        "ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650", 
+        "32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277",
+        "1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287",
+        "dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0",
+        "749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e",
+        "c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c",
+        "5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f",
+        "077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1",
+        "6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9",
+        "ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650",
         "36cc61016b9d1bd69768666f287db1edaa9b292fb442f152af7099305677230e"
-    ], 
+    ],
     "ver": 2
 }
 ```
@@ -156,7 +156,7 @@ Attribute | Type | Description
 **total** | *integer* | The total number of satoshis transacted in this block.
 **fees** | *integer* | The total number of fees---in satoshis---collected by miners in this block.
 **size** | *integer* | ***Optional*** Raw size of block (including header and all transactions) in bytes. Not returned for bitcoin blocks earlier than height 389104.
-**ver** | *integer* | Block version. 
+**ver** | *integer* | Block version.
 **time** | [*time*](https://tools.ietf.org/html/rfc3339) | Recorded time at which block was built. *Note: Miners rarely post accurate clock times.*
 **received_time** | [*time*](https://tools.ietf.org/html/rfc3339) | The time BlockCypher's servers receive the block. Our servers' clock is continuously adjusted and accurate.
 **relayed_by** | *string* | Address of the peer that sent BlockCypher's servers this block.
@@ -180,11 +180,11 @@ curl https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d58
 "block_height": 293000,
 "hash": "f854aebae95150b379cc1187d848d58225f3c41...",
 "addresses": [
-	"13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy",
-	"19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L",
-	"1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy",
-	"1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq",
-	"1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
+    "13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy",
+    "19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L",
+    "1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy",
+    "1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq",
+    "1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
 ],
 "total": 70320221545,
 "fees": 0,
@@ -200,30 +200,30 @@ curl https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d58
 "vout_sz": 1,
 "confirmations": 63171,
 "inputs": [
-	{
-		"prev_hash": "583910b7bf90ab802e22e5c25a89...",
-		"output_index": 1,
-		"script": "4830450220504b1ccfddf508422bdd8...",
-		"output_value": 16450000,
-		"sequence": 4294967295,
-		"addresses": [
-			"1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq"
-		],
-		"script_type": "pay-to-pubkey-hash"
-	},
-	...,
-	...,
+    {
+        "prev_hash": "583910b7bf90ab802e22e5c25a89...",
+        "output_index": 1,
+        "script": "4830450220504b1ccfddf508422bdd8...",
+        "output_value": 16450000,
+        "sequence": 4294967295,
+        "addresses": [
+            "1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+    },
+    ...,
+    ...,
 ],
 "outputs": [
-	{
-		"value": 70320221545,
-		"script": "76a914e6aad9d712c419ea8febf009a...",
-		"spent_by": "35832d6c70b98b54e9a53ab2d5117...",
-		"addresses": [
-			"1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
-		],
-		"script_type": "pay-to-pubkey-hash"
-	}
+    {
+        "value": 70320221545,
+        "script": "76a914e6aad9d712c419ea8febf009a...",
+        "spent_by": "35832d6c70b98b54e9a53ab2d5117...",
+        "addresses": [
+            "1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+    }
 ]
 }
 ```
@@ -272,7 +272,7 @@ Attribute | Type | Description
 "output_value": 2450698356,
 "sequence": 4294967295,
 "addresses": [
-	"34ch2jrhYXDFsLK1FZQ3SjqgFRnX8mGC5W"
+    "34ch2jrhYXDFsLK1FZQ3SjqgFRnX8mGC5W"
 ],
 "script_type": "pay-to-script-hash",
 "age": 5
@@ -302,7 +302,7 @@ Attribute | Type | Description
 "script": "76a914e6aad9d712c419ea8febf009a3f3bfdd8d222fac88ac",
 "spent_by": "35832d6c70b98b54e9a53ab2d51176eb19ad11bc4505d6bb1ea6c51a68cb92ee",
 "addresses": [
-	"1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
+    "1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV"
 ],
 "script_type": "pay-to-pubkey-hash"
 }
@@ -369,10 +369,10 @@ Attribute | Type | Description
 **block_height** | *integer* | Height of the block that contains this transaction input/output. If it's unconfirmed, this will equal -1.
 **tx_hash** | *string* | The hash of the transaction containing this input/output. While reasonably unique, using hashes as identifiers may be [unsafe](https://en.bitcoin.it/wiki/Transaction_Malleability).
 **tx_input_n** | *integer* | Index of this input in the enclosing transaction. It's a negative number for an output.
-**tx_output_n** | *integer* |	Index of this output in the enclosing transaction. It's a negative number for an input.
+**tx_output_n** | *integer* | Index of this output in the enclosing transaction. It's a negative number for an input.
 **value** | *integer* | The value transfered by this input/output in satoshis exchanged in the enclosing transaction.
 **preference** | *string* | The likelihood that the enclosing transaction will make it to the next block; reflects the preference level miners have to include the enclosing transaction. Can be high, medium or low.
-**spent** | *bool* | 	*true* if this is an output and was spent. If it's an input, or an unspent output, it will be *false*. 
+**spent** | *bool* | *true* if this is an output and was spent. If it's an input, or an unspent output, it will be *false*.
 **double_spend** | *bool* | *true* if this is an attempted double spend; *false* otherwise.
 **confirmations** | *integer* | Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
 **script** | *string* | ***Optional*** Raw, hex-encoded script of this input/output.
@@ -392,23 +392,23 @@ curl -d '{"inputs":[{"addresses": ["CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9"]}],"outp
 
 {
 "tx": {
-	"block_height": -1,
-	"block_index": 0,
-	"hash": "4d6e32d71313fb548232642fd...",
-	"addresses": [
-		"CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9",
-		"C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn"
-	],
-	"total": 5419600,
-	"fees": 12500,
-	"size": 119,
-	...
+    "block_height": -1,
+    "block_index": 0,
+    "hash": "4d6e32d71313fb548232642fd...",
+    "addresses": [
+        "CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9",
+        "C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn"
+    ],
+    "total": 5419600,
+    "fees": 12500,
+    "size": 119,
+    ...
 },
 "tosign": [
-	"97d81abd54cae1648951f49..."
+    "97d81abd54cae1648951f49..."
 ],
 "errors": [
-	{ "error": "..." }
+    { "error": "..." }
 ],
 "signatures": [],
 "pubkeys": []
@@ -438,13 +438,14 @@ curl -d '{"data":"I am the walrus", "encoding":"string"}' https://api.blockcyphe
   "hash": "cb6974e0fd57c91b70403e85ef48c840eecdca4804dfc4897b1321d5328e4f18"
 }
 ```
+
 A NullData Object is used exclusively by our [Data Endpoint](#data-endpoint) to embed small pieces of data on the blockchain. If your data is over 40 bytes, it cannot be embedded into the blockchain and will return an error
 
 Attribute | Type | Description
 --------- | ---- | -----------
 **data** | *string* | The string representing the data to embed, can be either hex-encoded or plaintext.
 **token** | *string* | ***Optional*** Your BlockCypher API token, can either be included here or as a URL Parameter in your request.
-**encoding** | *string* | ***Optional*** The encoding of your data, can be either *string* (for plaintext) or *hex* (for hex-encoded). If not set, defaults to hex. 
+**encoding** | *string* | ***Optional*** The encoding of your data, can be either *string* (for plaintext) or *hex* (for hex-encoded). If not set, defaults to hex.
 **hash** | *string* | ***Optional*** The hash of the transaction containing your data; only part of return object.
 
 ## MicroTX
@@ -456,30 +457,30 @@ Attribute | Type | Description
 "value_satoshis": 5000,
 "token": "YOURTOKEN",
 "signatures": [
-	"3045022100..."
+    "3045022100..."
 ],
 "tosign" : [
-	"cbac3d3105..."
+    "cbac3d3105..."
 ],
 "inputs": [
-	{
-	"prev_hash": "88e6f4fa0dea77e...",
-	"output_index": 2
-	},
-	{
-	"prev_hash": "a02ccb59238178e...",
-	"output_index": 1
-	}
+    {
+    "prev_hash": "88e6f4fa0dea77e...",
+    "output_index": 2
+    },
+    {
+    "prev_hash": "a02ccb59238178e...",
+    "output_index": 1
+    }
 ],
 "outputs": [
-	{
-	"address": "13My...",
-	"value": 10000
-	},
-	{
-	"address": "1bs15...",
-	"value": 9995590
-	}
+    {
+    "address": "13My...",
+    "value": 10000
+    },
+    {
+    "address": "1bs15...",
+    "value": 9995590
+    }
 ],
 "fees": 735
 }
@@ -524,10 +525,10 @@ curl https://api.blockcypher.com/v1/btc/main/addrs/1DEP8i3QJCsomS4BSMY2RpU1upv62
 "unconfirmed_n_tx": 0,
 "final_n_tx": 7,
 "txrefs": [
-	...
+    ...
 ],
 "unconfirmed_txrefs": [
-	...
+    ...
 ]
 }
 ```
@@ -541,9 +542,9 @@ Attribute | Type | Description
 **hd_wallet** | *[HDWallet](#hdwallet)* | ***Optional*** The requested HD wallet object. Only returned if querying by HD wallet name instead of public address.
 **total_received** | *integer* |Total amount of confirmed satoshis received by this address.
 **total_sent** | *integer* | Total amount of confirmed satoshis sent by this address.
-**balance**	| *integer* | Balance of confirmed satoshis on this address. This is the difference between outputs and inputs on this address, but only for transactions that have been included into a block (i.e., for transactions whose confirmations > 0).
-**unconfirmed_balance**	| *integer* | Balance of unconfirmed satoshis on this address. Can be negative (if unconfirmed transactions are just spending outputs). Only unconfirmed transactions (haven't made it into a block) are included.
-**final_balance**	| *integer* |	Total balance of satoshis, including confirmed and unconfirmed transactions, for this address.
+**balance** | *integer* | Balance of confirmed satoshis on this address. This is the difference between outputs and inputs on this address, but only for transactions that have been included into a block (i.e., for transactions whose confirmations > 0).
+**unconfirmed_balance** | *integer* | Balance of unconfirmed satoshis on this address. Can be negative (if unconfirmed transactions are just spending outputs). Only unconfirmed transactions (haven't made it into a block) are included.
+**final_balance** | *integer* | Total balance of satoshis, including confirmed and unconfirmed transactions, for this address.
 **n_tx** | *integer* | Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
 **unconfirmed_n_tx** | *integer* | Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
 **final_n_tx** | *integer* | Final number of transactions, including confirmed and unconfirmed transactions, for this address.
@@ -570,14 +571,14 @@ An AddressKeychain represents an associated collection of public and private key
 
 Attribute | Type | Description
 --------- | ---- | -----------
-**address**	| *string* | Standard address representation.
+**address** | *string* | Standard address representation.
 **public** | *string* | Hex-encoded Public key.
-**private**	| *string* | Hex-encoded Private key.
-**wif**	| *string* | [Wallet import format](https://en.bitcoin.it/wiki/Wallet_import_format), a common encoding for the private key.
-**pubkeys**	| *array[string]* | ***Optional*** Array of public keys to provide to generate a multisig address.
-**script_type**	| *string* | ***Optional*** If generating a multisig address, the type of multisig script; typically "multisig-n-of-m", where n and m are integers.
+**private** | *string* | Hex-encoded Private key.
+**wif** | *string* | [Wallet import format](https://en.bitcoin.it/wiki/Wallet_import_format), a common encoding for the private key.
+**pubkeys** | *array[string]* | ***Optional*** Array of public keys to provide to generate a multisig address.
+**script_type** | *string* | ***Optional*** If generating a multisig address, the type of multisig script; typically "multisig-n-of-m", where n and m are integers.
 **original_address** | *string* | ***Optional*** If [generating an OAP address](#generate-asset-address-endpoint), this represents the parent blockchain's underlying address (the typical **address** listed above).
-**oap_address** | *string* | ***Optional*** The OAP address, if generated using the [Generate Asset Address Endpoint](#generate-asset-address-endpoint). 
+**oap_address** | *string* | ***Optional*** The OAP address, if generated using the [Generate Asset Address Endpoint](#generate-asset-address-endpoint).
 
 ## Wallet
 
@@ -590,6 +591,7 @@ curl -d '{"name": "alice","addresses": ["1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"]}' 
 "addresses": ["1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"]
 }
 ```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 **token** | *string* | User token associated with this wallet.
@@ -610,22 +612,23 @@ curl -d '{"name": "bob", "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9
 "hd": true,
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}
-	]}
+    {"chain_addresses": [
+        {
+            "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+            "path": "m/0"
+        },
+        {
+            "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+            "path": "m/1"
+        },
+        {
+            "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+            "path": "m/2"
+        }
+    ]}
 ]}
 ```
+
 An HDWallet contains addresses derived from a single seed. Like normal wallets, it can be used interchangeably with all the [Address API](#address-api) endpoints, and in many places that require addresses, like when [Creating Transactions](#creating-transactions).
 
 Attribute | Type | Description
@@ -645,20 +648,20 @@ The name of a wallet must be 1-25 characters long and cannot start with any char
 curl https://api.blockcypher.com/v1/btc/main/wallet/hd/bob/addresses?token=YOURTOKEN
 
 {"chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}]
-	}
+    {"chain_addresses": [
+        {
+            "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+            "path": "m/0"
+        },
+        {
+            "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+            "path": "m/1"
+        },
+        {
+            "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+            "path": "m/2"
+        }]
+    }
 ]}
 ```
 
@@ -683,7 +686,7 @@ An HD Address object contains an address and its BIP32 HD path (location of the 
 
 ```shell
 {
-"from_private": "0eb369746401c3369517239...", 
+"from_private": "0eb369746401c3369517239...",
 "to_address": "1C3nrGhUDxBbr393u2Wq4PiE8T6oEYjYhrK",
 "amount": 200,
 "metadata": "1a2b3c4d5e6f"
@@ -763,13 +766,13 @@ Attribute | Type | Description
 --------- | ---- | -----------
 **id** | *string* | Identifier of the event; generated when a new request is created.
 **event** | *string* | Type of event; can be *unconfirmed-tx*, *new-block*, *confirmed-tx*, *tx-confirmation*, *double-spend-tx*, *tx-confidence*.
-**hash**	| *string* | ***optional*** Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
-**wallet_name**	|  *string* | ***optional*** Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token.
-**token**	| *string* | ***optional*** Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly).
-**address**	| *string* | ***optional*** Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet.
+**hash** | *string* | ***optional*** Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
+**wallet_name** |  *string* | ***optional*** Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token.
+**token** | *string* | ***optional*** Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly).
+**address** | *string* | ***optional*** Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet.
 **confirmations** | *integer* | ***optional***  Used in concert with the *tx-confirmation* event type to set the number of confirmations desired for which to receive an update. You'll receive an updated [TX](#tx) for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
 **confidence** | *float* | ***optional*** Used in concert with the *tx-confidence* event type to set the minimum [confidence](#confidence-factor) for which you'll receive a notification. You'll receive a [TX](#tx) once this threshold is met. Will accept any *float* between 0 and 1, exclusive; if not set, defaults to 0.99.
-**script**	| *string* | ***optional*** Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: *pay-to-pubkey-hash*, *pay-to-multi-pubkey-hash*, *pay-to-pubkey*, *pay-to-script-hash*, *null-data* (sometimes called OP_RETURN), *empty* or *unknown*.
+**script** | *string* | ***optional*** Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: *pay-to-pubkey-hash*, *pay-to-multi-pubkey-hash*, *pay-to-pubkey*, *pay-to-script-hash*, *null-data* (sometimes called OP_RETURN), *empty* or *unknown*.
 **url** | *url* | ***optional*** Callback URL for this Event's WebHook; not applicable for WebSockets usage.
 **callback_errors** | *int* | Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
 
@@ -793,11 +796,11 @@ A PaymentForward object represents a request set up through the [Payment Forward
 Attribute | Type | Description
 --------- | ---- | -----------
 **id** | *string* | Identifier of the payment forwarding request; generated when a new request is created.
-**token**	| *string* | The mandatory user token.
-**destination**	| *string* | The required destination address for payment forwarding.
-**input_address**	| *string* | The address which will automatically forward to **destination**; generated when a new request is created.
+**token** | *string* | The mandatory user token.
+**destination** | *string* | The required destination address for payment forwarding.
+**input_address** | *string* | The address which will automatically forward to **destination**; generated when a new request is created.
 **process_fees_address** | *string* | ***Optional*** Address to forward processing fees, if specified. Allows you to receive a fee for your own services.
-**process_fees_satoshis**	| *int* | ***Optional*** Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a **process_fees_address** has been specified.
+**process_fees_satoshis** | *int* | ***Optional*** Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a **process_fees_address** has been specified.
 **process_fees_percent** | *float* | ***Optional*** Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a **process_fees_address** has been specified.
 **callback_url** | *url* | ***Optional*** The URL to call anytime a new payment is forwarded.
 **enable_confirmations** | *bool* | ***Optional*** Whether to also call the **callback_url** with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
@@ -826,23 +829,22 @@ Attribute | Type | Description
 **input_transaction_hash** | *string* | The transaction hash representing the initial payment to the **input_address**.
 **transaction_hash** | *string* | The transaction hash of the generated transaction that forwards the payment from the **input_address** to the **destination.**
 
-
 ## Job
 
 ```shell
 {
-	"token": "YOURTOKEN",
-	"analytics_engine": "payeeaddresses",
-	"created_at": "2016-07-11T19:33:35.518605498Z",
-	"completed_at": "2016-07-11T19:35:25.539002964Z",
-	"finished": true,
-	"started": true,
-	"ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
-	"result_path": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results",
-	"args": {
-		"address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-		"value_threshold": 100000000
-	}
+    "token": "YOURTOKEN",
+    "analytics_engine": "payeeaddresses",
+    "created_at": "2016-07-11T19:33:35.518605498Z",
+    "completed_at": "2016-07-11T19:35:25.539002964Z",
+    "finished": true,
+    "started": true,
+    "ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
+    "result_path": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results",
+    "args": {
+        "address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+        "value_threshold": 100000000
+    }
 }
 ```
 
@@ -854,7 +856,7 @@ Attribute | Type | Description
 **analytics_engine** | *string* | The *engine* used for the job query.
 **created_at** | [*time*](https://tools.ietf.org/html/rfc3339) | The time this job was created.
 **completed_at** | [*time*](https://tools.ietf.org/html/rfc3339) | ***Optional*** When this job was completed; only present on complete jobs.
-**finished** | *bool* | **true** if this job is finished processing, **false** otherwise. 
+**finished** | *bool* | **true** if this job is finished processing, **false** otherwise.
 **started** | *bool* | **true** if this job has begun processing, **false** otherwise.
 **ticket** | *string* | Unique identifier for this job, used to get job status and results.
 **result_path** | *url* | ***Optional*** URL to query job results; only present on complete jobs.
@@ -864,9 +866,9 @@ Attribute | Type | Description
 
 ```shell
 {
-	"address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-	"degree": 2,
-	"limit": 100
+    "address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+    "degree": 2,
+    "limit": 100
 }
 ```
 
@@ -886,19 +888,19 @@ Attribute | Type | Description
 
 ```shell
 {
-	"page": 0,
-	"more": true,
-	"next_page": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results?page=1",
-	"results": [
-		{
-			"DstAddr": "1changemCPo732F6oYUyhbyGtFcNVjprq",
-			"SrcAddr": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-			"TxHash": "0x3b06b1e9d70217d5e02644703fe79f54355b0ea05cd535787f5a6c627f1c
-			43ef",
-			"Value": 1e+08
-		},
-		....
-	]
+    "page": 0,
+    "more": true,
+    "next_page": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results?page=1",
+    "results": [
+        {
+            "DstAddr": "1changemCPo732F6oYUyhbyGtFcNVjprq",
+            "SrcAddr": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+            "TxHash": "0x3b06b1e9d70217d5e02644703fe79f54355b0ea05cd535787f5a6c627f1c
+            43ef",
+            "Value": 1e+08
+        },
+        ....
+    ]
 }
 ```
 

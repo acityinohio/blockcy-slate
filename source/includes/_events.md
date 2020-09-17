@@ -145,22 +145,22 @@ $.post(url, JSON.stringify(webhook))
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	hook, err := btc.CreateHook(gobcy.Hook{Event: "tx-confirmation", Address: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", URL: "https://my.domain.com/callbacks/payments"})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", hook)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  hook, err := btc.CreateHook(gobcy.Hook{Event: "tx-confirmation", Address: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", URL: "https://my.domain.com/callbacks/payments"})
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", hook)
 }
 
 //Result from `go run`:
-//{ID:376fcc2a-28ac-4ba5-9a29-6449ee0b1d83 Event:tx-confirmation Hash: WalletName: Address:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh Confirmations:6 Confidence:0 Script: URL:https://my.domain.com/callbacks/payments CallbackErrs:0}
+//{ID:86a85527-7c36-435b-bab8-5638d033ead4 Event:tx-confirmation Hash: WalletName: Address:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh Confirmations:6 Confidence:0 Script: URL:https://my.domain.com/callbacks/payments CallbackErrs:0}
 ```
 
 ```php
@@ -201,14 +201,14 @@ If successful, it will return the [Event](#event) with a newly generated **id**.
 curl https://api.blockcypher.com/v1/btc/main/hooks?token=YOURTOKEN
 
 [
-	{
-	"id": "399d0923-e920-48ee-8928-2051cbfbc369"
-	"event": "unconfirmed-tx",
-	"address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-	"token": "YOURTOKEN",
-	"url": "https://my.domain.com/callbacks/new-tx",
-	"callback_errors": 0
-	}
+  {
+  "id": "399d0923-e920-48ee-8928-2051cbfbc369"
+  "event": "unconfirmed-tx",
+  "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+  "token": "YOURTOKEN",
+  "url": "https://my.domain.com/callbacks/new-tx",
+  "callback_errors": 0
+  }
 ]
 ```
 
@@ -216,14 +216,14 @@ curl https://api.blockcypher.com/v1/btc/main/hooks?token=YOURTOKEN
 $.get('https://api.blockcypher.com/v1/btc/main/hooks?token='+TOKEN)
   .then(function(d) {console.log(d)});
 [
-	{
-	"id": "399d0923-e920-48ee-8928-2051cbfbc369"
-	"event": "unconfirmed-tx",
-	"address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-	"token": "YOURTOKEN",
-	"url": "https://my.domain.com/callbacks/new-tx",
-	"callback_errors": 0
-	}
+  {
+  "id": "399d0923-e920-48ee-8928-2051cbfbc369"
+  "event": "unconfirmed-tx",
+  "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+  "token": "YOURTOKEN",
+  "url": "https://my.domain.com/callbacks/new-tx",
+  "callback_errors": 0
+  }
 ]
 ```
 
@@ -243,15 +243,15 @@ $.get('https://api.blockcypher.com/v1/btc/main/hooks?token='+TOKEN)
 >>> list_webhooks('YOUR_TOKEN')
 [
     {
-        "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", 
-        "callback_errors": 0, 
-        "confirmations": 6, 
-        "event": "unconfirmed-tx", 
-        "filter": "event=unconfirmed-tx&addr=15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", 
-        "id": "bcaf7c39-9a7f-4e8b-8ba4-23b3c1806039", 
-        "token": "YOUR_TOKEN", 
+        "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+        "callback_errors": 0,
+        "confirmations": 6,
+        "event": "unconfirmed-tx",
+        "filter": "event=unconfirmed-tx&addr=15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+        "id": "bcaf7c39-9a7f-4e8b-8ba4-23b3c1806039",
+        "token": "YOUR_TOKEN",
         "url": "https://my.domain.com/callbacks/new-tx"
-    }, 
+    },
 ]
 ```
 
@@ -259,22 +259,22 @@ $.get('https://api.blockcypher.com/v1/btc/main/hooks?token='+TOKEN)
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	hooks, err := btc.ListHooks()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", hooks)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  hooks, err := btc.ListHooks()
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", hooks)
 }
 
 //Result from `go run`:
-//[{ID:376fcc2a-28ac-4ba5-9a29-6449ee0b1d83 Event:tx-confirmation Hash: WalletName: Address:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh Confirmations:6 Confidence:0 Script: URL:https://my.domain.com/callbacks/payments CallbackErrs:0}]
+//[{ID:86a85527-7c36-435b-bab8-5638d033ead4 Event:tx-confirmation Hash: WalletName: Address:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh Confirmations:6 Confidence:0 Script: URL:https://my.domain.com/callbacks/payments CallbackErrs:0}]
 ```
 
 ```php
@@ -347,12 +347,12 @@ $.get('https://api.blockcypher.com/v1/btc/main/hooks/399d0923-e920-48ee-8928-205
 >>> from blockcypher import get_webhook_info
 >>> get_webhook_info('bcaf7c39-9a7f-4e8b-8ba4-23b3c1806039')
 {
-    "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", 
-    "callback_errors": 0, 
-    "event": "unconfirmed-tx", 
-    "filter": "addr=15qx9ug952GWGTNn7Uiv6vode4RcGrRemh&event=unconfirmed-tx", 
-    "id": "bcaf7c39-9a7f-4e8b-8ba4-23b3c1806039", 
-    "token": "YOUR_TOKEN", 
+    "address": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+    "callback_errors": 0,
+    "event": "unconfirmed-tx",
+    "filter": "addr=15qx9ug952GWGTNn7Uiv6vode4RcGrRemh&event=unconfirmed-tx",
+    "id": "bcaf7c39-9a7f-4e8b-8ba4-23b3c1806039",
+    "token": "YOUR_TOKEN",
     "url": "https://my.domain.com/callbacks/new-tx"
 }
 ```
@@ -361,22 +361,22 @@ $.get('https://api.blockcypher.com/v1/btc/main/hooks/399d0923-e920-48ee-8928-205
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	hook, err := btc.GetHook("376fcc2a-28ac-4ba5-9a29-6449ee0b1d83")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", hook)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  hook, err := btc.GetHook("86a85527-7c36-435b-bab8-5638d033ead4")
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", hook)
 }
 
 //Result from `go run`:
-//{ID:376fcc2a-28ac-4ba5-9a29-6449ee0b1d83 Event:tx-confirmation Hash: WalletName: Address:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh Confirmations:6 Confidence:0 Script: URL:https://my.domain.com/callbacks/payments CallbackErrs:0}
+//{ID:86a85527-7c36-435b-bab8-5638d033ead4 Event:unconfirmed-tx Hash: WalletName: Address: Confirmations:0 Confidence:0 Script: URL:https://my.domain.com/callbacks/new-tx CallbackErrs:0}
 ```
 
 ```php
@@ -439,19 +439,19 @@ True
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	err := btc.DeleteHook("376fcc2a-28ac-4ba5-9a29-6449ee0b1d83")
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Hook deleted")
-	}
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  err := btc.DeleteHook("86a85527-7c36-435b-bab8-5638d033ead4")
+  if err != nil {
+    fmt.Println(err)
+  } else {
+    fmt.Println("Hook deleted")
+  }
 }
 
 //Result from `go run`:

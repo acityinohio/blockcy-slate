@@ -67,19 +67,19 @@ $.get('https://api.blockcypher.com/v1/btc/main').then(function(d) {console.log(d
 >>> from blockcypher import get_blockchain_overview
 >>> get_blockchain_overview()
 {
-    "hash": "0000000000000000097ebad5b89f15d46bc2bb36423af7cbcaa83a87f3f2a178", 
-    "height": 379892, 
-    "high_fee_per_kb": 51535, 
-    "last_fork_hash": "000000000000000004d09e31247aa0efbba89cb35c146f96f7150d76c810d395", 
-    "last_fork_height": 379357, 
-    "latest_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000097ebad5b89f15d46bc2bb36423af7cbcaa83a87f3f2a178", 
-    "low_fee_per_kb": 24372, 
-    "medium_fee_per_kb": 29490, 
-    "name": "BTC.main", 
-    "peer_count": 896, 
-    "previous_hash": "00000000000000000bbd491173b40160b74e212650b7324bc74b33367d0e0a6b", 
-    "previous_url": "https://api.blockcypher.com/v1/btc/main/blocks/00000000000000000bbd491173b40160b74e212650b7324bc74b33367d0e0a6b", 
-    "time": "datetime.datetime(2015, 10, 21, 14, 11, 21, 603114, tzinfo=tzutc())", 
+    "hash": "0000000000000000097ebad5b89f15d46bc2bb36423af7cbcaa83a87f3f2a178",
+    "height": 379892,
+    "high_fee_per_kb": 51535,
+    "last_fork_hash": "000000000000000004d09e31247aa0efbba89cb35c146f96f7150d76c810d395",
+    "last_fork_height": 379357,
+    "latest_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000097ebad5b89f15d46bc2bb36423af7cbcaa83a87f3f2a178",
+    "low_fee_per_kb": 24372,
+    "medium_fee_per_kb": 29490,
+    "name": "BTC.main",
+    "peer_count": 896,
+    "previous_hash": "00000000000000000bbd491173b40160b74e212650b7324bc74b33367d0e0a6b",
+    "previous_url": "https://api.blockcypher.com/v1/btc/main/blocks/00000000000000000bbd491173b40160b74e212650b7324bc74b33367d0e0a6b",
+    "time": "datetime.datetime(2015, 10, 21, 14, 11, 21, 603114, tzinfo=tzutc())",
     "unconfirmed_count": 78701
 }
 ```
@@ -88,22 +88,22 @@ $.get('https://api.blockcypher.com/v1/btc/main').then(function(d) {console.log(d
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	chain, err := btc.GetChain()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", chain)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  chain, err := btc.GetChain()
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", chain)
 }
 
 //Result from `go run`:
-//{Name:BTC.main Height:378882 Hash:000000000000000005e5b78413032db5d54a6df5600549f5d3ec339dd7bac4c0 Time:2015-10-14 17:01:57.647896489 +0000 UTC PrevHash:0000000000000000111be2620123bcf2f8ca6209140a8b1f0d8c2412dd9067f2 PeerCount:896 HighFee:52463 MediumFee:27563 LowFee:24926 UnconfirmedCount:81047 LastForkHeight:378316 LastForkHash:00000000000000000806c49f6b53b439beec2a1434f15ae713b84b87a26bbb51}
+//{Name:BTC.main Height:648800 Hash:00000000000000000006f4157b3fa48928e09f5d8a6696604df43f1187547354 Time:2020-09-17 20:39:41.770732359 +0000 UTC PrevHash:000000000000000000017aa67661ee1764357965e04b58b7b789be67af2b5acc PeerCount:1045 HighFee:86603 MediumFee:61014 LowFee:49127 UnconfirmedCount:17910 LastForkHeight:644543 LastForkHash:0000000000000000000ac8d61492ab76dab7451373c6eaa6803ec0244f623395}
 ```
 
 ```php
@@ -162,9 +162,9 @@ curl https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a6
 "prev_block": "0000000000000000ced0958bd27720b71d3...",
 "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d...",
 "txids": [
-	"32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
-	"1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
-	...,
+  "32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
+  "1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
+  ...,
 ],
 "depth": 61793,
 "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
@@ -190,9 +190,9 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564
 > "prev_block": "0000000000000000ced0958bd27720b71d3...",
 > "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d...",
 > "txids": [
-> 	"32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
-> 	"1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
-> 	...,
+>   "32b3b86e40d996b1f281e24e8d4af2ceacbf874c403836...",
+>   "1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
+>   ...,
 > ],
 > "depth": 61793,
 > "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
@@ -235,34 +235,34 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564
 >>> from blockcypher import get_block_overview
 >>> get_block_overview('0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412')
 {
-    "bits": 419486617, 
-    "chain": "BTC.main", 
-    "depth": 85570, 
-    "fees": 130999, 
-    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412", 
-    "height": 294322, 
-    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952", 
-    "n_tx": 10, 
-    "nonce": 1225187768, 
-    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "relayed_by": "", 
-    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "total": 1146652915, 
-    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/", 
+    "bits": 419486617,
+    "chain": "BTC.main",
+    "depth": 85570,
+    "fees": 130999,
+    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412",
+    "height": 294322,
+    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952",
+    "n_tx": 10,
+    "nonce": 1225187768,
+    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "relayed_by": "",
+    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "total": 1146652915,
+    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/",
     "txids": [
-        "32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277", 
-        "1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287", 
-        "dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0", 
-        "749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e", 
-        "c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c", 
-        "5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f", 
-        "077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1", 
-        "6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9", 
-        "ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650", 
+        "32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277",
+        "1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287",
+        "dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0",
+        "749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e",
+        "c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c",
+        "5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f",
+        "077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1",
+        "6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9",
+        "ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650",
         "36cc61016b9d1bd69768666f287db1edaa9b292fb442f152af7099305677230e"
-    ], 
+    ],
     "ver": 2
 }
 # note that you can batch blocks with blockcypher.get_blocks_overview()
@@ -272,22 +272,22 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	block, err := btc.GetBlock(0, "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", block)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  block, err := btc.GetBlock(0, "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412", nil)
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", block)
 }
 
 //Result from `go run`:
-//{Hash:0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412 Height:294322 Depth:84560 Chain:BTC.main Total:1146652915 Fees:130999 Ver:2 Time:2014-04-05 07:49:18 +0000 UTC ReceivedTime:2014-04-05 07:49:18 +0000 UTC RelayedBy: Bits:419486617 Nonce:1225187768 NumTX:10 PrevBlock:0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0 MerkleRoot:359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952 TXids:[32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277 1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287 dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0 749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c 5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f 077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1 6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9 ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650 36cc61016b9d1bd69768666f287db1edaa9b292fb442f152af7099305677230e] NextTXs:}
+//{Hash:0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412 Height:294322 Depth:354479 Chain:BTC.main Total:{neg:false abs:[1146652915]} Fees:{neg:false abs:[130999]} Ver:2 Time:2014-04-05 07:49:18 +0000 UTC ReceivedTime:2014-04-05 07:49:18 +0000 UTC RelayedBy: Bits:419486617 Nonce:1225187768 NumTX:10 PrevBlock:0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0 MerkleRoot:359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952 TXids:[32b3b86e40d996b1f281e24e8d4af2ceacbf874c4038369cc21baa807409b277 1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287 dd1f183348eb41eaaa9ecf8012f9cca3ecbae41a6349f0cc4bfd2b1a497fa3d0 749d12ccd180968b82aef4c271ca4effdf981d9b5d12523264457c9d4e6fa78e c4fe2ee16b8e3067d3d95caf7944011f4959781288b807df8bf853b7f80ed97c 5a2114675265522d2b7ce8a7874cfa7a22ccc3fb6566a8599d6432c6805b1b5f 077d851c8240671de80caa8be9f5285201c08a70edc5a45a9cd35fe7eaebf5e1 6202cc55fbd9130e065c9294a5b2e061c26f3d2c8df56c32da605d9f183103f9 ad3e7aa1c33f1d3e1c105d94f7b1542808da07bbe66b9621b050104a85dbf650 36cc61016b9d1bd69768666f287db1edaa9b292fb442f152af7099305677230e] NextTXs:}
 ```
 
 ```php
@@ -361,7 +361,7 @@ curl 'https://api.blockcypher.com/v1/btc/main/blocks/294322?txstart=1&limit=1'
 "prev_block": "0000000000000000ced0958bd27720b71d3...",
 "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d...",
 "txids": [
-	"1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
+  "1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
 ],
 "depth": 61793,
 "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
@@ -387,7 +387,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/294322?txstart=1&limit=1')
 > "prev_block": "0000000000000000ced0958bd27720b71d3...",
 > "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d...",
 > "txids": [
-> 	"1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
+>   "1579f716359ba1a207f70248135f5e5fadf539be1dcf53...",
 > ],
 > "depth": 61793,
 > "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
@@ -421,26 +421,26 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/294322?txstart=1&limit=1')
 >>> from blockcypher import get_block_overview
 >>> get_block_overview('294322', txn_limit=1, txn_offset=1)
 {
-    "bits": 419486617, 
-    "chain": "BTC.main", 
-    "depth": 85574, 
-    "fees": 130999, 
-    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412", 
-    "height": 294322, 
-    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952", 
-    "n_tx": 10, 
-    "next_txids": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412?txstart=2&limit=1", 
-    "nonce": 1225187768, 
-    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0", 
-    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "relayed_by": "", 
-    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())", 
-    "total": 1146652915, 
-    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/", 
+    "bits": 419486617,
+    "chain": "BTC.main",
+    "depth": 85574,
+    "fees": 130999,
+    "hash": "0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412",
+    "height": 294322,
+    "mrkl_root": "359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952",
+    "n_tx": 10,
+    "next_txids": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412?txstart=2&limit=1",
+    "nonce": 1225187768,
+    "prev_block": "0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "prev_block_url": "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0",
+    "received_time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "relayed_by": "",
+    "time": "datetime.datetime(2014, 4, 5, 7, 49, 18, 0, tzinfo=tzutc())",
+    "total": 1146652915,
+    "tx_url": "https://api.blockcypher.com/v1/btc/main/txs/",
     "txids": [
         "1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287"
-    ], 
+    ],
     "ver": 2
 }
 ```
@@ -449,23 +449,26 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/294322?txstart=1&limit=1')
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//setting txstart to 1 and limit to 1
-	block, err := btc.GetBlockPage(294322, "", 1, 1)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", block)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //setting txstart to 1 and limit to 1
+	params := make(map[string]string)
+	params["txstart"] = "1"
+	params["limit"] = "1"
+	block, err := btc.GetBlock(294322, "", params)
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", block)
 }
 
 //Result from `go run`:
-//{Hash:0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412 Height:294322 Depth:84560 Chain:BTC.main Total:1146652915 Fees:130999 Ver:2 Time:2014-04-05 07:49:18 +0000 UTC ReceivedTime:2014-04-05 07:49:18 +0000 UTC RelayedBy: Bits:419486617 Nonce:1225187768 NumTX:10 PrevBlock:0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0 MerkleRoot:359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952 TXids:[1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287] NextTXs:https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412?txstart=2&limit=1}
+//{Hash:0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412 Height:294322 Depth:354479 Chain:BTC.main Total:{neg:false abs:[1146652915]} Fees:{neg:false abs:[130999]} Ver:2 Time:2014-04-05 07:49:18 +0000 UTC ReceivedTime:2014-04-05 07:49:18 +0000 UTC RelayedBy: Bits:419486617 Nonce:1225187768 NumTX:10 PrevBlock:0000000000000000ced0958bd27720b71d32c5847e40660aaca39f33c298abb0 MerkleRoot:359d624d37aee1efa5662b7f5dbc390e996d561afc8148e8d716cf6ad765a952 TXids:[1579f716359ba1a207f70248135f5e5fadf539be1dcf5300613aedcb6577d287] NextTXs:https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412?txstart=2&limit=1}
 ```
 
 ```php
@@ -537,8 +540,9 @@ curl https://api.blockcypher.com/v1/btc/main/feature/bip65?token=YOURTOKEN
   "last_transition_hash": "000000000000000009f886db2c7c12a497603e86378bace3ead93d350be3f38c"
 }
 ```
-Resource | Method 
--------- | ------ 
+
+Resource | Method
+-------- | ------
 /feature/$NAME | GET
 
 If you're curious about the adoption of upgrade features on a blockchain, you can use this endpoint to get some information about its state on the network. For example, for bip65 on bitcoin, you could check its state via this URL: `https://api.blockcypher.com/v1/btc/main/feature/bip65?token=YOURTOKEN`. Generally speaking, for bitcoin, this will follow the form of tracking bipXX (where XX = a number), but the list of features we're tracking is always changing.
