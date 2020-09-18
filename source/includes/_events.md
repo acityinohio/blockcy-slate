@@ -55,7 +55,7 @@ ws.onopen = function(event) {
 
 Opening a WebSocket to listen to our feeds is easy, like so in Javascript:
 
-`new WebSocket("wss://socket.blockcypher.com/v1/btc/main");`
+`new WebSocket("wss://socket.blockcypher.com/v1/btc/main?token=$TOKEN");`
 
 The code may differ if you're not programming in Javascript (check relevant code examples for our standard libraries) but the URL will be identical. Once the socket is opened, the JSON document representing the [Event](#event) of interest should be sent.
 
@@ -64,12 +64,6 @@ In addition to standard events, WebSockets accept a "ping" event. If you send th
 `{ "event": "ping" }`
 
 A regular ping (i.e. every 20 seconds) allows the WebSocket to stay connected for a longer period of time.
-
-### A WebSockets Live Example
-
-Using the example above, we can demonstrate a client-side WebSocket event stream directly from your browser. In that example, we will subscribe to all pooled transactions (new, unconfirmed transactions) by opening a new WebSocket and sending the filter (**unconfirmed-tx**). Upon notification of new transactions, we format them and add them into the page.
-
-<button class="tryme" type="button" id="browser-websocket">Try me!</button>
 
 ## Using WebHooks
 
