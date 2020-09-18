@@ -57,7 +57,7 @@ curl -d '{"name": "alice","addresses": ["1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"]}' 
 {"token": "YOURTOKEN",
 "name": "alice",
 "addresses": [
-	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
+  "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
 ]}
 
 # hd wallet
@@ -68,20 +68,20 @@ curl -d '{"name": "bob", "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9
 "hd": true,
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}
-	]}
+  {"chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }
+  ]}
 ]}
 
 # hd wallet BIP84
@@ -92,7 +92,7 @@ curl -d '{"name": "charlie", "extended_public_key": "vpub5bJX9NkmSDP33H5PxJXmehq
 "hd": true,
 "extended_public_key": "vpub5bJX9NkmSDP33H5PxJXmehqyV7aDaVWxudvzDW3kP4c5Z5KFEaUNtJ9CLebEiEssZJyZa7AE9zR5Q7nqPAmk6xgRpRvXRMKj6WPfBGBi3fR",
 "chains": [
-	{"chain_addresses": [
+  {"chain_addresses": [
         {
           "address": "tb1q4a9vav7vq4gp7ca9emddr66dvk099vdhh5srhp",
           "path": "m/0"
@@ -109,14 +109,14 @@ curl -d '{"name": "catheryne", "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJ
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "subchain_indexes": [ 1, 3 ],
 "chains": [
-	{
-		"index": 1,
-		"chain_addresses": []
-	},
-	{
-		"index": 3,
-		"chain_addresses": []
-	}
+  {
+    "index": 1,
+    "chain_addresses": []
+  },
+  {
+    "index": 3,
+    "chain_addresses": []
+  }
 ]}
 ```
 
@@ -128,7 +128,7 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets?token=USERTOKEN', JSON.s
 > {"token": "USERTOKEN",
 > "name": "alice",
 > "addresses": [
-> 	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
+>   "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
 > ]}
 
 //hd wallet
@@ -140,20 +140,20 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/hd?token=USERTOKEN', JSO
 > "hd": true,
 > "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 > "chains": [
-> 	{"chain_addresses": [
-> 		{
-> 			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-> 			"path": "m/0"
-> 		},
-> 		{
-> 			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-> 			"path": "m/1"
-> 		},
-> 		{
-> 			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-> 			"path": "m/2"
-> 		}
-> 	]}
+>   {"chain_addresses": [
+>     {
+>       "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+>       "path": "m/0"
+>     },
+>     {
+>       "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+>       "path": "m/1"
+>     },
+>     {
+>       "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+>       "path": "m/2"
+>     }
+>   ]}
 > ]}
 ```
 
@@ -171,8 +171,8 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/hd?token=USERTOKEN', JSO
 {
     "addresses": [
         "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
-    ], 
-    "name": "alice", 
+    ],
+    "name": "alice",
     "token": "YOUR_TOKEN"
 }
 
@@ -184,23 +184,23 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/hd?token=USERTOKEN', JSO
         {
             "chain_addresses": [
                 {
-                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc", 
+                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
                     "path": "m/0"
-                }, 
+                },
                 {
-                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT", 
+                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
                     "path": "m/1"
-                }, 
+                },
                 {
-                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb", 
+                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
                     "path": "m/2"
                 }
             ]
         }
-    ], 
-    "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8", 
-    "hd": True, 
-    "name": "bob", 
+    ],
+    "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
+    "hd": True,
+    "name": "bob",
     "token": "YOUR_TOKEN"
 }
 ```
@@ -209,21 +209,21 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/hd?token=USERTOKEN', JSO
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet
-	alice, err := btc.CreateWallet(gobcy.Wallet{"alice", []string{"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"}})
-	//hdwallet
-	bob, err := btc.CreateHDWallet(gobcy.HDWallet{Name: "bob", ExtPubKey: "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8"})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Normal Wallet:%+v\nHDWallet: %+v\n", alice, bob)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet
+  alice, err := btc.CreateWallet(gobcy.Wallet{"alice", []string{"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"}})
+  //hdwallet
+  bob, err := btc.CreateHDWallet(gobcy.HDWallet{Name: "bob", ExtPubKey: "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8"})
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Normal Wallet:%+v\nHDWallet: %+v\n", alice, bob)
 }
 
 //Result from `go run`:
@@ -272,20 +272,20 @@ $createdWallet = $walletClient->create($wallet);
 "hd": true,
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}
-	]}
+  {"chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }
+  ]}
 ]}
 ```
 
@@ -312,10 +312,10 @@ If the named wallet already exists under your token, attempting to create a new 
 curl https://api.blockcypher.com/v1/btc/main/wallets?token=YOURTOKEN
 {
 "wallet_names": [
-		"alice",
-		"bob",
-		"catheryne"
-	]
+    "alice",
+    "bob",
+    "catheryne"
+  ]
 }
 ```
 
@@ -324,10 +324,10 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets?token=YOURTOKEN')
   .then(function(d) {console.log(d)});
 > {
 > "wallet_names": [
-> 		"alice"
-> 		"bob",
-> 		"catheryne"
-> 	]
+>     "alice"
+>     "bob",
+>     "catheryne"
+>   ]
 > }
 ```
 
@@ -351,18 +351,18 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets?token=YOURTOKEN')
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	walletNames, err := btc.ListWallets()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Wallets:%v\n", walletNames)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  walletNames, err := btc.ListWallets()
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Wallets:%v\n", walletNames)
 }
 
 //Result from `go run`:
@@ -402,20 +402,20 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token=YOURTOKEN
 "hd": true,
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "chains": [{
-	"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}
-	]}
+  "chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }
+  ]}
 ]}
 ```
 
@@ -426,7 +426,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses?token=YOU
 > "token":"YOURTOKEN",
 > "name":"alice",
 > "addresses": [
-> 	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
+>   "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
 > ]}
 
 //hd wallet
@@ -437,20 +437,20 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token=USERTOKEN')
 > "hd": true,
 > "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 > "chains": [
-> 	{"chain_addresses": [
-> 		{
-> 			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-> 			"path": "m/0"
-> 		},
-> 		{
-> 			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-> 			"path": "m/1"
-> 		},
-> 		{
-> 			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-> 			"path": "m/2"
-> 		}
-> 	]}
+>   {"chain_addresses": [
+>     {
+>       "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+>       "path": "m/0"
+>     },
+>     {
+>       "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+>       "path": "m/1"
+>     },
+>     {
+>       "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+>       "path": "m/2"
+>     }
+>   ]}
 > ]}
 ```
 
@@ -468,8 +468,8 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token=USERTOKEN')
 {
     "addresses": [
         "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
-    ], 
-    "name": "alice", 
+    ],
+    "name": "alice",
     "token": "YOUR_TOKEN"
 }
 
@@ -481,23 +481,23 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token=USERTOKEN')
         {
             "chain_addresses": [
                 {
-                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc", 
+                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
                     "path": "m/0"
-                }, 
+                },
                 {
-                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT", 
+                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
                     "path": "m/1"
-                }, 
+                },
                 {
-                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb", 
+                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
                     "path": "m/2"
                 }
             ]
         }
-    ], 
-    "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8", 
-    "hd": True, 
-    "name": "bob", 
+    ],
+    "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
+    "hd": True,
+    "name": "bob",
     "token": "YOUR_TOKEN"
 }
 ```
@@ -506,21 +506,21 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token=USERTOKEN')
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet
-	alice, err := btc.GetWallet("alice")
-	//hdwallet
-	bob, err := btc.GetHDWallet("bob")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Normal Wallet: %v\nHDWallet: %v\n", alice, bob)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet
+  alice, err := btc.GetWallet("alice")
+  //hdwallet
+  bob, err := btc.GetHDWallet("bob")
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Normal Wallet: %v\nHDWallet: %v\n", alice, bob)
 }
 
 //Result from `go run`:
@@ -557,20 +557,20 @@ $wallet = $walletClient->get('bob');
 "hd": true,
 "extended_public_key": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
 "chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}
-	]}
+  {"chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }
+  ]}
 ]}
 ```
 
@@ -589,8 +589,8 @@ curl -d '{"addresses": ["13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"]}' https://api.bloc
 {"token": "YOURTOKEN",
 "name": "alice",
 "addresses": [
-	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e",
-	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"
+  "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e",
+  "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"
 ]}
 ```
 
@@ -602,8 +602,8 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses?token=US
 >   "token": "USERTOKEN",
 >   "name": "alice",
 >   "addresses": [
->   	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e",
->   	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"
+>     "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e",
+>     "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"
 > ]}
 ```
 
@@ -629,19 +629,19 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses?token=US
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet
-	alice, err := btc.AddAddrWallet("alice", []string{"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"}, false)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", alice)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet
+  alice, err := btc.AddAddrWallet("alice", []string{"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"}, false)
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", alice)
 }
 
 //Result from `go run`:
@@ -690,28 +690,28 @@ You cannot add custom addresses to HD Wallets, since they are all derived from y
 curl https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses?token=YOURTOKEN
 
 {"addresses": [
-	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
-	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
+  "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
+  "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
 ]}
 
 #hd wallet
 curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token=YOURTOKEN
 
 {"chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}]
-	}
+  {"chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }]
+  }
 ]}
 ```
 
@@ -721,28 +721,28 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses?token=USE
   .then(function(d) {console.log(d)});
 > {
 > "addresses": [
-> 	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
-> 	"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
+>   "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
+>   "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
 > ]}
 
 //hd wallet
 $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token=USERTOKEN')
   .then(function(d) {console.log(d)});
 > {"chains": [
-> 	{"chain_addresses": [
-> 		{
-> 			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-> 			"path": "m/0"
-> 		},
-> 		{
-> 			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-> 			"path": "m/1"
-> 		},
-> 		{
-> 			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-> 			"path": "m/2"
-> 		}]
-> 	}
+>   {"chain_addresses": [
+>     {
+>       "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+>       "path": "m/0"
+>     },
+>     {
+>       "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+>       "path": "m/1"
+>     },
+>     {
+>       "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+>       "path": "m/2"
+>     }]
+>   }
 > ]}
 ```
 
@@ -759,7 +759,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token=US
 >>> get_wallet_addresses(wallet_name='alice', api_key='YOUR_TOKEN')
 {
     "addresses": [
-        "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j", 
+        "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
         "1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"
     ]
 }
@@ -772,15 +772,15 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token=US
         {
             "chain_addresses": [
                 {
-                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc", 
+                    "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
                     "path": "m/0"
-                }, 
+                },
                 {
-                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT", 
+                    "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
                     "path": "m/1"
-                }, 
+                },
                 {
-                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb", 
+                    "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
                     "path": "m/2"
                 }
             ]
@@ -793,21 +793,21 @@ $.get('https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token=US
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet
-	alice, err := btc.GetAddrWallet("alice", nil)
-	//hdwallet
-	bob, err := btc.GetAddrHDWallet("bob", nil)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Normal Wallet: %+v\nHD Wallet: %+v\n", alice, bob)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet
+  alice, err := btc.GetAddrWallet("alice", nil)
+  //hdwallet
+  bob, err := btc.GetAddrHDWallet("bob", nil)
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Normal Wallet: %+v\nHD Wallet: %+v\n", alice, bob)
 }
 
 //Result from `go run`:
@@ -837,20 +837,20 @@ $walletClient = new HDWalletClient($apiContext);
 $addressList = $walletClient->getWalletAddresses('bob');
 
 {"chains": [
-	{"chain_addresses": [
-		{
-			"address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
-			"path": "m/0"
-		},
-		{
-			"address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
-			"path": "m/1"
-		},
-		{
-			"address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
-			"path": "m/2"
-		}]
-	}
+  {"chain_addresses": [
+    {
+      "address": "1FHz8bpEE5qUZ9XhfjzAbCCwo5bT1HMNAc",
+      "path": "m/0"
+    },
+    {
+      "address": "1J8QDN1u7iDMbJktbqXPSrAqruNjkmRFmT",
+      "path": "m/1"
+    },
+    {
+      "address": "1MWNKnYfE2LVdvAzFUioF3F3JXFpRfDCQb",
+      "path": "m/2"
+    }]
+  }
 ]}
 ```
 
@@ -863,7 +863,6 @@ Flag | Type | Effect
 ---- | ---- | ------
 **used** | *bool* | Returns only used addresses if set to *true* and only unused if *false*. **Only valid on HD wallets.**
 **zerobalance** | *bool* | Returns only addresses with zero balance if set to *true* and only addresses with non-zero balance if *false*. **Only valid on HD wallets.**
-
 
 This endpoint returns a list of the addresses associated with the $NAME wallet. It returns the addresses in a partially filled out [Wallet](#wallet) which you'll find under the **addresses** attribute. For HD wallets it returns an [HDChain](#hd-chain) object.
 
@@ -898,20 +897,20 @@ True
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet only
-	err := btc.DeleteAddrWallet("alice", []string{"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"})
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Printf("Address deleted")
-	}
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet only
+  err := btc.DeleteAddrWallet("alice", []string{"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"})
+  if err != nil {
+    fmt.Println(err)
+  } else {
+    fmt.Printf("Address deleted")
+  }
 }
 
 //Result from `go run`:
@@ -957,8 +956,8 @@ curl -X POST https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses/gen
 {"token": "YOURTOKEN",
 "name": "alice",
 "addresses": [
-	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
-	"14LcPtRSGjYb1s8kfxsVDbXvA7VYCmoFho"
+  "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
+  "14LcPtRSGjYb1s8kfxsVDbXvA7VYCmoFho"
 ],
 "private": "6238efeb679d75ec3b1a43e76cc0ed33abdf56e30bb5bb95e4793134a7958609",
 "public": "03e4f273521a30373a639f60da836f2308a5d53853ec18f903dd235c73e6e26e4a",
@@ -973,8 +972,8 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses/generate
 >   "token": "USERTOKEN",
 >   "name": "alice",
 >   "addresses": [
->   	"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
->   	"14LcPtRSGjYb1s8kfxsVDbXvA7VYCmoFho"
+>     "13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j",
+>     "14LcPtRSGjYb1s8kfxsVDbXvA7VYCmoFho"
 >   ],
 >   "private": "6238efeb679d75ec3b1a43e76cc0ed33abdf56e30bb5bb95e4793134a7958609",
 >   "public": "03e4f273521a30373a639f60da836f2308a5d53853ec18f903dd235c73e6e26e4a",
@@ -1002,24 +1001,24 @@ $.post('https://api.blockcypher.com/v1/btc/main/wallets/alice/addresses/generate
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//normal wallet only
-	alice, addr, err := btc.GenAddrWallet("alice")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Wallet: %+v\nNew Address: %+v\n", alice, addr)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //normal wallet only
+  alice, addr, err := btc.GenAddrWallet("alice")
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Wallet: %+v\nNew Address: %+v\n", alice, addr)
 }
 
 //Result from `go run`:
-//Wallet: {Name:alice Addresses:[13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j 14KLgDRAEHdk5ggRUDcqeZNfJHu2cCoU5D]}
-//New Address: {Address:14KLgDRAEHdk5ggRUDcqeZNfJHu2cCoU5D Private:b8202b67710cef1990ca3dfe04e2bf5e3484e6d6a4725c46e86b7f8b3e4b3f20 Public:0226a990df828225f1fbb608313a4a08db75ddfbf73a5f9a5ed9da8d38c89923b2 Wif:L3PdKr1QRFD8uxfXrkTVUrd6LznocDpwgY1JQsFCpYTrzT4do3KJ PubKeys:[] ScriptType:}
+//Wallet: {Name:alice Addresses:[13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j 1GSyFhhBGebgco5Zm7dY1PapChhYQF5WhL]}
+//New Address: {Address:1GSyFhhBGebgco5Zm7dY1PapChhYQF5WhL Private:ebe30359436f890398cae3719a6a9a46664f5f04a408bbb447ad020ffe95cb75 Public:031073ab3eeef2adcad6a63b7e088ad47c8f22d9d2d8a062fb573a0430626a6021 Wif:L58F6ro12XnrM9FUqjKhauUWW7HX1fv3EVub4AkWmihkQxV29BPw PubKeys:[] ScriptType: OriginalAddress: OAPAddress:}
 ```
 
 ```php
@@ -1063,13 +1062,13 @@ curl -X POST https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses/de
 
 {
 "chains": [
-	{"chain_addresses": [
-		{
-			"address": "19urzZsoBNsomSfj68PUUGLXDz261tK5Jo",
-			"public": "02c85080e00080aa933f93a2718bba9f01fd6fdc8e4712a155849f5ba588666471",
-			"path": "m/3"
-		}
-	]}
+  {"chain_addresses": [
+    {
+      "address": "19urzZsoBNsomSfj68PUUGLXDz261tK5Jo",
+      "public": "02c85080e00080aa933f93a2718bba9f01fd6fdc8e4712a155849f5ba588666471",
+      "path": "m/3"
+    }
+  ]}
 ]}
 
 #with subchain_index
@@ -1077,8 +1076,8 @@ curl -X POST 'https://api.blockcypher.com/v1/btc/main/wallets/hd/catheryne/addre
 
 {
 "chains": [
-	{"index":1,
-	"chain_addresses": [
+  {"index":1,
+  "chain_addresses": [
     {
       "address": "1NwEtFZ6Td7cpKaJtYoeryS6avP2TUkSMh",
       "public": "029b393153a1ec68c7af3a98e88aecede3a409f27e698c090540098611c79e05b0",
@@ -1104,8 +1103,8 @@ curl -X POST 'https://api.blockcypher.com/v1/btc/main/wallets/hd/catheryne/addre
         {
             "chain_addresses": [
                 {
-                    "address": "19urzZsoBNsomSfj68PUUGLXDz261tK5Jo", 
-                    "path": "m/3", 
+                    "address": "19urzZsoBNsomSfj68PUUGLXDz261tK5Jo",
+                    "path": "m/3",
                     "public": "02c85080e00080aa933f93a2718bba9f01fd6fdc8e4712a155849f5ba588666471"
                 }
             ]
@@ -1118,19 +1117,19 @@ curl -X POST 'https://api.blockcypher.com/v1/btc/main/wallets/hd/catheryne/addre
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//hdwallet only
-	bob, err := btc.DeriveAddrHDWallet("bob", map[string]string{"count": "1"})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Parital HD Wallet: %+v\n", bob)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //hdwallet only
+  bob, err := btc.DeriveAddrHDWallet("bob", map[string]string{"count": "1"})
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("Parital HD Wallet: %+v\n", bob)
 }
 
 //Result from `go run`:
@@ -1218,22 +1217,22 @@ True
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//wallet
-	err := btc.DeleteWallet("alice")
-	//hdwallet
-	err = btc.DeleteHDWallet("bob")
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Alice and Bob Deleted")
-	}
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //wallet
+  err := btc.DeleteWallet("alice")
+  //hdwallet
+  err = btc.DeleteHDWallet("bob")
+  if err != nil {
+    fmt.Println(err)
+  } else {
+    fmt.Println("Alice and Bob Deleted")
+  }
 }
 
 //Result from `go run`:
@@ -1263,4 +1262,3 @@ Resource | Method | Return Object
 /wallets/hd/$NAME | DELETE | *nil*
 
 This endpoint deletes the Wallet or HD Wallet with $NAME. If successful, it will return an HTTP 204 status code with no return object.
-

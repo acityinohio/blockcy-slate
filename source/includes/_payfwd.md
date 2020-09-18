@@ -63,10 +63,10 @@ $.post(url, JSON.stringify(payment))
 >>> from blockcypher import create_forwarding_address_with_details
 >>> create_forwarding_address_with_details(destination_address='15qx9ug952GWGTNn7Uiv6vode4RcGrRemh', api_key='YOUR_TOKEN', callback_url='https://my.domain.com/callbacks/new-pay')
 {
-    "callback_url": "https://my.domain.com/callbacks/new-pay", 
-    "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", 
-    "id": "f35c80c2-3347-410d-b4ac-d049910289ec", 
-    "input_address": "1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ", 
+    "callback_url": "https://my.domain.com/callbacks/new-pay",
+    "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+    "id": "f35c80c2-3347-410d-b4ac-d049910289ec",
+    "input_address": "1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ",
     "token": "YOUR_TOKEN"
 }
 # You can use create_forwarding_address to just return the input_address and not the rest of the JSON
@@ -76,18 +76,18 @@ $.post(url, JSON.stringify(payment))
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/blockcypher/gobcy"
+    "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	payfwd, err := btc.CreatePayFwd(gobcy.PayFwd{Destination: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", CallbackURL: "https://my.domain.com/callbacks/payments"})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", payfwd)
+    btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+    payfwd, err := btc.CreatePayFwd(gobcy.PayFwd{Destination: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", CallbackURL: "https://my.domain.com/callbacks/payments"})
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Printf("%+v\n", payfwd)
 }
 
 //Result from `go run`:
@@ -133,13 +133,13 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 curl https://api.blockcypher.com/v1/btc/main/payments?token=YOURTOKEN
 
 [
-	{
-	"input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
-	"destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-	"callback_url": "https://my.domain.com/callbacks/payments",
-	"id": "399d0923-e920-48ee-8928-2051cbfbc369",
-	"token": "YOURTOKEN"
-	}
+    {
+    "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
+    "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+    "callback_url": "https://my.domain.com/callbacks/payments",
+    "id": "399d0923-e920-48ee-8928-2051cbfbc369",
+    "token": "YOURTOKEN"
+    }
 ]
 ```
 
@@ -147,13 +147,13 @@ curl https://api.blockcypher.com/v1/btc/main/payments?token=YOURTOKEN
 $.get('https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN)
   .then(function(d) {console.log(d)});
 [
-	{
-	"input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
-	"destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-	"callback_url": "https://my.domain.com/callbacks/payments",
-	"id": "399d0923-e920-48ee-8928-2051cbfbc369",
-	"token": "YOURTOKEN"
-	}
+    {
+    "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
+    "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+    "callback_url": "https://my.domain.com/callbacks/payments",
+    "id": "399d0923-e920-48ee-8928-2051cbfbc369",
+    "token": "YOURTOKEN"
+    }
 ]
 ```
 
@@ -171,10 +171,10 @@ $.get('https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN)
 >>> list_forwarding_addresses(api_key='YOUR_TOKEN')
 [
     {
-        "callback_url": "https://my.domain.com/callbacks/payments", 
-        "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", 
-        "id": "f35c80c2-3347-410d-b4ac-d049910289ec", 
-        "input_address": "1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ", 
+        "callback_url": "https://my.domain.com/callbacks/payments",
+        "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
+        "id": "f35c80c2-3347-410d-b4ac-d049910289ec",
+        "input_address": "1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ",
         "token": "YOUR_TOKEN"
     }
 ]
@@ -184,18 +184,18 @@ $.get('https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN)
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/blockcypher/gobcy"
+    "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	payfwds, err := btc.ListPayFwds()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", payfwds)
+    btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+    payfwds, err := btc.ListPayFwds()
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Printf("%+v\n", payfwds)
 }
 
 //Result from `go run`:
@@ -265,19 +265,19 @@ True
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/blockcypher/gobcy"
+    "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	err := btc.DeletePayFwd("6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc ")
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("PayFwd Deleted")
-	}
+    btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+    err := btc.DeletePayFwd("6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc ")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println("PayFwd Deleted")
+    }
 }
 
 //Result from `go run`:
