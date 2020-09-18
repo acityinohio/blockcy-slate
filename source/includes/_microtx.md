@@ -87,9 +87,9 @@ $.post(url, JSON.stringify(microtx))
 >>> r = requests.post('https://api.blockcypher.com/v1/bcy/test/txs/micro', data=data, params=params)
 >>> r.json()
 {
-    "from_private": "97838249d77bfa65f97be02b63fd1b7bb6a58474c7c22784a0da63993d1c2f90", 
-    "hash": "fadfc54f69297e12c17d18ad519e636d96b3c7f0638ca2b011baedaff7cac378", 
-    "to_address": "C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn", 
+    "from_private": "97838249d77bfa65f97be02b63fd1b7bb6a58474c7c22784a0da63993d1c2f90",
+    "hash": "fadfc54f69297e12c17d18ad519e636d96b3c7f0638ca2b011baedaff7cac378",
+    "to_address": "C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn",
     "value_satoshis": 10000
 }
 ```
@@ -98,23 +98,24 @@ $.post(url, JSON.stringify(microtx))
 package main
 
 import (
-	"fmt"
+  "fmt"
+  "math/big"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	//note the change to BlockCypher Testnet
-	bcy := gobcy.API{"YOURTOKEN", "bcy", "test"}
-	micro, err := bcy.SendMicro(gobcy.MicroTX{Priv: "5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7", ToAddr: "CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp", Value: 200000})
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", micro)
+  //note the change to BlockCypher Testnet
+  bcy := gobcy.API{"YOURTOKEN", "bcy", "test"}
+  micro, err := bcy.SendMicro(gobcy.MicroTX{Priv: "5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7", ToAddr: "CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp", Value: *big.NewInt(200000)})
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", micro)
 }
 
 //Result from `go run`:
-//{Pubkey: Priv:5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7 Wif: ToAddr:CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp Value:200000 ChangeAddr: Wait:false ToSign:[] Signatures:[] Hash:f3ef51a0d595e5c42a7599335adbb88c03b2fc104376c942dd2201139fe968f7 Inputs:[] Outputs:[] Fees:0}
+//{Pubkey: Priv:5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7 Wif: ToAddr:CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp Value:{neg:false abs:[200000]} ChangeAddr: Wait:false ToSign:[] Signatures:[] Hash:4022739a06fe4f6e60123c9ac6b70bf317d510208e318e13c8afe484e5b9981a Inputs:[] Outputs:[] Fees:0}
 ```
 
 ```php
@@ -160,10 +161,10 @@ curl -d '{ "from_pubkey": "02152e2bb5b273561ece7bbe8b1df...", "to_address": "C1r
   ],
   "token": "YOURTOKEN",
   "inputs": [
-		...
+    ...
   ],
   "outputs": [
-	...
+  ...
   ],
   "fees": 735
 }
@@ -182,10 +183,10 @@ curl -d '{ ..., "signatures": ["30450221009050c3c966d1f895b6d6f6ab544113b88b3ce6
   "value_satoshis": 20000,
   "hash": "ce8b3a2d5bb1f552c9d526559dd892b4ee...",
   "inputs": [
-	...
+  ...
   ],
   "outputs": [
-	...
+  ...
   ],
   "fees": 735
 }
@@ -225,10 +226,10 @@ $.post(url, JSON.stringify(microtx)).then(function(tmptx) {
 >   "value_satoshis": 20000,
 >   "hash": "ce8b3a2d5bb1f552c9d526559dd892b4ee...",
 >   "inputs": [
-> 	...
+>   ...
 >   ],
 >   "outputs": [
-> 	...
+>   ...
 >   ],
 >   "fees": 735
 > }
@@ -256,29 +257,30 @@ $.post(url, JSON.stringify(microtx)).then(function(tmptx) {
 package main
 
 import (
-	"fmt"
+  "fmt"
+  "math/big"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	//note the change to BlockCypher Testnet
-	bcy := gobcy.API{"YOURTOKEN", "bcy", "test"}
-	keychain := gobcy.AddrKeychain{Private: "5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7", Public: "03daabc0502d41f52358690a65a7001a2a22df432706cce52a3c98da2c47229a51", Address: "CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp"}
-	//Send MicroTX with Public Key instead of Private Key
-	micro, err := bcy.SendMicro(gobcy.MicroTX{Pubkey: keychain.Public, ToAddr: "C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn", Value: 300000})
-	//Sign result locally with associated Private Key
-	err = micro.Sign(keychain.Private)
-	//Send signed MicroTX
-	micro, err = bcy.SendMicro(micro)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", micro)
+  //note the change to BlockCypher Testnet
+  bcy := gobcy.API{"YOURTOKEN", "bcy", "test"}
+  keychain := gobcy.AddrKeychain{Private: "5e4e8495f90a7d2e7091ec60a6586fdfb57b3108823ecfd955732aab1e3c18d7", Public: "03daabc0502d41f52358690a65a7001a2a22df432706cce52a3c98da2c47229a51", Address: "CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp"}
+  //Send MicroTX with Public Key instead of Private Key
+  micro, err := bcy.SendMicro(gobcy.MicroTX{Pubkey: keychain.Public, ToAddr: "C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn", Value: *big.NewInt(300000)})
+  //Sign result locally with associated Private Key
+  err = micro.Sign(keychain.Private)
+  //Send signed MicroTX
+  micro, err = bcy.SendMicro(micro)
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", micro)
 }
 
 //Result from `go run`:
-//{Pubkey:03daabc0502d41f52358690a65a7001a2a22df432706cce52a3c98da2c47229a51 Priv: Wif: ToAddr:C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn Value:300000 ChangeAddr: Wait:false ToSign:[] Signatures:[] Hash:934dfdaae9269ed7cf33f2484b3b3e8a7e5c1be12b9ea010e4bf95a2d11e59c7 Inputs:[{PrevHash:f3ef51a0d595e5c42a7599335adbb88c03b2fc104376c942dd2201139fe968f7 OutputIndex:0} {PrevHash:f3ef51a0d595e5c42a7599335adbb88c03b2fc104376c942dd2201139fe968f7 OutputIndex:2} {PrevHash:3332e1b220d0584f54a3cc8f8d1c6eafe2767b4f0f017379e8ca514ca4823c32 OutputIndex:1}] Outputs:[{Value:300000 Address:C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn} {Value:9958400 Address:BxeGtkPZM6qUsfkZ4pzaq4TF1RHNoqdZHT} {Value:700000 Address:CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp}] Fees:3400}
+//{Pubkey:03daabc0502d41f52358690a65a7001a2a22df432706cce52a3c98da2c47229a51 Priv: Wif: ToAddr:C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn Value:{neg:false abs:[300000]} ChangeAddr: Wait:false ToSign:[] Signatures:[] Hash:934dfdaae9269ed7cf33f2484b3b3e8a7e5c1be12b9ea010e4bf95a2d11e59c7 Inputs:[{PrevHash:f3ef51a0d595e5c42a7599335adbb88c03b2fc104376c942dd2201139fe968f7 OutputIndex:0} {PrevHash:f3ef51a0d595e5c42a7599335adbb88c03b2fc104376c942dd2201139fe968f7 OutputIndex:2} {PrevHash:3332e1b220d0584f54a3cc8f8d1c6eafe2767b4f0f017379e8ca514ca4823c32 OutputIndex:1}] Outputs:[{Value:{neg:false abs:[300000]} Address:C1rGdt7QEPGiwPMFhNKNhHmyoWpa5X92pn} {Value:{neg:false abs:[9958400]} Address:BxeGtkPZM6qUsfkZ4pzaq4TF1RHNoqdZHT} {Value:{neg:false abs:[700000]} Address:CBXcmktjHSwqtHsC8cgRPYT7Mpq9VT7ASp}] Fees:3400}
 ```
 
 ```php

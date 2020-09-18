@@ -3,7 +3,7 @@
 Blockchains contain a wealth of data, but much of it is inscrutable without arduous effort. Our Analytics API makes uncovering these patterns easy, enabling you to discover insights efficiently and programmatically.
 
 <aside class="warning">
-The Analytics API is in <strong>pre-beta</strong>, and currently only supports Bitcoin Mainnet (/btc/main/analytics). Things may break/it might not be suitable for production applications. 
+The Analytics API is in <strong>pre-beta</strong>, and currently only supports Bitcoin Mainnet (/btc/main/analytics). Things may break/it might not be suitable for production applications.
 </aside>
 
 The publicly accessible Analytics API is a set of preconfigured tools and pipelines built against our flexible analytics backend. It serves as both a useful tool for one-off analysis and a live demonstration for custom implementations. If you're interested in a custom Analytics solution at enterprise scale---or have any ideas for general purpose analytics queries to benefit the community!---please reach out to [analytics@blockcypher.com](mailto:analytics@blockcypher.com).
@@ -28,7 +28,7 @@ The following *engines* can power your analytics jobs. The resource below repres
 
 Resource | Required [JobArgs](#jobargs) | Optional [JobArgs](#jobargs)
 -------- | ---------------------------- | ----------------------------
-/analytics/payingaddresses | **address** | **value_threshold** 
+/analytics/payingaddresses | **address** | **value_threshold**
 
 Returns the list of addresses (along with their associated transaction hashes) and amounts that have paid the target **address**. Optionally restricted by only returning **value_transfer** (in satoshis) transfers and above.
 
@@ -36,7 +36,7 @@ Returns the list of addresses (along with their associated transaction hashes) a
 
 Resource | Required [JobArgs](#jobargs) | Optional [JobArgs](#jobargs)
 -------- | ---------------------------- | ----------------------------
-/analytics/payeeaddresses | **address** | **value_threshold** 
+/analytics/payeeaddresses | **address** | **value_threshold**
 
 Returns the list of addresses (along with their associated transaction hashes) and amounts that have been paid by the target **address**. Optionally restricted by only returning **value_transfer** (in satoshis) transfers and above.
 
@@ -52,7 +52,7 @@ Returns the most active **limit** number of addresses, optionally within a certa
 
 Resource | Required [JobArgs](#jobargs) | Optional [JobArgs](#jobargs)
 -------- | ---------------------------- | ----------------------------
-/analytics/addressactivity | **address**, **start**, **end** | 
+/analytics/addressactivity | **address**, **start**, **end** |
 
 Returns the outputs this address generated within a certain bounded time range denoted by **start** and **end**.
 
@@ -79,17 +79,17 @@ Returns transactions relayed by a given **source** (IP address and port) within 
 curl -sd '{"address" : "1bones5gF1HJeiexQus6UtvhU4EUD4qfj", "value_threshold" : 100000000}' https://api.blockcypher.com/v1/btc/main/analytics/payeeaddresses?token=YOURTOKEN
 
 {
-	"token": "YOURTOKEN",
-	"analytics_engine": "payeeaddresses",
-	"created_at": "2016-07-11T19:33:35.518605498Z",
-	"completed_at": "0001-01-01T00:00:00Z",
-	"finished": false,
-	"started": false,
-	"ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
-	"args": {
-		"address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-		"value_threshold": 100000000
-	}
+    "token": "YOURTOKEN",
+    "analytics_engine": "payeeaddresses",
+    "created_at": "2016-07-11T19:33:35.518605498Z",
+    "completed_at": "0001-01-01T00:00:00Z",
+    "finished": false,
+    "started": false,
+    "ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
+    "args": {
+        "address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+        "value_threshold": 100000000
+    }
 }
 
 ```
@@ -106,18 +106,18 @@ This creates an analytics job asynchronously, taking in appropriate [JobArgs](#j
 #let's check the status of our job
 curl -s https://api.blockcypher.com/v1/btc/main/analytics/job/50b7697-ff13-4a50-8a2b-cee605bc3000?token=YOURTOKEN
 {
-	"token": "YOURTOKEN",
-	"analytics_engine": "payeeaddresses",
-	"created_at": "2016-07-11T19:33:35.518605498Z",
-	"completed_at": "2016-07-11T19:35:25.539002964Z",
-	"finished": true,
-	"started": true,
-	"ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
-	"result_path": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results",
-	"args": {
-		"address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-		"value_threshold": 100000000
-	}
+    "token": "YOURTOKEN",
+    "analytics_engine": "payeeaddresses",
+    "created_at": "2016-07-11T19:33:35.518605498Z",
+    "completed_at": "2016-07-11T19:35:25.539002964Z",
+    "finished": true,
+    "started": true,
+    "ticket": "50b77697-ff13-4a50-8a2b-cee605bc3000",
+    "result_path": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results",
+    "args": {
+        "address": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+        "value_threshold": 100000000
+    }
 }
 ```
 
@@ -136,19 +136,19 @@ Depending on the number of analytics jobs in our queue, it may take some time fo
 ```shell
 curl -s https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results
 {
-	"page": 0,
-	"more": true,
-	"next_page": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results?page=1",
-	"results": [
-		{
-			"DstAddr": "1changemCPo732F6oYUyhbyGtFcNVjprq",
-			"SrcAddr": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
-			"TxHash": "0x3b06b1e9d70217d5e02644703fe79f54355b0ea05cd535787f5a6c627f1c
-			43ef",
-			"Value": 1e+08
-		},
-		....
-	]
+    "page": 0,
+    "more": true,
+    "next_page": "https://api.blockcypher.com/v1/btc/main/analytics/job/50b77697-ff13-4a50-8a2b-cee605bc3000/results?page=1",
+    "results": [
+        {
+            "DstAddr": "1changemCPo732F6oYUyhbyGtFcNVjprq",
+            "SrcAddr": "1bones5gF1HJeiexQus6UtvhU4EUD4qfj",
+            "TxHash": "0x3b06b1e9d70217d5e02644703fe79f54355b0ea05cd535787f5a6c627f1c
+            43ef",
+            "Value": 1e+08
+        },
+        ....
+    ]
 }
 ```
 

@@ -13,7 +13,7 @@ As you may have gathered from the frequency of links to this feature in these do
 
 There are a host of factors that go into our confidence calculation, but you can broadly organize them into two categories. The *shape* of transactions refers to aspects of transactions that *don't* vary with time (time-invariant) in our model. The *behavior* of transactions refers to aspects of transactions that *do* vary with time (time-variant) in our model.
 
-On the *shape* side of our model, we ask a number of questions about a transaction: How is it structured? What are its inputs and outputs? What's its signature type? Broadly speaking, without knowing anything about the network, does it look like this transaction will be confirmed soon? 
+On the *shape* side of our model, we ask a number of questions about a transaction: How is it structured? What are its inputs and outputs? What's its signature type? Broadly speaking, without knowing anything about the network, does it look like this transaction will be confirmed soon?
 
 The *behavior* part of our model primarily focuses on how a transaction propagates through the network. In order to model this correctly, you need both a great connection to the network and a lot of past data, which we have. As BlockCypher pools resources for many users, we're always connected to a statistically significant number of nodes on the network---we target anywhere between 10 to 20% of the active nodes on any given blockchain---and offer connections in return. By monitoring transaction propagation, the number of nodes that have received it, and how *quickly* they received it, we can calculate its probability to be the "winning" transaction at any given point in time, if a double-spend was attempted. (As an aside, you can always see if a double spend was attempted by checking the **double_spend** and **double_spend_tx** attributes on an [unconfirmed transaction](#tx))
 
@@ -50,9 +50,9 @@ curl https://api.blockcypher.com/v1/btc/main/txs/43fa951e1bea87c282f6725cf8bdc08
 >>> from blockcypher import get_transaction_details
 >>> get_transaction_details('43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9', confidence_only=True))
 {
-    "age_millis": 12725, 
-    "confidence": 0.9901509730004237, 
-    "receive_count": 666, 
+    "age_millis": 12725,
+    "confidence": 0.9901509730004237,
+    "receive_count": 666,
     "txhash": "43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9", 
     "txurl": "https://api.blockcypher.com/v1/btc/main/txs/43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9"
 }
@@ -62,19 +62,19 @@ curl https://api.blockcypher.com/v1/btc/main/txs/43fa951e1bea87c282f6725cf8bdc08
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/blockcypher/gobcy"
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
-	btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-	//querying a recent TX hash detected on BTC network
-	conf, err := btc.GetTXConf("bb01beea75683be16b5d59dd3e084d167f41a6866b6880b3070eefff392fdd2a")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("%+v\n", conf)
+  btc := gobcy.API{"YOURTOKEN", "btc", "main"}
+  //querying a recent TX hash detected on BTC network
+  conf, err := btc.GetTXConf("bb01beea75683be16b5d59dd3e084d167f41a6866b6880b3070eefff392fdd2a")
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Printf("%+v\n", conf)
 }
 
 //Result from `go run`:

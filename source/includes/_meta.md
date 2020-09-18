@@ -2,7 +2,7 @@
 
 Cryptocurrency addresses, transactions, and blocks are extremely powerful, but the labels they employ can be...cryptic. That's why we have a Metadata API, allowing both public and private key-value storage against addresses, transactions, and blocks.
 
-## Private vs Public Metadata 
+## Private vs Public Metadata
 
 The Metadata API supports both public and private key-value storage. In both cases, setting metadata requires use of a token (if you haven't already, you can [register for one here](https://accounts.blockcypher.com/)). **Public metadata is immutable**; once set, it cannot be modified or deleted. If you accidentally set public metadata and need it deleted, [contact us](mailto:support@blockcypher.com). Also, as implied by the name, it's openly accessible to the whole world---regardless of whether they have a token or not. Consequently, private metadata is associated and only accessible with your user token. The methods for interacting with metadata are outlined below.
 
@@ -38,7 +38,7 @@ curl https://api.blockcypher.com/v1/btc/main/addrs/1rundZJCMJhUiWQNFS5uT3BvisBuL
 # Get Public Metadata (set by you or anyone else)
 >>> get_metadata(address='1rundZJCMJhUiWQNFS5uT3BvisBuLxkAp', api_key='YOUR_TOKEN')
 {
-    "name": "silkroad", 
+    "name": "silkroad",
     "owner": "dpr"
 }
 
@@ -79,7 +79,7 @@ curl https://api.blockcypher.com/v1/btc/main/addrs/1rundZJCMJhUiWQNFS5uT3BvisBuL
 
 {"satoshi":"nakamoto", "alice":"bob"}
 
-# Modify/Add Private Metadata 
+# Modify/Add Private Metadata
 curl -X PUT -d '{"satoshi":"moto", "charlie":"tango"}' -is 'https://api.blockcypher.com/v1/btc/main/addrs/1rundZJCMJhUiWQNFS5uT3BvisBuLxkAp/meta?token=YOURTOKEN&private=true' | grep "HTTP/1.1"
 
 HTTP/1.1 204 No Content
@@ -108,11 +108,11 @@ True
 # Get Metadata Again
 >>> get_metadata(address='1rundZJCMJhUiWQNFS5uT3BvisBuLxkAp', api_key='YOUR_TOKEN', private=True)
 {
-    "alice": "bob", 
+    "alice": "bob",
     "satoshi": "nakamoto"
 }
 
-# Modify/Add Private Metadata 
+# Modify/Add Private Metadata
 >>> put_metadata(metadata_dict={"satoshi":"moto", "charlie":"tango"}, address='1rundZJCMJhUiWQNFS5uT3BvisBuLxkAp', api_key='YOUR_TOKEN', private=True)
 True
 
@@ -120,8 +120,8 @@ True
 >>> get_metadata(address='1rundZJCMJhUiWQNFS5uT3BvisBuLxkAp', api_key='YOUR_TOKEN', private=True)
 
 {
-    "alice": "bob", 
-    "charlie": "tango", 
+    "alice": "bob",
+    "charlie": "tango",
     "satoshi": "moto"
 }
 
@@ -136,7 +136,7 @@ True
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /addrs/$ADDRESS/meta | PUT | {"$KEY":"$VALUE",...} | *nil*
-/txs/$TXHASH/meta | PUT | {"$KEY":"$VALUE",...} | *nil* 
+/txs/$TXHASH/meta | PUT | {"$KEY":"$VALUE",...} | *nil*
 /blocks/$BLOCKHASH/meta | PUT | {"$KEY":"$VALUE",...} | *nil*
 
 Flag | Type | Effect
@@ -191,7 +191,7 @@ True
 Resource | Method | Return Object
 -------- | ------ | -------------
 /addrs/$ADDRESS/meta | DELETE | *nil*
-/txs/$TXHASH/meta | DELETE | *nil* 
+/txs/$TXHASH/meta | DELETE | *nil*
 /blocks/$BLOCKHASH/meta | DELETE | *nil*
 
 This endpoint deletes all **private** metadata associated with a given $ADDRESS, $TXHASH, or $BLOCKHASH and your token.
