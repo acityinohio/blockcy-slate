@@ -80,7 +80,7 @@ code_clipboard: true
  */
 ```
 
-Welcome to [BlockCypher's](http://www.blockcypher.com/) API documentation! BlockCypher is a simple, mostly RESTful JSON API for interacting with blockchains, accessed over HTTP or HTTPS from the [api.blockcypher.com](https://api.blockcypher.com/v1/btc/main) domain. Currently, BlockCypher supports Bitcoin, Ethereum, Litecoin, Dogecoin, Bitcoin Testnet3, and BlockCypher's Test Chain (more about BlockCypher's Test Chain [below](#testing)).
+Welcome to [BlockCypher's](http://www.blockcypher.com/) API documentation! BlockCypher is a simple, mostly RESTful JSON API for interacting with blockchains, accessed over HTTP or HTTPS from the [api.blockcypher.com](https://api.blockcypher.com/v1/btc/main) domain. Currently, BlockCypher supports Bitcoin, Ethereum, Litecoin, Dash, Dogecoin, Bitcoin Testnet3, and BlockCypher's Test Chain (more about BlockCypher's Test Chain [below](#testing)).
 
 <aside class="notice">
 While <strong>our Ethereum API</strong> is very similar to the API here, it's different enough to necessitate its own documentation; you can find those docs here: <a href="https://www.blockcypher.com/dev/ethereum/">https://www.blockcypher.com/dev/ethereum/</a>.
@@ -147,6 +147,7 @@ $ pip install blockcypher
     "btc",
     "btc-testnet",
     "ltc",
+    "dash",
     "doge",
     "bcy",  # blockcypher's testnet
 ]
@@ -428,6 +429,7 @@ Coin | Chain | Resource
 ---- | ----- | --------
 Bitcoin | Main | `api.blockcypher.com/v1/btc/main`
 Bitcoin | Testnet3 | `api.blockcypher.com/v1/btc/test3`
+Dash | Main | `api.blockcypher.com/v1/dash/main`
 Dogecoin | Main | `api.blockcypher.com/v1/doge/main`
 Litecoin | Main | `api.blockcypher.com/v1/ltc/main`
 BlockCypher | Test | `api.blockcypher.com/v1/bcy/test`
@@ -437,7 +439,7 @@ Unless otherwise noted, all descriptions of direct HTTP requests will assume one
 </aside>
 
 <aside class="success">
-Our API <b>always</b> returns values in satoshis, or the lowest non-divisible unit in non-Bitcoin blockchains. As a friendly reminder, there are 10^8 satoshis in a single bitcoin (100,000,000s = 1BTC), 10^8 base units per litecoin, and 10^8 koinus per dogecoin (100,000,000k = 1DOGE).
+Our API <b>always</b> returns values in satoshis, or the lowest non-divisible unit in non-Bitcoin blockchains. As a friendly reminder, there are 10^8 satoshis in a single bitcoin (100,000,000s = 1BTC), 10^8 base units per litecoin, 10^8 koinus per dogecoin (100,000,000k = 1DOGE) and 10^8 duff per dash.
 </aside>
 
 ## Rate Limits and Tokens
