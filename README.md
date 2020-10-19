@@ -6,14 +6,13 @@ This repository contains all of [BlockCypher's](http://www.blockcypher.com) API 
 
 We welcome Pull Requests to help us improve our documentation. If you're making edits, it's a good idea to run your fork of our docs locally before submitting a Pull Request; to do so, follow these instructions straight from [Slate.](https://github.com/tripit/slate)
 
-To get started with Slate, please check out the [Getting Started](https://github.com/slatedocs/slate/wiki#getting-started)
-section in our [wiki](https://github.com/slatedocs/slate/wiki).
+### Prerequisites
 
 You're going to need:
 
-* **Linux or macOS** — Windows may work, but is unsupported.
-* **Ruby, version 2.3.1 or newer**
-* **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
+ - **Linux or macOS** — Windows may work, but is unsupported.
+ - **Ruby, version 2.3.1 or newer**
+ - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
 
