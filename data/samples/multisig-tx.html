@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>BlockCypher Reference: Create Multisig Transactions</title>
+		<link href="../../stylesheets/samples-1e80ae7f.css" rel="stylesheet" type="text/css" media="screen">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdn.rawgit.com/blockcypher/docs/master/bitcoinjs-min.js"></script>
+	</head>
+
+	<body>
+	<div class="content">
+		<h1>Create Multisig Transactions</h1>
+		<p>This sample demonstrates transferring an amount from a classic bitcoin address to a 2-of-3 multisig address and then spending from that address by providing 2 of the 3 required signatures.</p>
+		<button class="tryme btn btn-primary" type="button" id="browser-websocket">Transfer now!</button>
+		<br />
+		<div class="log"></div>
+		<br />
+
+		<p><b>Note:</b> this sample uses bitcoinjs to generate signatures in your browser. If you're experiencing issues please make sure your browser is supported by checking the <a href="https://github.com/bitcoinjs/bitcoinjs-lib">project page</a>.</p>
+
+		<pre id="sample-code" class="highlight javascript">
+<code><span class="kd">var</span> <span class="nx">bitcoin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"bitcoinjs-lib"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bigi</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"bigi"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">buffer</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'buffer'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">rootUrl</span> <span class="o">=</span> <span class="s2">"https://api.blockcypher.com/v1/btc/test3"</span><span class="p">;</span>
+<span class="c1">// please do not drain our test account, if you need testnet BTC use a faucet</span>
+<span class="c1">// https://tpfaucet.appspot.com/</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">private</span> <span class="p">:</span> <span class="s2">"1af97b1f428ac89b7d35323ea7a68aba8cad178a04eddbbf591f65671bae48a2"</span><span class="p">,</span>
+  <span class="na">public</span>  <span class="p">:</span> <span class="s2">"03bb318b00de944086fad67ab78a832eb1bf26916053ecd3b14a3f48f9fbe0821f"</span><span class="p">,</span>
+  <span class="na">address</span> <span class="p">:</span> <span class="s2">"mtWg6ccLiZWw2Et7E5UqmHsYgrAi5wqiov"</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">key</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">ECKey</span><span class="p">(</span><span class="nx">bigi</span><span class="p">.</span><span class="nx">fromHex</span><span class="p">(</span><span class="nx">source</span><span class="p">.</span><span class="kr">private</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">addrs</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 0. We get 3 newly generated address</span>
+<span class="kd">function</span> <span class="nx">logAddrs</span><span class="p">(</span><span class="nx">dest1</span><span class="p">,</span> <span class="nx">dest2</span><span class="p">,</span> <span class="nx">dest3</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">addrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">dest1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">addrs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">dest2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">addrs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">dest3</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s2">"Generated 3 new addresses for 2-of-3 multisig."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 1. Post our funding transaction, sending money from a standard address to the multisig</span>
+<span class="c1">// address for our 3 keys.</span>
+<span class="kd">function</span> <span class="nx">newFundingTransaction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">newtx</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"addresses"</span><span class="p">:</span> <span class="p">[</span><span class="nx">source</span><span class="p">.</span><span class="nx">address</span><span class="p">]}],</span>
+    <span class="s2">"outputs"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"addresses"</span>   <span class="p">:</span> <span class="p">[</span><span class="nx">addrs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="kr">public</span><span class="p">,</span> <span class="nx">addrs</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="kr">public</span><span class="p">,</span> <span class="nx">addrs</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="kr">public</span><span class="p">],</span>
+      <span class="s2">"script_type"</span> <span class="p">:</span> <span class="s2">"multisig-2-of-3"</span><span class="p">,</span>
+      <span class="s2">"value"</span>       <span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
+    <span class="p">}]</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/txs/new"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newtx</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Sign the hexadecimal strings returned with the fully built transaction and include</span>
+<span class="c1">//    the source public address.</span>
+<span class="kd">function</span> <span class="nx">signAndSend</span><span class="p">(</span><span class="nx">newtx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">checkError</span><span class="p">(</span><span class="nx">newtx</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+
+  <span class="nx">newtx</span><span class="p">.</span><span class="nx">pubkeys</span>     <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">newtx</span><span class="p">.</span><span class="nx">signatures</span>  <span class="o">=</span> <span class="nx">newtx</span><span class="p">.</span><span class="nx">tosign</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">tosign</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newtx</span><span class="p">.</span><span class="nx">pubkeys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">source</span><span class="p">.</span><span class="kr">public</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">key</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="k">new</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="s2">"hex"</span><span class="p">)).</span><span class="nx">toDER</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s2">"hex"</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/txs/send"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newtx</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. Open a websocket to wait for confirmation the transaction has been accepted in a block.</span>
+<span class="kd">function</span> <span class="nx">waitForConfirmation</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">checkError</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction "</span> <span class="o">+</span> <span class="nx">finaltx</span><span class="p">.</span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span> <span class="o">+</span> <span class="s2">" to address "</span> <span class="o">+</span> <span class="nx">finaltx</span><span class="p">.</span><span class="nx">tx</span><span class="p">.</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">addresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" of "</span> <span class="o">+</span>
+        <span class="nx">finaltx</span><span class="p">.</span><span class="nx">tx</span><span class="p">.</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="o">/</span><span class="mi">100000000</span> <span class="o">+</span> <span class="s2">" BTC sent."</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">confirmed</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s2">"wss://socket.blockcypher.com/v1/btc/test3"</span><span class="p">);</span>
+  <span class="c1">// We keep pinging on a timer to keep the websocket alive</span>
+  <span class="kd">var</span> <span class="nx">ping</span> <span class="o">=</span> <span class="nx">pinger</span><span class="p">(</span><span class="nx">ws</span><span class="p">);</span>
+
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">).</span><span class="nx">confirmations</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction confirmed."</span><span class="p">);</span>
+      <span class="nx">confirmed</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+      <span class="nx">ping</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+      <span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">filter</span><span class="p">:</span> <span class="s2">"event=new-block-tx&amp;hash="</span><span class="o">+</span><span class="nx">finaltx</span><span class="p">.</span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span><span class="p">}));</span>
+  <span class="p">}</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s2">"Waiting for confirmation... (may take &gt; 10 min)"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">confirmed</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">newTwoOfThreeTransaction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">newtx</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"addresses"</span>   <span class="p">:</span> <span class="p">[</span><span class="nx">addrs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="kr">public</span><span class="p">,</span> <span class="nx">addrs</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="kr">public</span><span class="p">,</span> <span class="nx">addrs</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="kr">public</span><span class="p">],</span>
+      <span class="s2">"script_type"</span> <span class="p">:</span> <span class="s2">"multisig-2-of-3"</span>
+    <span class="p">}],</span>
+    <span class="s2">"outputs"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"addresses"</span> <span class="p">:</span> <span class="p">[</span><span class="nx">source</span><span class="p">.</span><span class="nx">address</span><span class="p">],</span>
+      <span class="s2">"value"</span>     <span class="p">:</span> <span class="mi">15000</span>
+    <span class="p">}]</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/txs/new"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newtx</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">signForAddressAndSend</span><span class="p">(</span><span class="nx">addressNum</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newtx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">checkError</span><span class="p">(</span><span class="nx">newtx</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">addrs</span><span class="p">[</span><span class="nx">addressNum</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+
+    <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">ECKey</span><span class="p">(</span><span class="nx">bigi</span><span class="p">.</span><span class="nx">fromHex</span><span class="p">(</span><span class="nx">addrs</span><span class="p">[</span><span class="nx">addressNum</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="kr">private</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">newtx</span><span class="p">.</span><span class="nx">signatures</span>  <span class="o">=</span> <span class="nx">newtx</span><span class="p">.</span><span class="nx">tosign</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">tosign</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">key</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="k">new</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="s2">"hex"</span><span class="p">)).</span><span class="nx">toDER</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s2">"hex"</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/txs/send"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newtx</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">pinger</span><span class="p">(</span><span class="nx">ws</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">event</span><span class="p">:</span> <span class="s2">"ping"</span><span class="p">}));</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span><span class="na">stop</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span> <span class="p">}};</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">checkError</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">errors</span> <span class="o">&amp;&amp;</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s2">"Errors occured!!/n"</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">errors</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">"/n"</span><span class="p">));</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"div.log"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"&lt;div&gt;"</span> <span class="o">+</span> <span class="nx">msg</span> <span class="o">+</span> <span class="s2">"&lt;/div&gt;"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Chaining</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/addrs?a"</span><span class="p">),</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/addrs?b"</span><span class="p">),</span> <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">rootUrl</span><span class="o">+</span><span class="s2">"/addrs?c"</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">logAddrs</span><span class="p">)</span>
+  <span class="c1">// funding transaction to multisig address</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">newFundingTransaction</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">signAndSend</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">waitForConfirmation</span><span class="p">)</span>
+  <span class="c1">// transfer signing with key #3</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">newTwoOfThreeTransaction</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">signForAddressAndSend</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+  <span class="c1">// transfer signing with key #1</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">newTwoOfThreeTransaction</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">signForAddressAndSend</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+  <span class="c1">// final confirmation</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">waitForConfirmation</span><span class="p">);</span></code>
+		</pre>
+	<br />
+	<br />
+
+  </div>
+
+<script>
+  $('button.tryme').click(function(e) {
+    eval($('#sample-code').children().text());
+  });
+</script>
+</body>
+</html>

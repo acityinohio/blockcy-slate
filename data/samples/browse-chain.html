@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>BlockCypher Reference: Browse the Block Chain</title>
+		<link href="../../stylesheets/samples-1e80ae7f.css" rel="stylesheet" type="text/css" media="screen">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdn.rawgit.com/blockcypher/docs/master/bitcoinjs-min.js"></script>
+	</head>
+
+	<body>
+	<div class="content">
+		<h1>Browse the Block Chain</h1>
+		<p>In this example, we retrieve the last 10 block from the Bitcoin block chain and render a summary page. We start with the chain property to get the URL of the latest block. We then use the prev_block_url to load the previous, hence traversing the block chain back block by block.</p>
+		<p>From the command line, we retrieve the latest block using the <a href="http://curl.haxx.se/">curl</a> and <a href="https://github.com/zpoley/json-command">json</a> commands:</p>
+		<pre class="highlight shell"><code>curl -s https://api.blockcypher.com/v1/btc/main | json latest_url | xargs curl -s</code></pre>
+
+		<p>Here we use the json command to extract the latest_url property from the chain and pass it to curl using xargs (invokes a command passing the stdin parameters). This can be chained further to go one block back:</p>
+		<pre class="highlight shell"><code>curl -s https://api.blockcypher.com/v1/btc/main | json latest_url | xargs curl -s | json prev_block_url | xargs curl -s</code></pre>
+
+		<p>We can continue chaining calls, but it quickly gets very long. Here's a short Javascript program which can be run in the browser to do the same thing using JQuery:</p>
+
+		<pre class="highlight javascript">
+		<code>
+<span class="c1">// Displays the block, for now we just do an alert to show the block's height.</span>
+<span class="kd">function</span> <span class="nx">showBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">block</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Gets the JSON data returned by the previous JQuery.get, parse it and returns a</span>
+<span class="c1">// new promise to get the next block.</span>
+<span class="kd">function</span> <span class="nx">printAndGetNext</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">showBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">block</span><span class="p">.</span><span class="nx">prev_block_url</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// First gets the blockchain data using JQuery.get, parses it and returns a promise to get</span>
+<span class="c1">// the latest block. We queue several then() calls right after to get each block one after</span>
+<span class="c1">// another and display them.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.blockcypher.com/v1/btc/main"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">chain</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">chain</span><span class="p">.</span><span class="nx">latest_url</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">printAndGetNext</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">printAndGetNext</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">printAndGetNext</span><span class="p">);</span>
+		</code>
+		</pre>
+
+		<button class="tryme btn btn-primary" type="button">Try me!</button>
+		<br />
+
+		<p>The above JQuery.get calls our APIs and utilizes the URLs returned by every call. We allow cross-origin resource sharing which enables requests from your domain.</p>
+		<p>To improve on the above code, we add more details and a loop to get 10 blocks, instead of 3:</p>
+
+		<pre class="highlight javascript">
+<code><span class="c1">// Displays the block by rendering a div summarizing some of its most important details</span>
+<span class="kd">function</span> <span class="nx">showBlock</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">total</span> <span class="o">/</span> <span class="mi">100000000</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#10-latest-blocks'</span><span class="p">).</span><span class="nx">before</span><span class="p">(</span><span class="s2">"&lt;div&gt;Block at "</span><span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">height</span><span class="o">+</span><span class="s2">" transferred "</span><span class="o">+</span> <span class="nx">total</span><span class="o">+</span><span class="s2">" in "</span><span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">n_tx</span><span class="o">+</span><span class="s2">" transactions.&lt;/div&gt;"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Gets the JSON data returned by the previous JQuery.get, parse it and returns a</span>
+<span class="c1">// new promise to get the next block.</span>
+<span class="kd">function</span> <span class="nx">printAndGetNext</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">showBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">block</span><span class="p">.</span><span class="nx">prev_block_url</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Gets the blockchain data and parse it, returning a promise to get the latest block</span>
+<span class="kd">var</span> <span class="nx">initiate</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://api.blockcypher.com/v1/btc/main"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">chain</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">chain</span><span class="p">.</span><span class="nx">latest_url</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// We continue by looping on the promise returned above and chaining 10 calls to print</span>
+<span class="c1">// the block and get the next one.</span>
+<span class="kd">var</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">initiate</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">next</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">printAndGetNext</span><span class="p">);</span> <span class="p">}</span></code>
+		</pre>
+		<button class="tryme btn btn-primary" type="button" id="10-latest-blocks">Try me!</button>
+		<br />
+		<br />
+
+
+		<script src="bitcoinjs-min-cc80b017.js"></script>
+		<script>
+			$('button.tryme').click(function(e) {
+				eval($(this).prev().children().text());
+			});
+		</script>
+	</div>
+</body>
+
+</html>
