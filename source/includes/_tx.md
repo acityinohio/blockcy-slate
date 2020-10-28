@@ -2057,6 +2057,61 @@ $TXHEX is a hex-encoded raw representation of your transaction, for example:
 
 If it succeeds, you'll receive your decoded [TX](#tx) object.
 
+## Decode Transaction Witness To Sign Endpoint
+
+ ```shell
+ curl -d '{"witness_tosign_tx":"01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000"}' https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign?token=YOURTOKEN
+
+ {
+   "version": 1,
+   "hash_prevouts": "0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0",
+   "hash_sequence": "445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b",
+   "outpoint": "6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b",
+   "outpoint_index": 1,
+   "script_code": "76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac",
+   "value": 1000000,
+   "sequence": 4294967295,
+   "hash_outputs": "f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f",
+   "lock_time": 0,
+   "sighash_type": 1
+ }
+ ```
+
+ ```javascript
+ var decodewitnesstosigntx = {
+   witness_tosign_tx: "01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000"
+ };
+ $.post('https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign', JSON.stringify(decodewitnesstosigntx))
+   .then(function(d) {console.log(d)});
+ > {
+ >   "version": 1,
+ >   "hash_prevouts": "0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0",
+ >   "hash_sequence": "445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b",
+ >   "outpoint": "6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b",
+ >   "outpoint_index": 1,
+ >   "script_code": "76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac",
+ >   "value": 1000000,
+ >   "sequence": 4294967295,
+ >   "hash_outputs": "f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f",
+ >   "lock_time": 0,
+ >   "sighash_type": 1
+ > }
+ ```
+
+ This endpoint allows you to decode the `tosign_tx` only in the case of the spending of a native segwit input (P2WPKH).
+ This allows you to double check the which input you are spending and the value transfered.
+
+ Resource | Method | Request Object | Return Object
+ -------- | ------ | -------------- | -------------
+ /txs/decodeWitnessToSign | POST | {"witness_tosign_tx":$WITNESSTOSIGNTXHEX} | [WitnessToSignTx](#witnesstosigntx)
+
+ $WITNESSTOSIGNTXHEX is a hex-encoded raw given by the [#creating-transactions](#creating-transactions) when `includeToSignTx` is to `true`, for example:
+
+ `01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000`
+
+ If it succeeds, you'll receive your decoded [WitnessToSignTx](#witnesstosigntx) object.
+
+
 ## Multisig Transactions
 
 ```shell

@@ -6,7 +6,7 @@ The Wallet API allows you to group multiple addresses under a single name. It on
 Don't be confused: this Wallet API has nothing to do with private key management. The best way to think of the Wallet API is a "Set of Public Addresses to Query Together" API, but that name refused to fit into any of our marketing materials.
 </aside>
 
-A normal Wallet can be created, deleted, and have addresses added and removed. The Wallet itself can have any custom name as long as it does not start with the standard address prefix (1 or 3 for Bitcoin).
+A normal Wallet can be created, deleted, and have addresses added and removed. The Wallet itself can have any custom name as long as it does not start with the standard address prefix (1, 3 or bc1 for Bitcoin Mainnet).
 
 ## Hierarchical Deterministic (HD) Wallets
 
@@ -1160,6 +1160,7 @@ Flag | Type | Effect
 ---- | ---- | ------
 **count** | *integer* | Number of addresses to derive. If not set, default is one address.
 **subchain_index** | *integer* | Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet.
+**lookahead** | *boolean* | Default to true. If set to false will not try to check the balance of the subsequent addresses. Set to false if this endpoint is too slow.
 
 This endpoint allows you to derive a new address (or multiple addresses) associated with the $NAME HD Wallet. If successful, it will return an [HDWallet](#hdwallet) **but only with the newly derived address(es)** represented in its **chains** field to limit the data transmitted; for the full address list after derivation, you can follow up this API call with the [Get Wallet Addresses Endpoint.](#get-wallet-addresses-endpoint)
 

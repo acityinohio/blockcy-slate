@@ -426,6 +426,43 @@ Attribute | Type | Description
 **tosign_tx** | *array[string]* | ***Optional*** Array of hex-encoded, work-in-progress transactions; optionally returned to validate the **tosign** data locally.
 **errors** | *array["error":string]* | ***Optional*** Array of errors in the form *"error":"description-of-error"*. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.
 
+## WitnessToSignTx
+
+```shell
+ curl -d '{"witness_tosign_tx":"01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000"}' https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign?token=YOURTOKEN
+
+ {
+   "version": 1,
+   "hash_prevouts": "0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0",
+   "hash_sequence": "445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b",
+   "outpoint": "6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b",
+   "outpoint_index": 1,
+   "script_code": "76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac",
+   "value": 1000000,
+   "sequence": 4294967295,
+   "hash_outputs": "f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f",
+   "lock_time": 0,
+   "sighash_type": 1
+ }
+}
+```
+
+A WitnessToSignTx is created when creating a transaction which spend a P2WPKH input and `includeToSignTx` is set to `true`.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+**version** | *integer* | Version of the transaction.
+**hash_prevouts** | *string* | Hash of the previous output.
+**hash_sequence** | *string* | Hash sequence.
+**outpoint** | *string* | Hash of the outpoint.
+**outpoint_index** | *integer* | Outpoint index.
+**script_code** | *string* | Script code of the input.
+**value** | *integer* |  Value of the output spent by this input.
+**sequence** | *integer* | Sequence number of the input.
+**hash_outputs** | *string* | Hash of the output.
+**lock_time** | *integer* | Lock time of the transaction.
+**sighash_type** | *integer* | sighash type of the signature.
+
 ## NullData
 
 ```shell

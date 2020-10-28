@@ -269,18 +269,29 @@ BlockCypher has client SDKs for the following languages:
 
 - **Ruby** [https://github.com/blockcypher/ruby-client](https://github.com/blockcypher/ruby-client)
 - **Python** [https://github.com/blockcypher/blockcypher-python](https://github.com/blockcypher/blockcypher-python)
-- **Java** [https://github.com/blockcypher/java-client](https://github.com/blockcypher/java-client)
-- **PHP** [https://github.com/blockcypher/php-client](https://github.com/blockcypher/php-client)
 - **Go** [https://github.com/blockcypher/gobcy](https://github.com/blockcypher/gobcy)
 - **Node.js** [https://github.com/blockcypher/node-client](https://github.com/blockcypher/node-client)
 
 If you're using these languages, we strongly encourage you to use an official SDK. Of course, all our API calls are standard HTTP endpoints using JSON formatted responses, so any language (or cURL from the command-line) will work just fine.
+
+### Deprecated SDKs
+
+Due to the lack of usage, the following SDKs have been deprecated and as such will not be updated:
+
+- **Java** [https://github.com/blockcypher/java-client](https://github.com/blockcypher/java-client)
+- **PHP** [https://github.com/blockcypher/php-client](https://github.com/blockcypher/php-client)
+
+You can still use them but beware that there might be some bugs or missing features.
 
 ### Unofficial Libraries
 
 This client SDK was made by the community, and is not officially supported by BlockCypher. As such, BlockCypher cannot guarantee that it's fully up to date, but we hope it will provide a nice jumping-off point for developers using this language. We'll endeavor to keep this list updated, if any of these prove obsolete. If there's enough support for a particular language, we'll work with the community to turn it into an officially supported SDK.
 
 - **.NET** [https://github.com/bscheiman/BlockCypher](https://github.com/bscheiman/BlockCypher)
+
+### Postman Collection
+
+If your favorite language is not listed above or if you prefers using raw queries, be sure to check our [Postman Collection documentation](https://documenter.getpostman.com/view/12131330/TVCZYVRa#b81530d5-7a88-42ce-9fae-d59c920d4f19).
 
 ## RESTful Resources
 
