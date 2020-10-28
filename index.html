@@ -372,6 +372,9 @@
                     <a href="#txskeleton" class="toc-h2 toc-link" data-title="TXSkeleton">TXSkeleton</a>
                   </li>
                   <li>
+                    <a href="#witnesstosigntx" class="toc-h2 toc-link" data-title="WitnessToSignTx">WitnessToSignTx</a>
+                  </li>
+                  <li>
                     <a href="#nulldata" class="toc-h2 toc-link" data-title="NullData">NullData</a>
                   </li>
                   <li>
@@ -516,6 +519,9 @@
                   </li>
                   <li>
                     <a href="#decode-raw-transaction-endpoint" class="toc-h2 toc-link" data-title="Decode Raw Transaction Endpoint">Decode Raw Transaction Endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#decode-transaction-witness-to-sign-endpoint" class="toc-h2 toc-link" data-title="Decode Transaction Witness To Sign Endpoint">Decode Transaction Witness To Sign Endpoint</a>
                   </li>
                   <li>
                     <a href="#multisig-transactions" class="toc-h2 toc-link" data-title="Multisig Transactions">Multisig Transactions</a>
@@ -838,19 +844,28 @@ Unless noted otherwise, all samples assume this initializing code:
 <ul>
 <li><strong>Ruby</strong> <a href="https://github.com/blockcypher/ruby-client">https://github.com/blockcypher/ruby-client</a></li>
 <li><strong>Python</strong> <a href="https://github.com/blockcypher/blockcypher-python">https://github.com/blockcypher/blockcypher-python</a></li>
-<li><strong>Java</strong> <a href="https://github.com/blockcypher/java-client">https://github.com/blockcypher/java-client</a></li>
-<li><strong>PHP</strong> <a href="https://github.com/blockcypher/php-client">https://github.com/blockcypher/php-client</a></li>
 <li><strong>Go</strong> <a href="https://github.com/blockcypher/gobcy">https://github.com/blockcypher/gobcy</a></li>
 <li><strong>Node.js</strong> <a href="https://github.com/blockcypher/node-client">https://github.com/blockcypher/node-client</a></li>
 </ul>
 
 <p>If you&#39;re using these languages, we strongly encourage you to use an official SDK. Of course, all our API calls are standard HTTP endpoints using JSON formatted responses, so any language (or cURL from the command-line) will work just fine.</p>
+<h3 id='deprecated-sdks'>Deprecated SDKs</h3>
+<p>Due to the lack of usage, the following SDKs have been deprecated and as such will not be updated:</p>
+
+<ul>
+<li><strong>Java</strong> <a href="https://github.com/blockcypher/java-client">https://github.com/blockcypher/java-client</a></li>
+<li><strong>PHP</strong> <a href="https://github.com/blockcypher/php-client">https://github.com/blockcypher/php-client</a></li>
+</ul>
+
+<p>You can still use them but beware that there might be some bugs or missing features.</p>
 <h3 id='unofficial-libraries'>Unofficial Libraries</h3>
 <p>This client SDK was made by the community, and is not officially supported by BlockCypher. As such, BlockCypher cannot guarantee that it&#39;s fully up to date, but we hope it will provide a nice jumping-off point for developers using this language. We&#39;ll endeavor to keep this list updated, if any of these prove obsolete. If there&#39;s enough support for a particular language, we&#39;ll work with the community to turn it into an officially supported SDK.</p>
 
 <ul>
 <li><strong>.NET</strong> <a href="https://github.com/bscheiman/BlockCypher">https://github.com/bscheiman/BlockCypher</a></li>
 </ul>
+<h3 id='postman-collection'>Postman Collection</h3>
+<p>If your favorite language is not listed above or if you prefers using raw queries, be sure to check our <a href="https://documenter.getpostman.com/view/12131330/TVCZYVRa#b81530d5-7a88-42ce-9fae-d59c920d4f19">Postman Collection documentation</a>.</p>
 <h2 id='restful-resources'>RESTful Resources</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.blockcypher.com/v1/btc/main
 
 <span class="o">{</span>
@@ -2379,6 +2394,88 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <td><strong>errors</strong></td>
 <td><em>array[&quot;error&quot;:string]</em></td>
 <td><strong><em>Optional</em></strong> Array of errors in the form <em>&quot;error&quot;:&quot;description-of-error&quot;</em>. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.</td>
+</tr>
+</tbody></table>
+<h2 id='witnesstosigntx'>WitnessToSignTx</h2><div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="nt">-d</span> <span class="s1">'{"witness_tosign_tx":"01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000"}'</span> https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign?token<span class="o">=</span>YOURTOKEN
+
+ <span class="o">{</span>
+   <span class="s2">"version"</span>: 1,
+   <span class="s2">"hash_prevouts"</span>: <span class="s2">"0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0"</span>,
+   <span class="s2">"hash_sequence"</span>: <span class="s2">"445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b"</span>,
+   <span class="s2">"outpoint"</span>: <span class="s2">"6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b"</span>,
+   <span class="s2">"outpoint_index"</span>: 1,
+   <span class="s2">"script_code"</span>: <span class="s2">"76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac"</span>,
+   <span class="s2">"value"</span>: 1000000,
+   <span class="s2">"sequence"</span>: 4294967295,
+   <span class="s2">"hash_outputs"</span>: <span class="s2">"f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f"</span>,
+   <span class="s2">"lock_time"</span>: 0,
+   <span class="s2">"sighash_type"</span>: 1
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>A WitnessToSignTx is created when creating a transaction which spend a P2WPKH input and <code>includeToSignTx</code> is set to <code>true</code>.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><em>integer</em></td>
+<td>Version of the transaction.</td>
+</tr>
+<tr>
+<td><strong>hash_prevouts</strong></td>
+<td><em>string</em></td>
+<td>Hash of the previous output.</td>
+</tr>
+<tr>
+<td><strong>hash_sequence</strong></td>
+<td><em>string</em></td>
+<td>Hash sequence.</td>
+</tr>
+<tr>
+<td><strong>outpoint</strong></td>
+<td><em>string</em></td>
+<td>Hash of the outpoint.</td>
+</tr>
+<tr>
+<td><strong>outpoint_index</strong></td>
+<td><em>integer</em></td>
+<td>Outpoint index.</td>
+</tr>
+<tr>
+<td><strong>script_code</strong></td>
+<td><em>string</em></td>
+<td>Script code of the input.</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><em>integer</em></td>
+<td>Value of the output spent by this input.</td>
+</tr>
+<tr>
+<td><strong>sequence</strong></td>
+<td><em>integer</em></td>
+<td>Sequence number of the input.</td>
+</tr>
+<tr>
+<td><strong>hash_outputs</strong></td>
+<td><em>string</em></td>
+<td>Hash of the output.</td>
+</tr>
+<tr>
+<td><strong>lock_time</strong></td>
+<td><em>integer</em></td>
+<td>Lock time of the transaction.</td>
+</tr>
+<tr>
+<td><strong>sighash_type</strong></td>
+<td><em>integer</em></td>
+<td>sighash type of the signature.</td>
 </tr>
 </tbody></table>
 <h2 id='nulldata'>NullData</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"data":"I am the walrus", "encoding":"string"}'</span> https://api.blockcypher.com/v1/btc/main/txs/data?token<span class="o">=</span>YOURTOKEN
@@ -5011,7 +5108,7 @@ This endpoint is the same resource as the <a href="#generateadressendpoint">Gene
 Don't be confused: this Wallet API has nothing to do with private key management. The best way to think of the Wallet API is a "Set of Public Addresses to Query Together" API, but that name refused to fit into any of our marketing materials.
 </aside>
 
-<p>A normal Wallet can be created, deleted, and have addresses added and removed. The Wallet itself can have any custom name as long as it does not start with the standard address prefix (1 or 3 for Bitcoin).</p>
+<p>A normal Wallet can be created, deleted, and have addresses added and removed. The Wallet itself can have any custom name as long as it does not start with the standard address prefix (1, 3 or bc1 for Bitcoin Mainnet).</p>
 <h2 id='hierarchical-deterministic-hd-wallets'>Hierarchical Deterministic (HD) Wallets</h2>
 <p>We also offer support for HD Wallets, which make it easy to manage multiple addresses under a single name. All HD wallet addresses are derived from a single seed. Please see <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32</a> for more background on HD wallets.</p>
 
@@ -6148,6 +6245,11 @@ curl <span class="nt">-X</span> POST <span class="s1">'https://api.blockcypher.c
 <td><strong>subchain_index</strong></td>
 <td><em>integer</em></td>
 <td>Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet.</td>
+</tr>
+<tr>
+<td><strong>lookahead</strong></td>
+<td><em>boolean</em></td>
+<td>Default to true. If set to false will not try to check the balance of the subsequent addresses. Set to false if this endpoint is too slow.</td>
 </tr>
 </tbody></table>
 
@@ -8268,6 +8370,64 @@ curl <span class="nt">-d</span> <span class="s1">'{"tx":"01000000011935b41d12936
 <p><code>01000000011935b41d12936df99d322ac8972b74ecff7b79408bbccaf1b2eb8015228beac8000000006b483045022100921fc36b911094280f07d8504a80fbab9b823a25f102e2bc69b14bcd369dfc7902200d07067d47f040e724b556e5bc3061af132d5a47bd96e901429d53c41e0f8cca012102152e2bb5b273561ece7bbe8b1df51a4c44f5ab0bc940c105045e2cc77e618044ffffffff0240420f00000000001976a9145fb1af31edd2aa5a2bbaa24f6043d6ec31f7e63288ac20da3c00000000001976a914efec6de6c253e657a9d5506a78ee48d89762fb3188ac00000000</code></p>
 
 <p>If it succeeds, you&#39;ll receive your decoded <a href="#tx">TX</a> object.</p>
+<h2 id='decode-transaction-witness-to-sign-endpoint'>Decode Transaction Witness To Sign Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="nt">-d</span> <span class="s1">'{"witness_tosign_tx":"01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000"}'</span> https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign?token<span class="o">=</span>YOURTOKEN
+
+ <span class="o">{</span>
+   <span class="s2">"version"</span>: 1,
+   <span class="s2">"hash_prevouts"</span>: <span class="s2">"0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0"</span>,
+   <span class="s2">"hash_sequence"</span>: <span class="s2">"445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b"</span>,
+   <span class="s2">"outpoint"</span>: <span class="s2">"6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b"</span>,
+   <span class="s2">"outpoint_index"</span>: 1,
+   <span class="s2">"script_code"</span>: <span class="s2">"76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac"</span>,
+   <span class="s2">"value"</span>: 1000000,
+   <span class="s2">"sequence"</span>: 4294967295,
+   <span class="s2">"hash_outputs"</span>: <span class="s2">"f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f"</span>,
+   <span class="s2">"lock_time"</span>: 0,
+   <span class="s2">"sighash_type"</span>: 1
+ <span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code> <span class="kd">var</span> <span class="nx">decodewitnesstosigntx</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="na">witness_tosign_tx</span><span class="p">:</span> <span class="dl">"</span><span class="s2">01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000</span><span class="dl">"</span>
+ <span class="p">};</span>
+ <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/bcy/test/txs/decodeWitnessToSign</span><span class="dl">'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">decodewitnesstosigntx</span><span class="p">))</span>
+   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">)});</span>
+ <span class="o">&gt;</span> <span class="p">{</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">hash_prevouts</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0aa8669079b118b6bd45575cc62b9e24b02419f244c2996a5b3a5feb3f2dfed0</span><span class="dl">"</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">hash_sequence</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">445066705e799022b7095f7ceca255149f43acfc47e7f59e551f7bce2930b13b</span><span class="dl">"</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">outpoint</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6d787f57d978cda5973ac4646df2aadbd473ae58f18041b4b48f259c5858368b</span><span class="dl">"</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">outpoint_index</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">script_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">76a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac</span><span class="dl">"</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">sequence</span><span class="dl">"</span><span class="p">:</span> <span class="mi">4294967295</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">hash_outputs</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">f39fb3eb2365be37e6c78cd10acc8ad3080851c3362ad3f88355564c7c53a45f</span><span class="dl">"</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">lock_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="o">&gt;</span>   <span class="dl">"</span><span class="s2">sighash_type</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span>
+ <span class="o">&gt;</span> <span class="p">}</span>
+</code></pre></div>
+<p>This endpoint allows you to decode the <code>tosign_tx</code> only in the case of the spending of a native segwit input (P2WPKH).
+ This allows you to double check the which input you are spending and the value transfered.</p>
+
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Method</th>
+<th>Request Object</th>
+<th>Return Object</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/txs/decodeWitnessToSign</td>
+<td>POST</td>
+<td>{&quot;witness_tosign_tx&quot;:$WITNESSTOSIGNTXHEX}</td>
+<td><a href="#witnesstosigntx">WitnessToSignTx</a></td>
+</tr>
+</tbody></table>
+
+<p>$WITNESSTOSIGNTXHEX is a hex-encoded raw given by the <a href="#creating-transactions">#creating-transactions</a> when <code>includeToSignTx</code> is to <code>true</code>, for example:</p>
+
+<p><code>01000000d0fe2d3feb5f3a5b6a99c244f21924b0249e2bc65c5745bdb618b1799066a80a3bb13029ce7b1f559ef5e747fcac439f1455a2ec7c5f09b72290795e706650448b3658589c258fb4b44180f158ae73d4dbaaf26d64c43a97a5cd78d9577f786d010000001976a9141b80a938a784abe7cdee8fdaf95f5f7e0b8cd0b988ac40420f0000000000ffffffff5fa4537c4c565583f8d32a36c3510808d38acc0ad18cc7e637be6523ebb39ff30000000001000000</code></p>
+
+<p>If it succeeds, you&#39;ll receive your decoded <a href="#witnesstosigntx">WitnessToSignTx</a> object.</p>
 <h2 id='multisig-transactions'>Multisig Transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"inputs"</span>: <span class="o">[{</span><span class="s2">"addresses"</span>: <span class="o">[</span>sourceAddr]<span class="o">}]</span>,
   <span class="s2">"outputs"</span>: <span class="o">[{</span>
