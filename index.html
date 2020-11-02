@@ -1323,9 +1323,9 @@ curl <span class="s1">'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'</sp
 <span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
+  <span class="s">"fmt"</span>
 
-    <span class="s">"github.com/blockcypher/gobcy"</span>
+  <span class="s">"github.com/blockcypher/gobcy"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -7328,9 +7328,9 @@ There are many manually configurable options available via your <a href="#tx">TX
 <span class="c1">// http://bitcoinjs.org/</span>
 
 <span class="kd">var</span> <span class="nx">bitcoin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">bitcoinjs-lib</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">bigi</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">bigi</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">buffer</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">buffer</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">keys</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">ECPair</span><span class="p">(</span><span class="nx">bigi</span><span class="p">.</span><span class="nx">fromHex</span><span class="p">(</span><span class="nx">my_hex_private_key</span><span class="p">));</span>
+
+<span class="kd">const</span> <span class="nx">keyBuffer</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">my_hex_private_key</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">ECPair</span><span class="p">.</span><span class="nx">fromPrivateKey</span><span class="p">(</span><span class="nx">keyBuffer</span><span class="p">)</span>
 
 <span class="kd">var</span> <span class="nx">newtx</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">inputs</span><span class="p">:</span> <span class="p">[{</span><span class="na">addresses</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9</span><span class="dl">'</span><span class="p">]}],</span>
@@ -7341,14 +7341,21 @@ There are many manually configurable options available via your <a href="#tx">TX
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">tmptx</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// signing each of the hex-encoded string required to finalize the transaction</span>
     <span class="nx">tmptx</span><span class="p">.</span><span class="nx">pubkeys</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="nx">tmptx</span><span class="p">.</span><span class="nx">signatures</span> <span class="o">=</span> <span class="nx">tmptx</span><span class="p">.</span><span class="nx">tosign</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">tmptx</span><span class="p">.</span><span class="nx">pubkeys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">getPublicKeyBuffer</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">));</span>
-      <span class="k">return</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="k">new</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toDER</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">tmptx</span><span class="p">.</span><span class="nx">signatures</span> <span class="o">=</span> <span class="nx">tmptx</span><span class="p">.</span><span class="nx">tosign</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">tmptx</span><span class="p">.</span><span class="nx">pubkeys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">publicKey</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">));</span>
+      <span class="k">return</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">script</span><span class="p">.</span><span class="nx">signature</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span>
+        <span class="nx">keys</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">tosign</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">)),</span>
+        <span class="mh">0x01</span><span class="p">,</span>
+      <span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="c1">// sending back the transaction with all the signatures to broadcast</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/bcy/test/txs/send</span><span class="dl">'</span><span class="p">,</span> <span class="nx">tmptx</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">);</span>
-    <span class="p">})</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/bcy/test/txs/send</span><span class="dl">'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tmptx</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">finaltx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">finaltx</span><span class="p">);</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+      <span class="p">});</span>
   <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">blockcypher</span> <span class="kn">import</span> <span class="n">make_tx_signatures</span>
 <span class="c1"># Using our same unsigned_tx as before, iterate through unsigned_tx['tx']['inputs'] to find each address in order.
