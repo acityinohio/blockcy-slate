@@ -972,9 +972,9 @@ There are many manually configurable options available via your <a href="#tx">TX
 // http://bitcoinjs.org/
 
 var bitcoin = require("bitcoinjs-lib");
-var bigi    = require("bigi");
-var buffer  = require('buffer');
-var keys    = new bitcoin.ECPair(bigi.fromHex(my_hex_private_key));
+
+const keyBuffer = Buffer.from(my_hex_private_key, 'hex')
+var keys = bitcoin.ECPair.fromPrivateKey(keyBuffer)
 
 var newtx = {
   inputs: [{addresses: ['CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9']}],
@@ -985,14 +985,21 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/new', JSON.stringify(newtx))
   .then(function(tmptx) {
     // signing each of the hex-encoded string required to finalize the transaction
     tmptx.pubkeys = [];
-    tmptx.signatures = tmptx.tosign.map(function(tosign, n) {
-      tmptx.pubkeys.push(keys.getPublicKeyBuffer().toString("hex"));
-      return keys.sign(new buffer.Buffer(tosign, "hex")).toDER().toString("hex");
+    tmptx.signatures = tmptx.tosign.map(function (tosign, n) {
+      tmptx.pubkeys.push(keys.publicKey.toString('hex'));
+      return bitcoin.script.signature.encode(
+        keys.sign(Buffer.from(tosign, "hex")),
+        0x01,
+      ).toString("hex").slice(0, -2);
     });
     // sending back the transaction with all the signatures to broadcast
-    $.post('https://api.blockcypher.com/v1/bcy/test/txs/send', tmptx).then(function(finaltx) {
-      console.log(finaltx);
-    })
+    $.post('https://api.blockcypher.com/v1/bcy/test/txs/send', JSON.stringify(tmptx))
+      .done(function (finaltx) {
+        console.log(finaltx);
+      })
+      .fail(function (xhr) {
+        console.log(xhr.responseText);
+      });
   });
 ```
 
