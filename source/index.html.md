@@ -773,9 +773,9 @@ $.get('https://api.blockcypher.com/v1/btc/main/blocks/5;6;7')
 package main
 
 import (
-	"fmt"
-
-	"github.com/blockcypher/gobcy"
+  "fmt"
+  
+  "github.com/blockcypher/gobcy"
 )
 
 func main() {
