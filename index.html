@@ -10287,7 +10287,7 @@ Events like <i>unconfirmed-tx</i> can produce a lot of requests. To avoid rate-l
 <p>We retry individual payloads to your <strong>url</strong> five times; if one fails, we wait exponentially between retries: 1 second, 2s, 4s, 8s, 16s. In order to protect against stale callback <strong>url</strong>s, your <a href="#event">Event</a> will be deleted if it reaches 50 aggregate <strong>callback_errors</strong> from failed payloads.</p>
 
 <aside class="warning">
-To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified.
+To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified. For more advanced setups see <a href="webhook-signing"></a>
 </aside>
 
 <aside class="notice">
@@ -10648,6 +10648,15 @@ HTTP/1.1 204 OK
 <p><code>399d0923-e920-48ee-8928-2051cbfbc369</code></p>
 
 <p>If successful, it won&#39;t return any objects, but will respond with an HTTP Status Code 204.</p>
+<h3 id='webhook-signing'>WebHook Signing</h3>
+<p>To guarantee the origin and integrity of the webhook data, webhooks can optionally be signed by our servers. An optional JSON attribute called &quot;signkey&quot; can be provided with the webhook when created to either:</p>
+
+<ol>
+<li>A PEM-encoded ECDSA private key that you created.</li>
+<li>The string &quot;preset&quot;, in which case the BlockCypher signing key will be used. The associated x509 PKIX encoded public key for our webhook signing key is <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEflgGqpIAC9k65JicOPBgXZUExen4rWLq05KwYmZHphTU/fmi3Oe/ckyxo2w3Ayo/SCO/rU2NB90jtCJfz9i1ow==</code></li>
+</ol>
+
+<p>Once the &quot;signkey&quot; attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-12">HTTP signatures</a> specification.</p>
 
       </div>
       <div class="dark-box">
