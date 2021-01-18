@@ -573,7 +573,7 @@ Using BlockCypher's API, you can push transactions to blockchains one of two way
 - Use a third party library to create your transactions and [push raw transactions](#push-raw-transaction-endpoint)
 - Use our two-endpoint process outlined below, wherein we generate a [TXSkeleton](#txskeleton) based on your input address, output address, and value to transfer.
 
-In either case, for security reasons, we never take possession of your private keys. We do use private keys with our [Microtransaction API](#microtransaction-api), but they are for low-value transactions and we discard them immediately from our servers' memory.
+In either case, for security reasons, we never take possession of your private keys.
 
 <aside class="warning">
 Always use HTTPS for creating and pushing transactions.
@@ -2371,10 +2371,6 @@ $nullData = $nullDataClient->embedString('***BlockCypher Data Endpoint Test***')
 ```
 
 Some of the most interesting blockchain applications involve embedding data through *null-data* (also known as OP_RETURN) output scripts with transactions. While you can certainly use our [guided transaction process](#creating-transactions) and customize your script output, there's a simpler way: through our Data Endpoint. All you need is the data you want to embed (up to 40 bytes, inclusive) and we'll handle the rest.
-
-<aside class="notice">
-Embedding data into a blockchain is not free, but we're covering the cost for now, leveraging our <a href="#microtransaction-api">Microtransaction</a> infrastructure. Consequently, in order for us to keep track of fees, we require that all calls to the Data Endpoint use a token. You can <a href="http://accounts.blockcypher.com/">register for one here.</a>
-</aside>
 
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------

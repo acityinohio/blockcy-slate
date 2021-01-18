@@ -4,10 +4,7 @@ One of the things that makes BlockCypher's API uniquely powerful is our ability 
 
 So what does that **confidence** attribute actually mean? In simpler terms, if an unconfirmed transaction returns a **confidence** factor of 99.9%, then our data says there's a 0.1% chance that an attempted double-spend will succeed. By design, we're conservative. Even when we return 90% confidence, the likelihood of a successful double-spend is significantly lower than 10%.
 
-As you may have gathered from the frequency of links to this feature in these docs, we're exceptionally proud of the work we've done to build this feature and provide it to our users. And that pride extends to our own confidence in our confidence product. We've leveraged this product internally on two major features:
-
-- Our [live block explorer](https://live.blockcypher.com/) visually shows confidence intervals on unconfirmed transactions directly. Check out a [live view of bitcoin](https://live.blockcypher.com/btc/) and click on one of the most recent unconfirmed transactions. Make sure you pick a very recent transaction: our confidence interval rapidly approaches 99% so quickly that you might miss it!
-- Our [Microtransaction API](#microtransaction-api) is possible because of our Confidence Factor. Normally, you'd have to wait ~10 minutes for a block confirmation, which makes immediate, frequent, small on-chain transactions impossible. But since we believe in our confidence product---and have done the work necessary to validate this belief---we can guarantee microtransactions up to ~$9 each.
+As you may have gathered from the frequency of links to this feature in these docs, we're exceptionally proud of the work we've done to build this feature and provide it to our users. And that pride extends to our own confidence in our confidence product. We've leveraged this product internally on a major feature: our [live block explorer](https://live.blockcypher.com/) visually shows confidence intervals on unconfirmed transactions directly. Check out a [live view of bitcoin](https://live.blockcypher.com/btc/) and click on one of the most recent unconfirmed transactions. Make sure you pick a very recent transaction: our confidence interval rapidly approaches 99% so quickly that you might miss it!
 
 ### How does it work?
 

@@ -8,7 +8,7 @@ One of the well-known benefits of cryptocurrency is the ability to allow users t
 We do not take a fee on address forwarding, other than the required miner fee which depends on network conditions; forwards are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.
 
 <aside class="notice">
-Payment forwarding is only available for paid plans with an active token, you can't create a address forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
+Address forwarding is only available for paid plans with an active token, you can't create a address forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
 </aside>
 
 <aside class="notice">
@@ -19,7 +19,7 @@ Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</
 By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
 </aside>
 
-## Create Payment Endpoint
+## Create Forward Endpoint
 
 ```shell
 curl -d '{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}' https://api.blockcypher.com/v1/btc/main/forwards?token=YOURTOKEN
@@ -115,16 +115,16 @@ $paymentForward = $paymentForwardClient->createForwardingAddress('15qx9ug952GWGT
 }
 ```
 
-First, to create an address forwarding address, you need to POST a partially filled [PaymentForward](#paymentforward) object to the payment creation endpoint. You need to include at least a **destination** address and your **token**; optionally, you can add a **callback_url**, processing fees (either percent or fixed) and a **process_fee_address**, and a few other options. You can see more details about these options in the [PaymentForward](#paymentforward) object details.
+First, to create an address forwarding address, you need to POST a partially filled [AddressForward](#addressforward) object to the payment creation endpoint. You need to include at least a **destination** address and your **token**; optionally, you can add a **callback_url**, processing fees (either percent or fixed) and a **process_fee_address**, and a few other options. You can see more details about these options in the [AddressForward](#addressforward) object details.
 
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
-/forwards | POST | [PaymentForward](#paymentforward) | [PaymentForward](#paymentforward)
+/forwards | POST | [AddressForward](#addressforward) | [addressForward](#addressforward)
 
-In return, you'll get a more complete [PaymentForward](#PaymentForward) object, including an **input_address** and **id**.
+In return, you'll get a more complete [AddressForward](#AddressForward) object, including an **input_address** and **id**.
 
 <aside class="notice">
-If you decide to have a <b>callback_url</b>, you'll receive a payload at that url whenever a payment is made to the <b>input_address</b>. The payload will come in the form of a <a href="#paymentforwardcallback">PaymentForwardCallback</a> object.
+If you decide to have a <b>callback_url</b>, you'll receive a payload at that url whenever a payment is made to the <b>input_address</b>. The payload will come in the form of a <a href="#addressforwardcallback">AddressForwardCallback</a> object.
 </aside>
 
 ## List Payments Endpoint
@@ -225,7 +225,7 @@ To list your currently active address forwarding addresses, you can use this end
 
 Resource | Method | Return Object
 -------- | ------ | -------------
-/forwards | GET | Array[[PaymentForward](#paymentforward)]
+/forwards | GET | Array[[AddressForward](#addressforward)]
 
 Flag | Type | Effect
 ---- | ---- | ------
