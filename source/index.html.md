@@ -86,7 +86,7 @@ Welcome to [BlockCypher's](http://www.blockcypher.com/) API documentation! Block
 While <strong>our Ethereum API</strong> is very similar to the API here, it's different enough to necessitate its own documentation; you can find those docs here: <a href="https://www.blockcypher.com/dev/ethereum/">https://www.blockcypher.com/dev/ethereum/</a>.
 </aside>
 
-BlockCypher's API provides a superset of the endpoints you'd find in reference implementations, in addition to some special features that make BlockCypher uniquely powerful, like our unconfirmed transaction [Confidence Factor](#confidence-factor), dependable WebHook or WebSockets-based [Events](#events-and-hooks), [On-Chain Microtransactions](#microtransaction-api), and [Payment Forwarding](#payment-forwarding).
+BlockCypher's API provides a superset of the endpoints you'd find in reference implementations, in addition to some special features that make BlockCypher uniquely powerful, like our unconfirmed transaction [Confidence Factor](#confidence-factor), dependable WebHook or WebSockets-based [Events](#events-and-hooks), and [Address Forwarding](#address-forwarding).
 
 Consequently, if you're familiar with a blockchain's reference implementation, you'll feel at home using BlockCypher, but without worrying about scaling or implementation challenges. And if you're not familiar---with the reference implementations or blockchains in general---BlockCypher's API is a great way to dip your toes into blockchain development, without a lengthy setup process. In either case, BlockCypher has 99.99% up-time, and maintains an expressive, logical API that you'll love.
 
@@ -238,12 +238,10 @@ In these docs you'll find everything you need to leverage BlockCypher for your a
 - [Address API:](#address-api) Query information about addresses, generate addresses, and generate multisig addresses from public keys.
 - [Wallet API:](#wallet-api) Build and modify multiple-address-watching and hierarchical deterministic (HD) wallets, usable throughout the BlockCypher API.
 - [Transaction API:](#transaction-api) Information about transactions, how to generate/send your own, and how to embed data into the blockchain.
-- [Microtransaction API:](#microtransaction-api) Send on-chain microtransactions while BlockCypher covers your initial mining fees, and low computed fees afterwards.
 - [Confidence Factor:](#confidence-factor) Get an accurate measure of the likelihood of a successful double-spend against your unconfirmed transactions.
 - [Metadata API:](#metadata-api) Store both public and private key-value pairs against addresses, transactions, and blocks.
-- [Analytics API:](#analytics-api) Run asynchronous analytics queries on public blockchains.
 - [Asset API:](#asset-api) Create and manage your own assets---embedded on a public blockchain---via the Open Assets standard.
-- [Payment Forwarding:](#payment-forwarding) Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.
+- [Address Forwarding:](#address-forwarding) Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.
 - [Events and Hooks:](#events-and-hooks) Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.
 
 ### In-Browser Code Examples

@@ -1,14 +1,14 @@
-# Payment Forwarding
+# Address Forwarding
 
-One of the well-known benefits of cryptocurrency is the ability to allow users to partake in online commerce without necessarily requiring extensive setup barriers, like registering new accounts. In that spirit, our Payment Forwarding API is the easiest way to accept---and consolidate---payments securely without forcing your users to create accounts and jump through unnecessary loops. It's also a generic way to automatically transfer value from one address to another. While there are many possible use cases, the two we hear most about are:
+One of the well-known benefits of cryptocurrency is the ability to allow users to partake in online commerce without necessarily requiring extensive setup barriers, like registering new accounts. In that spirit, our Address Forwarding API is the easiest way to accept---and consolidate---payments securely without forcing your users to create accounts and jump through unnecessary loops. It's also a generic way to automatically transfer value from one address to another. While there are many possible use cases, the two we hear most about are:
 
 - A way to generate payment-specific addresses for which funds will automatically transfer to a main merchant address. Great for automatic merchandise (whether physical or virtual) processing.
 - A method to easily fund a multisignature address from any wallet by providing a classic address that will automatically transfer to the multisignature/*pay-to-script-hash* address.
 
-We do not take a fee on payment forwarding, other than the required 10,000 satoshi miner fee; payments are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.
+We do not take a fee on address forwarding, other than the required miner fee which depends on network conditions; forwards are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.
 
 <aside class="notice">
-Payment forwarding is only available for paid plans with an active token, you can't create a payment forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
+Payment forwarding is only available for paid plans with an active token, you can't create a address forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
 </aside>
 
 <aside class="notice">
@@ -16,18 +16,18 @@ Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</
 </aside>
 
 <aside class="warning">
-By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b>. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small payments, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
+By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
 </aside>
 
 ## Create Payment Endpoint
 
 ```shell
-curl -d '{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}' https://api.blockcypher.com/v1/btc/main/payments?token=YOURTOKEN
+curl -d '{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}' https://api.blockcypher.com/v1/btc/main/forwards?token=YOURTOKEN
 
 {
 "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
 "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-"callback_url": "https://my.domain.com/callbacks/payments",
+"callback_url": "https://my.domain.com/callbacks/forwards",
 "id": "399d0923-e920-48ee-8928-2051cbfbc369",
 "token": "YOURTOKEN"
 }
@@ -38,13 +38,13 @@ var payment = {
   "destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
   "callback_url": "https://my.domain.com/callbacks/new-pay"
 }
-var url = 'https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN;
+var url = 'https://api.blockcypher.com/v1/btc/main/forwards?token='+TOKEN;
 $.post(url, JSON.stringify(payment))
   .then(function(d) {console.log(d)});
 {
 "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
 "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-"callback_url": "https://my.domain.com/callbacks/payments",
+"callback_url": "https://my.domain.com/callbacks/forwards",
 "id": "399d0923-e920-48ee-8928-2051cbfbc369",
 "token": "YOURTOKEN"
 }
@@ -83,7 +83,7 @@ import (
 
 func main() {
     btc := gobcy.API{"YOURTOKEN", "btc", "main"}
-    payfwd, err := btc.CreatePayFwd(gobcy.PayFwd{Destination: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", CallbackURL: "https://my.domain.com/callbacks/payments"})
+    payfwd, err := btc.CreatePayFwd(gobcy.PayFwd{Destination: "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh", CallbackURL: "https://my.domain.com/callbacks/forwards"})
     if err != nil {
         fmt.Println(err)
     }
@@ -91,7 +91,7 @@ func main() {
 }
 
 //Result from `go run`:
-//{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/payments EnableConfirm:false MiningFees:0 TXHistory:[]}
+//{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/forwards EnableConfirm:false MiningFees:0 TXHistory:[]}
 ```
 
 ```php
@@ -115,11 +115,11 @@ $paymentForward = $paymentForwardClient->createForwardingAddress('15qx9ug952GWGT
 }
 ```
 
-First, to create an payment forwarding address, you need to POST a partially filled [PaymentForward](#paymentforward) object to the payment creation endpoint. You need to include at least a **destination** address and your **token**; optionally, you can add a **callback_url**, processing fees (either percent or fixed) and a **process_fee_address**, and a few other options. You can see more details about these options in the [PaymentForward](#paymentforward) object details.
+First, to create an address forwarding address, you need to POST a partially filled [PaymentForward](#paymentforward) object to the payment creation endpoint. You need to include at least a **destination** address and your **token**; optionally, you can add a **callback_url**, processing fees (either percent or fixed) and a **process_fee_address**, and a few other options. You can see more details about these options in the [PaymentForward](#paymentforward) object details.
 
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
-/payments | POST | [PaymentForward](#paymentforward) | [PaymentForward](#paymentforward)
+/forwards | POST | [PaymentForward](#paymentforward) | [PaymentForward](#paymentforward)
 
 In return, you'll get a more complete [PaymentForward](#PaymentForward) object, including an **input_address** and **id**.
 
@@ -130,13 +130,13 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 ## List Payments Endpoint
 
 ```shell
-curl https://api.blockcypher.com/v1/btc/main/payments?token=YOURTOKEN
+curl https://api.blockcypher.com/v1/btc/main/forwards?token=YOURTOKEN
 
 [
     {
     "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
     "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-    "callback_url": "https://my.domain.com/callbacks/payments",
+    "callback_url": "https://my.domain.com/callbacks/forwards",
     "id": "399d0923-e920-48ee-8928-2051cbfbc369",
     "token": "YOURTOKEN"
     }
@@ -144,13 +144,13 @@ curl https://api.blockcypher.com/v1/btc/main/payments?token=YOURTOKEN
 ```
 
 ```javascript
-$.get('https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN)
+$.get('https://api.blockcypher.com/v1/btc/main/forwards?token='+TOKEN)
   .then(function(d) {console.log(d)});
 [
     {
     "input_address": "16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX",
     "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
-    "callback_url": "https://my.domain.com/callbacks/payments",
+    "callback_url": "https://my.domain.com/callbacks/forwards",
     "id": "399d0923-e920-48ee-8928-2051cbfbc369",
     "token": "YOURTOKEN"
     }
@@ -171,7 +171,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/payments?token='+TOKEN)
 >>> list_forwarding_addresses(api_key='YOUR_TOKEN')
 [
     {
-        "callback_url": "https://my.domain.com/callbacks/payments",
+        "callback_url": "https://my.domain.com/callbacks/forwards",
         "destination": "15qx9ug952GWGTNn7Uiv6vode4RcGrRemh",
         "id": "f35c80c2-3347-410d-b4ac-d049910289ec",
         "input_address": "1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ",
@@ -199,7 +199,7 @@ func main() {
 }
 
 //Result from `go run`:
-//[{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/payments EnableConfirm:false MiningFees:0 TXHistory:[]}]
+//[{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/forwards EnableConfirm:false MiningFees:0 TXHistory:[]}]
 ```
 
 ```php
@@ -221,29 +221,29 @@ $paymentForwardArray = $paymentForwardClient->listForwardingAddresses();
 ]
 ```
 
-To list your currently active payment forwarding addresses, you can use this endpoint.
+To list your currently active address forwarding addresses, you can use this endpoint.
 
 Resource | Method | Return Object
 -------- | ------ | -------------
-/payments | GET | Array[[PaymentForward](#paymentforward)]
+/forwards | GET | Array[[PaymentForward](#paymentforward)]
 
 Flag | Type | Effect
 ---- | ---- | ------
-**start** | *integer* | Returns list of payment forwards starting at the **start** index; useful for paging beyond the limit of 200 payment forwards.
+**start** | *integer* | Returns list of address forwards starting at the **start** index; useful for paging beyond the limit of 200 address forwards.
 
-This returns the full array of your currently active payment forwarding addresses, based on your token. By default, this endpoint only returns the first 200 payment forwards. If you have more, you can page through them using the optional **start** parameter.
+This returns the full array of your currently active address forwarding addresses, based on your token. By default, this endpoint only returns the first 200 address forwards. If you have more, you can page through them using the optional **start** parameter.
 
 ## Delete Payment Endpoint
 
 ```shell
 # Piping to grep to just show status code
-curl -X DELETE -Is https://api.blockcypher.com/v1/btc/main/payments/399d0923-e920-48ee-8928-2051cbfbc369?token=YOURTOKEN | grep "HTTP/1.1"
+curl -X DELETE -Is https://api.blockcypher.com/v1/btc/main/forwards/399d0923-e920-48ee-8928-2051cbfbc369?token=YOURTOKEN | grep "HTTP/1.1"
 
 HTTP/1.1 204 No Content
 ```
 
 ```javascript
-var url = "https://api.blockcypher.com/v1/btc/main/payments/399d0923-e920-48ee-8928-2051cbfbc369?token="+TOKEN
+var url = "https://api.blockcypher.com/v1/btc/main/forwards/399d0923-e920-48ee-8928-2051cbfbc369?token="+TOKEN
 $.ajax({
   url: url,
   method: "DELETE"
@@ -295,13 +295,13 @@ $paymentForwardClient->deleteForwardingAddress('1fdf8f9b-cc37-4955-882b-8cbcd670
 HTTP/1.1 204 No Content
 ```
 
-When you're done with a payment forwarding address, you can delete it via its id.
+When you're done with an address forwarding address, you can delete it via its id.
 
 Resource | Method | Return Object
 -------- | ------ | -------------
-/payments/$PAYID | DELETE |  *nil*
+/forwards/$PAYID | DELETE |  *nil*
 
-PAYID is a string representing the payment forwarding request you want to delete, for example:
+PAYID is a string representing the address forwarding request you want to delete, for example:
 
 `399d0923-e920-48ee-8928-2051cbfbc369`
 
