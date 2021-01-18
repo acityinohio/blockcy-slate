@@ -75,7 +75,7 @@ WebHooks leverage similar objects and interactions but with two key differences:
 We retry individual payloads to your **url** five times; if one fails, we wait exponentially between retries: 1 second, 2s, 4s, 8s, 16s. In order to protect against stale callback **url**s, your [Event](#event) will be deleted if it reaches 50 aggregate **callback_errors** from failed payloads.
 
 <aside class="warning">
-To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified.
+To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified. For more advanced setups see <a href="webhook-signing"></a>
 </aside>
 
 <aside class="notice">
@@ -474,3 +474,12 @@ WEBHOOKID is a string representing the event's generated *id*, for example:
 `399d0923-e920-48ee-8928-2051cbfbc369`
 
 If successful, it won't return any objects, but will respond with an HTTP Status Code 204.
+
+### WebHook Signing
+
+To guarantee the origin and integrity of the webhook data, webhooks can optionally be signed by our servers. An optional JSON attribute called "signkey" can be provided with the webhook when created to either:
+
+1. A PEM-encoded ECDSA private key that you created.
+2. The string "preset", in which case the BlockCypher signing key will be used. The associated x509 PKIX encoded public key for our webhook signing key is `MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEflgGqpIAC9k65JicOPBgXZUExen4rWLq05KwYmZHphTU/fmi3Oe/ckyxo2w3Ayo/SCO/rU2NB90jtCJfz9i1ow==`
+
+Once the "signkey" attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the [HTTP signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-12) specification.
