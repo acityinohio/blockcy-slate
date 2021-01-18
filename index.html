@@ -408,10 +408,10 @@
                     <a href="#event" class="toc-h2 toc-link" data-title="Event">Event</a>
                   </li>
                   <li>
-                    <a href="#paymentforward" class="toc-h2 toc-link" data-title="PaymentForward">PaymentForward</a>
+                    <a href="#addressforward" class="toc-h2 toc-link" data-title="AddressForward">AddressForward</a>
                   </li>
                   <li>
-                    <a href="#paymentforwardcallback" class="toc-h2 toc-link" data-title="PaymentForwardCallback">PaymentForwardCallback</a>
+                    <a href="#addressforwardcallback" class="toc-h2 toc-link" data-title="AddressForwardCallback">AddressForwardCallback</a>
                   </li>
                   <li>
                     <a href="#job" class="toc-h2 toc-link" data-title="Job">Job</a>
@@ -614,7 +614,7 @@
               </ul>
           </li>
           <li>
-            <a href="#payment-forwarding" class="toc-h1 toc-link" data-title="Payment Forwarding">Payment Forwarding</a>
+            <a href="#address-forwarding" class="toc-h1 toc-link" data-title="Address Forwarding">Address Forwarding</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-payment-endpoint" class="toc-h2 toc-link" data-title="Create Payment Endpoint">Create Payment Endpoint</a>
@@ -686,7 +686,7 @@
 While <strong>our Ethereum API</strong> is very similar to the API here, it's different enough to necessitate its own documentation; you can find those docs here: <a href="https://www.blockcypher.com/dev/ethereum/">https://www.blockcypher.com/dev/ethereum/</a>.
 </aside>
 
-<p>BlockCypher&#39;s API provides a superset of the endpoints you&#39;d find in reference implementations, in addition to some special features that make BlockCypher uniquely powerful, like our unconfirmed transaction <a href="#confidence-factor">Confidence Factor</a>, dependable WebHook or WebSockets-based <a href="#events-and-hooks">Events</a>, <a href="#microtransaction-api">On-Chain Microtransactions</a>, and <a href="#payment-forwarding">Payment Forwarding</a>.</p>
+<p>BlockCypher&#39;s API provides a superset of the endpoints you&#39;d find in reference implementations, in addition to some special features that make BlockCypher uniquely powerful, like our unconfirmed transaction <a href="#confidence-factor">Confidence Factor</a>, dependable WebHook or WebSockets-based <a href="#events-and-hooks">Events</a>, and <a href="#address-forwarding">Address Forwarding</a>.</p>
 
 <p>Consequently, if you&#39;re familiar with a blockchain&#39;s reference implementation, you&#39;ll feel at home using BlockCypher, but without worrying about scaling or implementation challenges. And if you&#39;re not familiar---with the reference implementations or blockchains in general---BlockCypher&#39;s API is a great way to dip your toes into blockchain development, without a lengthy setup process. In either case, BlockCypher has 99.99% up-time, and maintains an expressive, logical API that you&#39;ll love.</p>
 <h2 id='documentation-structure'>Documentation Structure</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>man curl | <span class="nb">grep</span> <span class="nt">-A</span> 3 <span class="s2">"DESCRIPTION"</span>
@@ -817,12 +817,10 @@ Unless noted otherwise, all samples assume this initializing code:
 <li><a href="#address-api">Address API:</a> Query information about addresses, generate addresses, and generate multisig addresses from public keys.</li>
 <li><a href="#wallet-api">Wallet API:</a> Build and modify multiple-address-watching and hierarchical deterministic (HD) wallets, usable throughout the BlockCypher API.</li>
 <li><a href="#transaction-api">Transaction API:</a> Information about transactions, how to generate/send your own, and how to embed data into the blockchain.</li>
-<li><a href="#microtransaction-api">Microtransaction API:</a> Send on-chain microtransactions while BlockCypher covers your initial mining fees, and low computed fees afterwards.</li>
 <li><a href="#confidence-factor">Confidence Factor:</a> Get an accurate measure of the likelihood of a successful double-spend against your unconfirmed transactions.</li>
 <li><a href="#metadata-api">Metadata API:</a> Store both public and private key-value pairs against addresses, transactions, and blocks.</li>
-<li><a href="#analytics-api">Analytics API:</a> Run asynchronous analytics queries on public blockchains.</li>
 <li><a href="#asset-api">Asset API:</a> Create and manage your own assets---embedded on a public blockchain---via the Open Assets standard.</li>
-<li><a href="#payment-forwarding">Payment Forwarding:</a> Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.</li>
+<li><a href="#address-forwarding">Address Forwarding:</a> Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.</li>
 <li><a href="#events-and-hooks">Events and Hooks:</a> Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.</li>
 </ul>
 <h3 id='in-browser-code-examples'>In-Browser Code Examples</h3>
@@ -3162,7 +3160,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <td>Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.</td>
 </tr>
 </tbody></table>
-<h2 id='paymentforward'>PaymentForward</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay","process_fees_address": "1LWw6FdzNUcX8bnekMMZ7eofcGF7SXmbrL", "process_fees_percent": 0.1,"token":"YOURTOKEN"}'</span> https://api.blockcypher.com/v1/btc/main/payments
+<h2 id='addressforward'>AddressForward</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay","process_fees_address": "1LWw6FdzNUcX8bnekMMZ7eofcGF7SXmbrL", "process_fees_percent": 0.1,"token":"YOURTOKEN"}'</span> https://api.blockcypher.com/v1/btc/main/forwards
 
 <span class="o">{</span>
 <span class="s2">"input_address"</span>: <span class="s2">"16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX"</span>,
@@ -3173,7 +3171,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>A PaymentForward object represents a request set up through the <a href="#payment-forwarding">Payment Forwarding</a> service.</p>
+<p>A AddressForward object represents a request set up through the <a href="#address-forwarding">Address Forwarding</a> service.</p>
 
 <table><thead>
 <tr>
@@ -3185,7 +3183,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <tr>
 <td><strong>id</strong></td>
 <td><em>string</em></td>
-<td>Identifier of the payment forwarding request; generated when a new request is created.</td>
+<td>Identifier of the orwarding request; generated when a new request is created.</td>
 </tr>
 <tr>
 <td><strong>token</strong></td>
@@ -3195,7 +3193,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <tr>
 <td><strong>destination</strong></td>
 <td><em>string</em></td>
-<td>The required destination address for payment forwarding.</td>
+<td>The required destination address to forward to.</td>
 </tr>
 <tr>
 <td><strong>input_address</strong></td>
@@ -3220,7 +3218,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <tr>
 <td><strong>callback_url</strong></td>
 <td><em>url</em></td>
-<td><strong><em>Optional</em></strong> The URL to call anytime a new payment is forwarded.</td>
+<td><strong><em>Optional</em></strong> The URL to call anytime a new transaction is forwarded.</td>
 </tr>
 <tr>
 <td><strong>enable_confirmations</strong></td>
@@ -3235,10 +3233,10 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <tr>
 <td><strong>txs</strong></td>
 <td><em>array[string]</em></td>
-<td><strong><em>Optional</em></strong> History of forwarding transaction hashes for this payment forward; not present if this request has yet to forward any transactions.</td>
+<td><strong><em>Optional</em></strong> History of forwarding transaction hashes for this forward; not present if this request has yet to forward any transactions.</td>
 </tr>
 </tbody></table>
-<h2 id='paymentforwardcallback'>PaymentForwardCallback</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<h2 id='addressforwardcallback'>AddressForwardCallback</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
 <span class="s2">"value"</span>: 100000000,
 <span class="s2">"input_address"</span>: <span class="s2">"16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX"</span>,
 <span class="s2">"destination"</span>: <span class="s2">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span>,
@@ -3246,7 +3244,7 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <span class="s2">"transaction_hash"</span>: <span class="s2">"1aa6103..."</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>A PaymentForwardCallback object represents the payload delivered to the optional <strong>callback_url</strong> in a <a href="#payment-forward">PaymentForward</a> request.</p>
+<p>A AddressForwardCallback object represents the payload delivered to the optional <strong>callback_url</strong> in a <a href="#address-forward">AddressForward</a> request.</p>
 
 <table><thead>
 <tr>
@@ -3263,22 +3261,22 @@ Only one of these three fields is required for the microtransaction endpoint: <b
 <tr>
 <td><strong>input_address</strong></td>
 <td><em>string</em></td>
-<td>The intermediate address to which the payment was originally sent.</td>
+<td>The intermediate address to which the transaction was originally sent.</td>
 </tr>
 <tr>
 <td><strong>destination</strong></td>
 <td><em>string</em></td>
-<td>The final destination address to which the payment will eventually be sent.</td>
+<td>The final destination address to which the forward will eventually be sent.</td>
 </tr>
 <tr>
 <td><strong>input_transaction_hash</strong></td>
 <td><em>string</em></td>
-<td>The transaction hash representing the initial payment to the <strong>input_address</strong>.</td>
+<td>The transaction hash representing the initial transaction to the <strong>input_address</strong>.</td>
 </tr>
 <tr>
 <td><strong>transaction_hash</strong></td>
 <td><em>string</em></td>
-<td>The transaction hash of the generated transaction that forwards the payment from the <strong>input_address</strong> to the <strong>destination.</strong></td>
+<td>The transaction hash of the generated transaction that forwards from the <strong>input_address</strong> to the <strong>destination.</strong></td>
 </tr>
 </tbody></table>
 <h2 id='job'>Job</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
@@ -9912,18 +9910,18 @@ curl https://api.blockcypher.com/v1/bcy/test/oap/1Npqwstp55vgThp4pwAC9UhYkvPJ28b
 </tbody></table>
 
 <p>The Get Asset Address Endpoint returns an <a href="#address">Address</a> representing information about a particular OAPADDR underneath a given ASSETID. Note that while it returns an <a href="#address">Address</a> object, anything that would have represented &quot;satoshis&quot; now represents &quot;amount of asset.&quot; (e.g., <strong>balance</strong>, <strong>value</strong>, etc.)</p>
-<h1 id='payment-forwarding'>Payment Forwarding</h1>
-<p>One of the well-known benefits of cryptocurrency is the ability to allow users to partake in online commerce without necessarily requiring extensive setup barriers, like registering new accounts. In that spirit, our Payment Forwarding API is the easiest way to accept---and consolidate---payments securely without forcing your users to create accounts and jump through unnecessary loops. It&#39;s also a generic way to automatically transfer value from one address to another. While there are many possible use cases, the two we hear most about are:</p>
+<h1 id='address-forwarding'>Address Forwarding</h1>
+<p>One of the well-known benefits of cryptocurrency is the ability to allow users to partake in online commerce without necessarily requiring extensive setup barriers, like registering new accounts. In that spirit, our Address Forwarding API is the easiest way to accept---and consolidate---payments securely without forcing your users to create accounts and jump through unnecessary loops. It&#39;s also a generic way to automatically transfer value from one address to another. While there are many possible use cases, the two we hear most about are:</p>
 
 <ul>
 <li>A way to generate payment-specific addresses for which funds will automatically transfer to a main merchant address. Great for automatic merchandise (whether physical or virtual) processing.</li>
 <li>A method to easily fund a multisignature address from any wallet by providing a classic address that will automatically transfer to the multisignature/<em>pay-to-script-hash</em> address.</li>
 </ul>
 
-<p>We do not take a fee on payment forwarding, other than the required 10,000 satoshi miner fee; payments are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.</p>
+<p>We do not take a fee on address forwarding, other than the required miner fee which depends on network conditions; forwards are free. However, as part of your own services, you can include a fee (either fixed or a percentage) that will also be automatically transfered to your own address in the same transaction. Fee-based business models are thus easily achieved, and moreover, easily auditable via the blockchain.</p>
 
 <aside class="notice">
-Payment forwarding is only available for paid plans with an active token, you can't create a payment forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
+Payment forwarding is only available for paid plans with an active token, you can't create a address forwarding request without one. You can <a href="http://accounts.blockcypher.com">register for a token and pay for a plan here.</a>
 </aside>
 
 <aside class="notice">
@@ -9931,14 +9929,14 @@ Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</
 </aside>
 
 <aside class="warning">
-By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b>. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small payments, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
+By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
 </aside>
-<h2 id='create-payment-endpoint'>Create Payment Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}'</span> https://api.blockcypher.com/v1/btc/main/payments?token<span class="o">=</span>YOURTOKEN
+<h2 id='create-payment-endpoint'>Create Payment Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}'</span> https://api.blockcypher.com/v1/btc/main/forwards?token<span class="o">=</span>YOURTOKEN
 
 <span class="o">{</span>
 <span class="s2">"input_address"</span>: <span class="s2">"16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX"</span>,
 <span class="s2">"destination"</span>: <span class="s2">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span>,
-<span class="s2">"callback_url"</span>: <span class="s2">"https://my.domain.com/callbacks/payments"</span>,
+<span class="s2">"callback_url"</span>: <span class="s2">"https://my.domain.com/callbacks/forwards"</span>,
 <span class="s2">"id"</span>: <span class="s2">"399d0923-e920-48ee-8928-2051cbfbc369"</span>,
 <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>
 <span class="o">}</span>
@@ -9946,13 +9944,13 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
   <span class="dl">"</span><span class="s2">destination</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">15qx9ug952GWGTNn7Uiv6vode4RcGrRemh</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">callback_url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my.domain.com/callbacks/new-pay</span><span class="dl">"</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/btc/main/payments?token=</span><span class="dl">'</span><span class="o">+</span><span class="nx">TOKEN</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/btc/main/forwards?token=</span><span class="dl">'</span><span class="o">+</span><span class="nx">TOKEN</span><span class="p">;</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">payment</span><span class="p">))</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">)});</span>
 <span class="p">{</span>
 <span class="dl">"</span><span class="s2">input_address</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX</span><span class="dl">"</span><span class="p">,</span>
 <span class="dl">"</span><span class="s2">destination</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">15qx9ug952GWGTNn7Uiv6vode4RcGrRemh</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">callback_url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my.domain.com/callbacks/payments</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">callback_url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my.domain.com/callbacks/forwards</span><span class="dl">"</span><span class="p">,</span>
 <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">399d0923-e920-48ee-8928-2051cbfbc369</span><span class="dl">"</span><span class="p">,</span>
 <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOURTOKEN</span><span class="dl">"</span>
 <span class="p">}</span>
@@ -9982,7 +9980,7 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">btc</span> <span class="o">:=</span> <span class="n">gobcy</span><span class="o">.</span><span class="n">API</span><span class="p">{</span><span class="s">"YOURTOKEN"</span><span class="p">,</span> <span class="s">"btc"</span><span class="p">,</span> <span class="s">"main"</span><span class="p">}</span>
-    <span class="n">payfwd</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">btc</span><span class="o">.</span><span class="n">CreatePayFwd</span><span class="p">(</span><span class="n">gobcy</span><span class="o">.</span><span class="n">PayFwd</span><span class="p">{</span><span class="n">Destination</span><span class="o">:</span> <span class="s">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span><span class="p">,</span> <span class="n">CallbackURL</span><span class="o">:</span> <span class="s">"https://my.domain.com/callbacks/payments"</span><span class="p">})</span>
+    <span class="n">payfwd</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">btc</span><span class="o">.</span><span class="n">CreatePayFwd</span><span class="p">(</span><span class="n">gobcy</span><span class="o">.</span><span class="n">PayFwd</span><span class="p">{</span><span class="n">Destination</span><span class="o">:</span> <span class="s">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span><span class="p">,</span> <span class="n">CallbackURL</span><span class="o">:</span> <span class="s">"https://my.domain.com/callbacks/forwards"</span><span class="p">})</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="p">}</span>
@@ -9990,7 +9988,7 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
 <span class="p">}</span>
 
 <span class="c">//Result from `go run`:</span>
-<span class="c">//{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/payments EnableConfirm:false MiningFees:0 TXHistory:[]}</span>
+<span class="c">//{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/forwards EnableConfirm:false MiningFees:0 TXHistory:[]}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\payment-api\CreatePaymentEndpoint.php</span>
@@ -10010,7 +10008,7 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
   <span class="s2">"input_address"</span><span class="o">:</span><span class="s2">"17h2S1KtX7AqS9DJexqqSTNFCgwCoqqxhU"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>First, to create an payment forwarding address, you need to POST a partially filled <a href="#paymentforward">PaymentForward</a> object to the payment creation endpoint. You need to include at least a <strong>destination</strong> address and your <strong>token</strong>; optionally, you can add a <strong>callback_url</strong>, processing fees (either percent or fixed) and a <strong>process_fee_address</strong>, and a few other options. You can see more details about these options in the <a href="#paymentforward">PaymentForward</a> object details.</p>
+<p>First, to create an address forwarding address, you need to POST a partially filled <a href="#paymentforward">PaymentForward</a> object to the payment creation endpoint. You need to include at least a <strong>destination</strong> address and your <strong>token</strong>; optionally, you can add a <strong>callback_url</strong>, processing fees (either percent or fixed) and a <strong>process_fee_address</strong>, and a few other options. You can see more details about these options in the <a href="#paymentforward">PaymentForward</a> object details.</p>
 
 <table><thead>
 <tr>
@@ -10021,7 +10019,7 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
 </tr>
 </thead><tbody>
 <tr>
-<td>/payments</td>
+<td>/forwards</td>
 <td>POST</td>
 <td><a href="#paymentforward">PaymentForward</a></td>
 <td><a href="#paymentforward">PaymentForward</a></td>
@@ -10033,24 +10031,24 @@ By default, all payments will be debited with a 10,000 satoshis <b>mining fee</b
 <aside class="notice">
 If you decide to have a <b>callback_url</b>, you'll receive a payload at that url whenever a payment is made to the <b>input_address</b>. The payload will come in the form of a <a href="#paymentforwardcallback">PaymentForwardCallback</a> object.
 </aside>
-<h2 id='list-payments-endpoint'>List Payments Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.blockcypher.com/v1/btc/main/payments?token<span class="o">=</span>YOURTOKEN
+<h2 id='list-payments-endpoint'>List Payments Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.blockcypher.com/v1/btc/main/forwards?token<span class="o">=</span>YOURTOKEN
 
 <span class="o">[</span>
     <span class="o">{</span>
     <span class="s2">"input_address"</span>: <span class="s2">"16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX"</span>,
     <span class="s2">"destination"</span>: <span class="s2">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span>,
-    <span class="s2">"callback_url"</span>: <span class="s2">"https://my.domain.com/callbacks/payments"</span>,
+    <span class="s2">"callback_url"</span>: <span class="s2">"https://my.domain.com/callbacks/forwards"</span>,
     <span class="s2">"id"</span>: <span class="s2">"399d0923-e920-48ee-8928-2051cbfbc369"</span>,
     <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/btc/main/payments?token=</span><span class="dl">'</span><span class="o">+</span><span class="nx">TOKEN</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.blockcypher.com/v1/btc/main/forwards?token=</span><span class="dl">'</span><span class="o">+</span><span class="nx">TOKEN</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">)});</span>
 <span class="p">[</span>
     <span class="p">{</span>
     <span class="dl">"</span><span class="s2">input_address</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16uKw7GsQSzfMaVTcT7tpFQkd7Rh9qcXWX</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">destination</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">15qx9ug952GWGTNn7Uiv6vode4RcGrRemh</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">callback_url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my.domain.com/callbacks/payments</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">callback_url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my.domain.com/callbacks/forwards</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">399d0923-e920-48ee-8928-2051cbfbc369</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOURTOKEN</span><span class="dl">"</span>
     <span class="p">}</span>
@@ -10065,7 +10063,7 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 <span class="o">&gt;&gt;&gt;</span> <span class="n">list_forwarding_addresses</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">'YOUR_TOKEN'</span><span class="p">)</span>
 <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s">"callback_url"</span><span class="p">:</span> <span class="s">"https://my.domain.com/callbacks/payments"</span><span class="p">,</span>
+        <span class="s">"callback_url"</span><span class="p">:</span> <span class="s">"https://my.domain.com/callbacks/forwards"</span><span class="p">,</span>
         <span class="s">"destination"</span><span class="p">:</span> <span class="s">"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh"</span><span class="p">,</span>
         <span class="s">"id"</span><span class="p">:</span> <span class="s">"f35c80c2-3347-410d-b4ac-d049910289ec"</span><span class="p">,</span>
         <span class="s">"input_address"</span><span class="p">:</span> <span class="s">"1CUYiFY3LzEd9dXgR6ubRaYPTq2SMxFFCJ"</span><span class="p">,</span>
@@ -10090,7 +10088,7 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 <span class="p">}</span>
 
 <span class="c">//Result from `go run`:</span>
-<span class="c">//[{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/payments EnableConfirm:false MiningFees:0 TXHistory:[]}]</span>
+<span class="c">//[{ID:6fbe2b48-fe79-44a2-9cdc-8114bc4d5fcc Destination:15qx9ug952GWGTNn7Uiv6vode4RcGrRemh InputAddr:17Ri1Shdzo5G8kiUys1qoeM8w1PNj1eFAK ProcessAddr: ProcessPercent:0 ProcessValue:0 CallbackURL:https://my.domain.com/callbacks/forwards EnableConfirm:false MiningFees:0 TXHistory:[]}]</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\payment-api\ListPaymentsEndpoint.php</span>
@@ -10108,7 +10106,7 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
   <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
-<p>To list your currently active payment forwarding addresses, you can use this endpoint.</p>
+<p>To list your currently active address forwarding addresses, you can use this endpoint.</p>
 
 <table><thead>
 <tr>
@@ -10118,7 +10116,7 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 </tr>
 </thead><tbody>
 <tr>
-<td>/payments</td>
+<td>/forwards</td>
 <td>GET</td>
 <td>Array[<a href="#paymentforward">PaymentForward</a>]</td>
 </tr>
@@ -10134,16 +10132,16 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 <tr>
 <td><strong>start</strong></td>
 <td><em>integer</em></td>
-<td>Returns list of payment forwards starting at the <strong>start</strong> index; useful for paging beyond the limit of 200 payment forwards.</td>
+<td>Returns list of address forwards starting at the <strong>start</strong> index; useful for paging beyond the limit of 200 address forwards.</td>
 </tr>
 </tbody></table>
 
-<p>This returns the full array of your currently active payment forwarding addresses, based on your token. By default, this endpoint only returns the first 200 payment forwards. If you have more, you can page through them using the optional <strong>start</strong> parameter.</p>
+<p>This returns the full array of your currently active address forwarding addresses, based on your token. By default, this endpoint only returns the first 200 address forwards. If you have more, you can page through them using the optional <strong>start</strong> parameter.</p>
 <h2 id='delete-payment-endpoint'>Delete Payment Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Piping to grep to just show status code</span>
-curl <span class="nt">-X</span> DELETE <span class="nt">-Is</span> https://api.blockcypher.com/v1/btc/main/payments/399d0923-e920-48ee-8928-2051cbfbc369?token<span class="o">=</span>YOURTOKEN | <span class="nb">grep</span> <span class="s2">"HTTP/1.1"</span>
+curl <span class="nt">-X</span> DELETE <span class="nt">-Is</span> https://api.blockcypher.com/v1/btc/main/forwards/399d0923-e920-48ee-8928-2051cbfbc369?token<span class="o">=</span>YOURTOKEN | <span class="nb">grep</span> <span class="s2">"HTTP/1.1"</span>
 
 HTTP/1.1 204 No Content
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.blockcypher.com/v1/btc/main/payments/399d0923-e920-48ee-8928-2051cbfbc369?token=</span><span class="dl">"</span><span class="o">+</span><span class="nx">TOKEN</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.blockcypher.com/v1/btc/main/forwards/399d0923-e920-48ee-8928-2051cbfbc369?token=</span><span class="dl">"</span><span class="o">+</span><span class="nx">TOKEN</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
   <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span>
@@ -10182,7 +10180,7 @@ HTTP/1.1 204 No Content
 
 <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="nx">No</span> <span class="nx">Content</span>
 </code></pre></div>
-<p>When you&#39;re done with a payment forwarding address, you can delete it via its id.</p>
+<p>When you&#39;re done with an address forwarding address, you can delete it via its id.</p>
 
 <table><thead>
 <tr>
@@ -10192,13 +10190,13 @@ HTTP/1.1 204 No Content
 </tr>
 </thead><tbody>
 <tr>
-<td>/payments/$PAYID</td>
+<td>/forwards/$PAYID</td>
 <td>DELETE</td>
 <td><em>nil</em></td>
 </tr>
 </tbody></table>
 
-<p>PAYID is a string representing the payment forwarding request you want to delete, for example:</p>
+<p>PAYID is a string representing the address forwarding request you want to delete, for example:</p>
 
 <p><code>399d0923-e920-48ee-8928-2051cbfbc369</code></p>
 
