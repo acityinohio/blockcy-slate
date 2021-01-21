@@ -287,7 +287,7 @@
     </style>
     <link href="stylesheets/screen-bf12e6ca.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-2a2a9374.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-2db5423c.js"></script>
+      <script src="javascripts/all-d083447e.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -757,15 +757,15 @@ https://github.com/blockcypher/php-client/tree/master/sample
 
 Unless noted otherwise, all samples assume this initializing code:
 <span class="cp">&lt;?php</span>
-<span class="k">require</span> <span class="k">__DIR__</span> <span class="o">.</span> <span class="s1">'/../bootstrap.php'</span><span class="p">;</span>
+<span class="k">require</span> <span class="k">__DIR__</span> <span class="mf">.</span> <span class="s1">'/../bootstrap.php'</span><span class="p">;</span>
 
-<span class="kn">use</span> <span class="nn">BlockCypher\Auth\SimpleTokenCredential</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">BlockCypher\Rest\ApiContext</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">BlockCypher\Auth\SimpleTokenCredential</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">BlockCypher\Rest\ApiContext</span><span class="p">;</span>
 <span class="c1">// ... other classes</span>
 
-<span class="nv">$apiContext</span> <span class="o">=</span> <span class="nx">ApiContext</span><span class="o">::</span><span class="na">create</span><span class="p">(</span>
+<span class="nv">$apiContext</span> <span class="o">=</span> <span class="nc">ApiContext</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span>
     <span class="s1">'main'</span><span class="p">,</span> <span class="s1">'btc'</span><span class="p">,</span> <span class="s1">'v1'</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">SimpleTokenCredential</span><span class="p">(</span><span class="s1">'$YOUR_TOKEN'</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nc">SimpleTokenCredential</span><span class="p">(</span><span class="s1">'$YOUR_TOKEN'</span><span class="p">),</span>
     <span class="k">array</span><span class="p">(</span><span class="s1">'log.LogEnabled'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">'log.FileName'</span> <span class="o">=&gt;</span> <span class="s1">'BlockCypher.log'</span><span class="p">,</span> <span class="s1">'log.LogLevel'</span> <span class="o">=&gt;</span> <span class="s1">'DEBUG'</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div>
@@ -922,8 +922,8 @@ Unless noted otherwise, all samples assume this initializing code:
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\chain-api\ChainEndpoint.php</span>
 
-<span class="nv">$blockchainClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BlockchainClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$blockchain</span> <span class="o">=</span> <span class="nv">$blockchainClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'BTC.main'</span><span class="p">);</span>
+<span class="nv">$blockchainClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BlockchainClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$blockchain</span> <span class="o">=</span> <span class="nv">$blockchainClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'BTC.main'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"name"</span><span class="o">:</span><span class="s2">"BTC.main"</span><span class="p">,</span>
@@ -1077,9 +1077,9 @@ curl https://api.blockcypher.com/v1/tokens/<span class="nv">$YOURTOKEN</span>
 <span class="c">//{Token:YOURTOKEN Coin:btc Chain:main}</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="c1"># Adding your token as client credential to API context</span>
-<span class="nv">$apiContext</span> <span class="o">=</span> <span class="nx">ApiContext</span><span class="o">::</span><span class="na">create</span><span class="p">(</span>
+<span class="nv">$apiContext</span> <span class="o">=</span> <span class="nc">ApiContext</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span>
     <span class="s1">'main'</span><span class="p">,</span> <span class="s1">'btc'</span><span class="p">,</span> <span class="s1">'v1'</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">SimpleTokenCredential</span><span class="p">(</span><span class="s1">'c0afcccdde5081d6429de37d16166ead'</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nc">SimpleTokenCredential</span><span class="p">(</span><span class="s1">'c0afcccdde5081d6429de37d16166ead'</span><span class="p">),</span>
     <span class="k">array</span><span class="p">(</span><span class="s1">'log.LogEnabled'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">'log.FileName'</span> <span class="o">=&gt;</span> <span class="s1">'BlockCypher.log'</span><span class="p">,</span> <span class="s1">'log.LogLevel'</span> <span class="o">=&gt;</span> <span class="s1">'DEBUG'</span><span class="p">)</span>
 <span class="p">);</span>
 
@@ -1307,9 +1307,9 @@ curl <span class="s1">'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'</sp
 <span class="c1">// php -f .\sample\introduction\Batching.php</span>
 <span class="c1">// Batching blocks 5, 6, and 7</span>
 
-<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$blockList</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'5'</span><span class="p">,</span> <span class="s1">'6'</span><span class="p">,</span> <span class="s1">'7'</span><span class="p">);</span>
-<span class="nv">$blocks</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="na">getMultiple</span><span class="p">(</span><span class="nv">$blockList</span><span class="p">);</span>
+<span class="nv">$blocks</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="nf">getMultiple</span><span class="p">(</span><span class="nv">$blockList</span><span class="p">);</span>
 
 <span class="p">[{</span>
 <span class="s2">"hash"</span><span class="o">:</span> <span class="s2">"000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d"</span><span class="p">,</span>
@@ -1319,7 +1319,7 @@ curl <span class="s1">'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'</sp
 <span class="s2">"fees"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="s2">"ver"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="s2">"time"</span><span class="o">:</span> <span class="s2">"2009-01-09T03:29:49Z"</span><span class="p">,</span>
-<span class="o">...</span><span class="p">,</span>
+<span class="mf">...</span><span class="p">,</span>
 <span class="p">},</span>
 <span class="p">{</span>
 <span class="s2">"hash"</span><span class="o">:</span> <span class="s2">"000000009b7262315dbf071787ad3656097b892abffd1f95a1a022f896f533fc"</span><span class="p">,</span>
@@ -1329,7 +1329,7 @@ curl <span class="s1">'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'</sp
 <span class="s2">"fees"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="s2">"ver"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="s2">"time"</span><span class="o">:</span> <span class="s2">"2009-01-09T03:23:48Z"</span><span class="p">,</span>
-<span class="o">...</span><span class="p">,</span>
+<span class="mf">...</span><span class="p">,</span>
 <span class="p">},</span>
 <span class="p">{</span>
 <span class="s2">"hash"</span><span class="o">:</span> <span class="s2">"0000000071966c2b1d065fd446b1e485b2c9d9594acd2007ccbd5441cfc89444"</span><span class="p">,</span>
@@ -1339,7 +1339,7 @@ curl <span class="s1">'https://api.blockcypher.com/v1/btc/main/blocks/5;6;7'</sp
 <span class="s2">"fees"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="s2">"ver"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="s2">"time"</span><span class="o">:</span> <span class="s2">"2009-01-09T03:39:29Z"</span><span class="p">,</span>
-<span class="o">...</span><span class="p">,</span>
+<span class="mf">...</span><span class="p">,</span>
 <span class="p">}]</span>
 
 <span class="c1"># Note, when constructing the block array (first param) programatically you can use alternative syntax like:</span>
@@ -1460,8 +1460,8 @@ curl <span class="nt">-d</span> <span class="s1">'{"address": "CFqoZmZ3ePwK5wnkh
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\introduction\GenerateBcyAddress.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">generateAddress</span><span class="p">();</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">generateAddress</span><span class="p">();</span>
 
 <span class="p">{</span>
   <span class="s2">"private"</span><span class="o">:</span><span class="s2">"40e0d6e6210307b9b9d0113bceb9b8c5be6b9e010a03e07f25f75f462ed00a90"</span><span class="p">,</span>
@@ -1470,13 +1470,13 @@ curl <span class="nt">-d</span> <span class="s1">'{"address": "CFqoZmZ3ePwK5wnkh
   <span class="s2">"wif"</span><span class="o">:</span><span class="s2">"BqW9QJ24VFcEvDp8UvYvLTnDxn1SjpxsvTeysPAjBW6BX9NggYfr"</span>
 <span class="p">}</span>
 
-<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
 <span class="c1">// Fund prior address with faucet</span>
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\introduction\FundAddressWithFaucetEndpoint.php</span>
 
-<span class="nv">$faucetClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FaucetClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$faucetResponse</span> <span class="o">=</span> <span class="nv">$faucetClient</span><span class="o">-&gt;</span><span class="na">fundAddress</span><span class="p">(</span><span class="s1">'Bxi1GmU6xgqgyBEzugcqFZRLyJd1cpEv2S'</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>
+<span class="nv">$faucetClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FaucetClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$faucetResponse</span> <span class="o">=</span> <span class="nv">$faucetClient</span><span class="o">-&gt;</span><span class="nf">fundAddress</span><span class="p">(</span><span class="s1">'Bxi1GmU6xgqgyBEzugcqFZRLyJd1cpEv2S'</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"tx_ref"</span><span class="o">:</span><span class="s2">"0fa68cf5c39dbd918a5ca49fc092be36b8bcece83cbfed919ad6c77b5f24cceb"</span>
@@ -3214,8 +3214,8 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\chain-api\ChainEndpoint.php</span>
 
-<span class="nv">$blockchainClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BlockchainClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$blockchain</span> <span class="o">=</span> <span class="nv">$blockchainClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'BTC.main'</span><span class="p">);</span>
+<span class="nv">$blockchainClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BlockchainClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$blockchain</span> <span class="o">=</span> <span class="nv">$blockchainClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'BTC.main'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"name"</span><span class="o">:</span><span class="s2">"BTC.main"</span><span class="p">,</span>
@@ -3388,8 +3388,8 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\block-api\BlockHashEndpoint.php</span>
 
-<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$block</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412'</span><span class="p">);</span>
+<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$block</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"hash"</span><span class="o">:</span><span class="s2">"0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328"</span><span class="p">,</span>
@@ -3408,7 +3408,7 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
   <span class="s2">"txids"</span><span class="o">:</span><span class="p">[</span>
     <span class="s2">"7f00b52d075b3596cbd37ba5418640ace14a22ed6c5d154c4db5dd80e049b800"</span><span class="p">,</span>
     <span class="s2">"a90d9bc04a4e6be53e0ddc47b043625a0bdc849ef3bc05f551bc05336de3a87c"</span><span class="p">,</span>
-    <span class="o">...</span>
+    <span class="mf">...</span>
   <span class="p">],</span>
   <span class="s2">"depth"</span><span class="o">:</span><span class="mi">67602</span><span class="p">,</span>
   <span class="s2">"prev_block_url"</span><span class="o">:</span><span class="s2">"https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000b358b3b54788547080f49ed52392c2ed32a241951e2c9d5f"</span><span class="p">,</span>
@@ -3573,12 +3573,12 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\block-api\BlockHeightEndpoint.php</span>
 
-<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$blockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BlockClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'txstart'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s1">'limit'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">);</span>
-<span class="nv">$block</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'293000'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+<span class="nv">$block</span> <span class="o">=</span> <span class="nv">$blockClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'293000'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"hash"</span><span class="o">:</span><span class="s2">"0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328"</span><span class="p">,</span>
@@ -3756,8 +3756,8 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\address-api\AddressBalanceEndpoint.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressBalance</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">getBalance</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressBalance</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">getBalance</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"address"</span><span class="o">:</span><span class="s2">"1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD"</span><span class="p">,</span>
@@ -3989,8 +3989,8 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\address-api\AddressEndpoint.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$address</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$address</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"address"</span><span class="o">:</span><span class="s2">"1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD"</span><span class="p">,</span>
@@ -4015,7 +4015,7 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
       <span class="s2">"confirmed"</span><span class="o">:</span><span class="s2">"2014-05-22T03:46:25Z"</span><span class="p">,</span>
       <span class="s2">"double_spend"</span><span class="o">:</span><span class="kc">false</span>
     <span class="p">},</span>
-    <span class="o">...</span>
+    <span class="mf">...</span>
   <span class="p">],</span>
   <span class="s2">"tx_url"</span><span class="o">:</span><span class="s2">"https://api.blockcypher.com/v1/btc/main/txs/"</span>
 <span class="p">}</span>
@@ -4378,8 +4378,8 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\address-api\AddressFullEndpoint.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$fullAddress</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">getFullAddress</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$fullAddress</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">getFullAddress</span><span class="p">(</span><span class="s1">'1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"address"</span><span class="o">:</span><span class="s2">"1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD"</span><span class="p">,</span>
@@ -4447,7 +4447,7 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
         <span class="p">}</span>
       <span class="p">]</span>
     <span class="p">},</span>
-    <span class="o">...</span>
+    <span class="mf">...</span>
   <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4597,8 +4597,8 @@ curl <span class="nt">-X</span> POST https://api.blockcypher.com/v1/btc/test3/ad
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\address-api\GenerateAddressEndpoint.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">generateAddress</span><span class="p">();</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">generateAddress</span><span class="p">();</span>
 
 <span class="p">{</span>
   <span class="s2">"private"</span><span class="o">:</span><span class="s2">"3f3cea5a7373011d6f51844bf986abe6950d7a30eaaab247fc951c3ea9f13705"</span><span class="p">,</span>
@@ -4732,13 +4732,13 @@ Always use HTTPS for Address Generation requests. Otherwise, your generated priv
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\address-api\GenerateMultisigAddressEndpoint.php</span>
 
-<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AddressClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$pubkeys</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s2">"02c716d071a76cbf0d29c29cacfec76e0ef8116b37389fb7a3e76d6d32cf59f4d3"</span><span class="p">,</span>
     <span class="s2">"033ef4d5165637d99b673bcdbb7ead359cee6afd7aaf78d3da9d2392ee4102c8ea"</span><span class="p">,</span>
     <span class="s2">"022b8934cc41e76cb4286b9f3ed57e2d27798395b04dd23711981a77dc216df8ca"</span>
 <span class="p">);</span>
-<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="na">generateMultisigAddress</span><span class="p">(</span><span class="nv">$pubkeys</span><span class="p">,</span> <span class="s1">'multisig-2-of-3'</span><span class="p">);</span>
+<span class="nv">$addressKeyChain</span> <span class="o">=</span> <span class="nv">$addressClient</span><span class="o">-&gt;</span><span class="nf">generateMultisigAddress</span><span class="p">(</span><span class="nv">$pubkeys</span><span class="p">,</span> <span class="s1">'multisig-2-of-3'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"pubkeys"</span><span class="o">:</span><span class="p">[</span>
@@ -4990,14 +4990,14 @@ curl <span class="nt">-d</span> <span class="s1">'{"name": "catheryne", "extende
 <span class="c1">// php -f .\sample\wallet-api\CreateWalletEndpoint.php</span>
 
 <span class="c1">// Create a new instance of Wallet object</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wallet</span><span class="p">();</span>
-<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
-<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="na">setAddresses</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wallet</span><span class="p">();</span>
+<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="nf">setName</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
+<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="nf">setAddresses</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s2">"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"</span>
 <span class="p">));</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$createdWallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$wallet</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$createdWallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$wallet</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"token"</span><span class="o">:</span><span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
@@ -5012,12 +5012,12 @@ curl <span class="nt">-d</span> <span class="s1">'{"name": "catheryne", "extende
 <span class="c1">// php -f .\sample\wallet-api\CreateHDWalletEndpoint.php</span>
 
 <span class="c1">// Create a new instance of HDWallet object</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWallet</span><span class="p">();</span>
-<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
-<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="na">setExtendedPublicKey</span><span class="p">(</span><span class="s1">'xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8'</span><span class="p">);</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWallet</span><span class="p">();</span>
+<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="nf">setName</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
+<span class="nv">$wallet</span><span class="o">-&gt;</span><span class="nf">setExtendedPublicKey</span><span class="p">(</span><span class="s1">'xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8'</span><span class="p">);</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$createdWallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$wallet</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$createdWallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$wallet</span><span class="p">);</span>
 
 <span class="p">{</span><span class="s2">"token"</span><span class="o">:</span> <span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
 <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"bob"</span><span class="p">,</span>
@@ -5206,7 +5206,7 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token<span class="o"
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="o">&gt;</span> <span class="n">block_cypher</span><span class="p">.</span><span class="nf">wallet_get</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"token"</span><span class="o">=&gt;</span><span class="s2">"YOURTOKEN"</span><span class="p">,</span> <span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"addresses"</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"</span><span class="p">]}</span>
 
-<span class="sr">//</span><span class="no">TODO</span><span class="p">:</span> <span class="n">hd</span> <span class="n">wallet</span> <span class="n">example</span>
+<span class="sr">//</span><span class="err">TODO: hd wall</span><span class="sr">e</span><span class="n">t</span> <span class="n">example</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Regular wallet
 </span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">blockcypher</span> <span class="kn">import</span> <span class="n">get_wallet_addresses</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">get_wallet_addresses</span><span class="p">(</span><span class="n">wallet_name</span><span class="o">=</span><span class="s">'alice'</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s">'YOUR_TOKEN'</span><span class="p">)</span>
@@ -5273,8 +5273,8 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token<span class="o"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GetWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"token"</span><span class="o">:</span><span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
@@ -5288,8 +5288,8 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token<span class="o"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GetHDWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
 
 <span class="p">{</span><span class="s2">"token"</span><span class="o">:</span> <span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
 <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"bob"</span><span class="p">,</span>
@@ -5386,11 +5386,11 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token<span class="o"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\AddAddressesToWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressList</span> <span class="o">=</span> <span class="nx">AddressList</span><span class="o">::</span><span class="na">fromAddressesArray</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressList</span> <span class="o">=</span> <span class="nc">AddressList</span><span class="o">::</span><span class="nf">fromAddressesArray</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s2">"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"</span>
 <span class="p">));</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">addAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">,</span> <span class="nv">$addressList</span><span class="p">);</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">addAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">,</span> <span class="nv">$addressList</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"token"</span><span class="o">:</span><span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
@@ -5556,8 +5556,8 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token<span
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\WalletAddressesEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressList</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">getWalletAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressList</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">getWalletAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
 
 <span class="p">{</span><span class="s2">"addresses"</span><span class="o">:</span><span class="p">[</span>
     <span class="s2">"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"</span><span class="p">,</span>
@@ -5568,8 +5568,8 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob/addresses?token<span
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GetHDWalletAddressesEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$addressList</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">getWalletAddresses</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$addressList</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">getWalletAddresses</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
 
 <span class="p">{</span><span class="s2">"chains"</span><span class="o">:</span> <span class="p">[</span>
   <span class="p">{</span><span class="s2">"chain_addresses"</span><span class="o">:</span> <span class="p">[</span>
@@ -5665,12 +5665,12 @@ HTTP/1.1 204 OK
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\RemoveAddressesFromWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="c1">// List of addresses to be removed from the wallet</span>
-<span class="nv">$addressList</span> <span class="o">=</span> <span class="nx">AddressList</span><span class="o">::</span><span class="na">fromAddressesArray</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="nv">$addressList</span> <span class="o">=</span> <span class="nc">AddressList</span><span class="o">::</span><span class="nf">fromAddressesArray</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s2">"13cj1QtfW61kQHoqXm3khVRYPJrgQiRM6j"</span>
 <span class="p">));</span>
-<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">removeAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">,</span> <span class="nv">$addressList</span><span class="p">);</span>
+<span class="nv">$wallet</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">removeAddresses</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">,</span> <span class="nv">$addressList</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"token"</span><span class="o">:</span><span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
@@ -5759,8 +5759,8 @@ You cannot remove addresses from HD Wallets.
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GenerateAddressInWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$walletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">generateAddress</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$walletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">generateAddress</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"token"</span><span class="o">:</span><span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
@@ -5875,16 +5875,16 @@ curl <span class="nt">-X</span> POST <span class="s1">'https://api.blockcypher.c
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GenerateAddressInHDWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$hdWalletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">generateAddress</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$hdWalletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">generateAddress</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
 
 <span class="c1">// with subchain_index</span>
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\GenerateAddressInHDWalletWithSubchainIndexEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContexts</span><span class="p">[</span><span class="s1">'BTC.main'</span><span class="p">]);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContexts</span><span class="p">[</span><span class="s1">'BTC.main'</span><span class="p">]);</span>
 <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'subchain_index'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nv">$hdWalletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">deriveAddress</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+<span class="nv">$hdWalletGenerateAddressResponse</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nf">deriveAddress</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -5991,15 +5991,15 @@ HTTP/1.1 204 OK
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\DeleteWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'alice'</span><span class="p">);</span>
 
 <span class="c1">// hd wallet</span>
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\wallet-api\DeleteHDWalletEndpoint.php</span>
 
-<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
+<span class="nv">$walletClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HDWalletClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$walletClient</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'bob'</span><span class="p">);</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -6248,8 +6248,8 @@ Even if you don't use the API to assist in creating transactions, we highly reco
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\transaction-api\TransactionHashEndpoint.php</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$transaction</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449'</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$transaction</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449'</span><span class="p">);</span>
 
 <span class="p">{</span>
 <span class="s2">"block_hash"</span><span class="o">:</span> <span class="s2">"0000000000000000c504bdea36e531d80..."</span><span class="p">,</span>
@@ -6287,8 +6287,8 @@ Even if you don't use the API to assist in creating transactions, we highly reco
     <span class="p">],</span>
     <span class="s2">"script_type"</span><span class="o">:</span> <span class="s2">"pay-to-pubkey-hash"</span>
   <span class="p">},</span>
-  <span class="o">...</span><span class="p">,</span>
-  <span class="o">...</span><span class="p">,</span>
+  <span class="mf">...</span><span class="p">,</span>
+  <span class="mf">...</span><span class="p">,</span>
 <span class="p">],</span>
 <span class="s2">"outputs"</span><span class="o">:</span> <span class="p">[</span>
   <span class="p">{</span>
@@ -6535,8 +6535,8 @@ Please note that, <b>for Litecoin only</b>, since July 1 2020:
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\transaction-api\UnconfirmedTransactionsEndpoint.php</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$txs</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">getUnconfirmed</span><span class="p">(</span><span class="k">array</span><span class="p">(),</span> <span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txs</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">getUnconfirmed</span><span class="p">(</span><span class="k">array</span><span class="p">(),</span> <span class="nv">$apiContext</span><span class="p">);</span>
 
 <span class="p">[{</span><span class="s1">'received'</span><span class="o">:</span> <span class="s1">'2015-06-10T23:10:31.534Z'</span><span class="p">,</span>
   <span class="s1">'ver'</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -6545,7 +6545,7 @@ Please note that, <b>for Litecoin only</b>, since July 1 2020:
     <span class="s1">'addresses'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'1Gb4TAU4GD73akvt4V7tg2WdqadcpQSvhH'</span><span class="p">],</span>
     <span class="s1">'script_type'</span><span class="o">:</span> <span class="s1">'pay-to-pubkey-hash'</span><span class="p">,</span>
     <span class="s1">'script'</span><span class="o">:</span> <span class="s1">'76a914aafae908428a1778d0e76f0dca4cb800f731873e88ac'</span><span class="p">},</span>
-    <span class="o">...</span>
+    <span class="mf">...</span>
     <span class="p">],</span>
   <span class="s1">'block_height'</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
   <span class="s1">'receive_count'</span><span class="o">:</span> <span class="mi">109</span><span class="p">,</span>
@@ -6559,7 +6559,7 @@ Please note that, <b>for Litecoin only</b>, since July 1 2020:
     <span class="s1">'addresses'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'1MBuZ5ZxhytsjRZmec5rLr1WhDWm9DgFUJ'</span><span class="p">],</span>
     <span class="s1">'output_index'</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s1">'script_type'</span><span class="o">:</span> <span class="s1">'pay-to-pubkey-hash'</span><span class="p">},</span>
-    <span class="o">...</span>
+    <span class="mf">...</span>
    <span class="p">],</span>
   <span class="s1">'preference'</span><span class="o">:</span> <span class="s1">'medium'</span><span class="p">,</span>
   <span class="s1">'vout_sz'</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -6568,12 +6568,12 @@ Please note that, <b>for Litecoin only</b>, since July 1 2020:
   <span class="s1">'hash'</span><span class="o">:</span> <span class="s1">'97f551c7d200f3acf322160d6ada87830d2ad8d935909630a35a87d61bc8fa74'</span><span class="p">,</span>
   <span class="s1">'addresses'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'1DLDFKuAWGUJqZoYrevG8bHufuZCjCdSFZ'</span><span class="p">,</span>
    <span class="s1">'1Gb4TAU4GD73akvt4V7tg2WdqadcpQSvhH'</span><span class="p">,</span>
-   <span class="o">...</span>
+   <span class="mf">...</span>
    <span class="p">]</span>
   <span class="s1">'lock_time'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s1">'size'</span><span class="o">:</span> <span class="mi">521</span><span class="p">,</span>
   <span class="s1">'confirmations'</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
- <span class="o">...</span>
+ <span class="mf">...</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>The Unconfirmed Transactions Endpoint returns an array of the latest transactions relayed by nodes in a blockchain that haven&#39;t been included in any blocks.</p>
@@ -6868,21 +6868,21 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <span class="c1">// php -f .\sample\transaction-api\NewTransactionEndpoint.php</span>
 
 <span class="c1">// Create a new instance of Transaction object</span>
-<span class="nv">$tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Transaction</span><span class="p">();</span>
+<span class="nv">$tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Transaction</span><span class="p">();</span>
 
 <span class="c1">// Tx inputs</span>
-<span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Api\Input</span><span class="p">();</span>
-<span class="nv">$input</span><span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"C5vqMGme4FThKnCY44gx1PLgWr86uxRbDm"</span><span class="p">);</span>
-<span class="nv">$tx</span><span class="o">-&gt;</span><span class="na">addInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+<span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Api\Input</span><span class="p">();</span>
+<span class="nv">$input</span><span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"C5vqMGme4FThKnCY44gx1PLgWr86uxRbDm"</span><span class="p">);</span>
+<span class="nv">$tx</span><span class="o">-&gt;</span><span class="nf">addInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="c1">// Tx outputs</span>
-<span class="nv">$output</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Api\Output</span><span class="p">();</span>
-<span class="nv">$output</span><span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"C4MYFr4EAdqEeUKxTnPUF3d3whWcPMz1Fi"</span><span class="p">);</span>
-<span class="nv">$tx</span><span class="o">-&gt;</span><span class="na">addOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">);</span>
+<span class="nv">$output</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Api\Output</span><span class="p">();</span>
+<span class="nv">$output</span><span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"C4MYFr4EAdqEeUKxTnPUF3d3whWcPMz1Fi"</span><span class="p">);</span>
+<span class="nv">$tx</span><span class="o">-&gt;</span><span class="nf">addOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">);</span>
 <span class="c1">// Tx amount</span>
-<span class="nv">$output</span><span class="o">-&gt;</span><span class="na">setValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Satoshis</span>
+<span class="nv">$output</span><span class="o">-&gt;</span><span class="nf">setValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Satoshis</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"tx"</span><span class="o">:</span><span class="p">{</span>
@@ -7042,7 +7042,7 @@ There are many manually configurable options available via your <a href="#tx">TX
 <span class="c1">// Sign the transaction</span>
 <span class="c1">// Private key for address: C5vqMGme4FThKnCY44gx1PLgWr86uxRbDm</span>
 <span class="nv">$privateKeys</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"2c2cc015519b79782bd9c5af66f442e808f573714e3c4dc6df7d79c183963cff"</span><span class="p">);</span>
-<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">sign</span><span class="p">(</span><span class="nv">$txSkeleton</span><span class="p">,</span> <span class="nv">$privateKeys</span><span class="p">);</span>
+<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">sign</span><span class="p">(</span><span class="nv">$txSkeleton</span><span class="p">,</span> <span class="nv">$privateKeys</span><span class="p">);</span>
 </code></pre></div><h3 id='locally-sign-your-transaction'>Locally Sign Your Transaction</h3>
 <p>With your <a href="#txskeleton">TXSkeleton</a> returned from the New Transaction Endpoint, you now need to use your private key(s) to sign the data provided in the <strong>tosign</strong> array.</p>
 
@@ -7303,7 +7303,7 @@ curl <span class="nt">-d</span> <span class="s1">'{"tx": {...}, "tosign": [ "32b
 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="c1">// Send the transaction</span>
-<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$txSkeleton</span><span class="p">);</span>
+<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">(</span><span class="nv">$txSkeleton</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"tx"</span><span class="o">:</span><span class="p">{</span>
@@ -7665,9 +7665,9 @@ curl <span class="nt">-d</span> <span class="s1">'{"tx":"01000000011935b41d12936
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\transaction-api\PushRawTransactionEndpoint.php</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$hexRawTx</span> <span class="o">=</span> <span class="s2">"01000000011935b41d12936df99d322ac8972b74ecff7b79408bbccaf1b2eb8015228beac8000000006b483045022100921fc36b911094280f07d8504a80fbab9b823a25f102e2bc69b14bcd369dfc7902200d07067d47f040e724b556e5bc3061af132d5a47bd96e901429d53c41e0f8cca012102152e2bb5b273561ece7bbe8b1df51a4c44f5ab0bc940c105045e2cc77e618044ffffffff0240420f00000000001976a9145fb1af31edd2aa5a2bbaa24f6043d6ec31f7e63288ac20da3c00000000001976a914efec6de6c253e657a9d5506a78ee48d89762fb3188ac00000000"</span><span class="p">;</span>
-<span class="nv">$tx</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="nv">$hexRawTx</span><span class="p">);</span>
+<span class="nv">$tx</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">push</span><span class="p">(</span><span class="nv">$hexRawTx</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"block_height"</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
@@ -7973,9 +7973,9 @@ curl <span class="nt">-d</span> <span class="s1">'{"tx":"01000000011935b41d12936
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\transaction-api\DecodeRawTransactionEndpoint.php</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$hexRawTx</span> <span class="o">=</span> <span class="s2">"01000000011935b41d12936df99d322ac8972b74ecff7b79408bbccaf1b2eb8015228beac8000000006b483045022100921fc36b911094280f07d8504a80fbab9b823a25f102e2bc69b14bcd369dfc7902200d07067d47f040e724b556e5bc3061af132d5a47bd96e901429d53c41e0f8cca012102152e2bb5b273561ece7bbe8b1df51a4c44f5ab0bc940c105045e2cc77e618044ffffffff0240420f00000000001976a9145fb1af31edd2aa5a2bbaa24f6043d6ec31f7e63288ac20da3c00000000001976a914efec6de6c253e657a9d5506a78ee48d89762fb3188ac00000000"</span><span class="p">;</span>
-<span class="nv">$tx</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$hexRawTx</span><span class="p">);</span>
+<span class="nv">$tx</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">decode</span><span class="p">(</span><span class="nv">$hexRawTx</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"block_height"</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span>
@@ -8152,25 +8152,25 @@ curl <span class="nt">-d</span> <span class="s1">'{"tx":"01000000011935b41d12936
 <span class="c1">// php -f .\sample\transaction-api\CreateTxToFundMultisigAddrWithBuilderEndpoint.php</span>
 <span class="c1">// Builder classes are optional, see CreateTxToFundMultisigAddrEndpoint.php to see a sample using only base API classes.</span>
 
-<span class="nv">$input</span> <span class="o">=</span> <span class="nx">TXInputBuilder</span><span class="o">::</span><span class="na">aTXInput</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"n3D2YXwvpoPg8FhcWpzJiS3SvKKGD8AXZ4"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$input</span> <span class="o">=</span> <span class="nc">TXInputBuilder</span><span class="o">::</span><span class="nf">aTXInput</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"n3D2YXwvpoPg8FhcWpzJiS3SvKKGD8AXZ4"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$output</span> <span class="o">=</span> <span class="nx">TXOutputBuilder</span><span class="o">::</span><span class="na">aTXOutput</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">withScryptType</span><span class="p">(</span><span class="s2">"multisig-2-of-3"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">withValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03798be8162d7d6bc5c4e3b236100fcc0dfee899130f84c97d3a49faf83450fd81"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03dd9f1d4a39951013b4305bf61887ada66439ab84a9a2f8aca9dc736041f815f1"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03c8e6e99c1d0b42120d5cf40c963e5e8048fd2d2a184758784a041a9d101f1f02"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$output</span> <span class="o">=</span> <span class="nc">TXOutputBuilder</span><span class="o">::</span><span class="nf">aTXOutput</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">withScryptType</span><span class="p">(</span><span class="s2">"multisig-2-of-3"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">withValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03798be8162d7d6bc5c4e3b236100fcc0dfee899130f84c97d3a49faf83450fd81"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03dd9f1d4a39951013b4305bf61887ada66439ab84a9a2f8aca9dc736041f815f1"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03c8e6e99c1d0b42120d5cf40c963e5e8048fd2d2a184758784a041a9d101f1f02"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$tx</span> <span class="o">=</span> <span class="nx">TXBuilder</span><span class="o">::</span><span class="na">aTX</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">addTXInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addTXOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$tx</span> <span class="o">=</span> <span class="nc">TXBuilder</span><span class="o">::</span><span class="nf">aTX</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">addTXInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addTXOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
 </code></pre></div>
 <p>Multisignature transactions are made simple by the method described in the <a href="#creating-transactions">Creating Transactions</a> section, but they deserve special mention. In order to use them, you first need to fund a multisignature address. You use the <code>/txs/new</code> endpoint as before, but instead of the <strong>outputs</strong> <strong>addresses</strong> array containing public addresses, it instead contains the public keys associated with the new address. In addition, you must select a <strong>script_type</strong> of <em>mutlisig-n-of-m</em>, where <em>n</em> and <em>m</em> are numbers (e.g., <em>multisig-2-of-3</em>). The code example demonstrates how the partially filled <a href="#tx">TX request object</a> would appear.</p>
 
@@ -8228,25 +8228,25 @@ If you only need a <i>pay-to-script-hash</i> address corresponding to N-of-M mul
 <span class="c1">// php -f .\sample\transaction-api\CreateTxToSpendMultisigFundsWithBuilderEndpoint.php</span>
 <span class="c1">// Builder classes are optional, see CreateTxToSpendMultisigFunds.php to see a sample using only base API classes.</span>
 
-<span class="nv">$input</span> <span class="o">=</span> <span class="nx">TXInputBuilder</span><span class="o">::</span><span class="na">aTXInput</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03798be8162d7d6bc5c4e3b236100fcc0dfee899130f84c97d3a49faf83450fd81"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03dd9f1d4a39951013b4305bf61887ada66439ab84a9a2f8aca9dc736041f815f1"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"03c8e6e99c1d0b42120d5cf40c963e5e8048fd2d2a184758784a041a9d101f1f02"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">withScryptType</span><span class="p">(</span><span class="s2">"multisig-2-of-3"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$input</span> <span class="o">=</span> <span class="nc">TXInputBuilder</span><span class="o">::</span><span class="nf">aTXInput</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03798be8162d7d6bc5c4e3b236100fcc0dfee899130f84c97d3a49faf83450fd81"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03dd9f1d4a39951013b4305bf61887ada66439ab84a9a2f8aca9dc736041f815f1"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"03c8e6e99c1d0b42120d5cf40c963e5e8048fd2d2a184758784a041a9d101f1f02"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">withScryptType</span><span class="p">(</span><span class="s2">"multisig-2-of-3"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$output</span> <span class="o">=</span> <span class="nx">TXOutputBuilder</span><span class="o">::</span><span class="na">aTXOutput</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">addAddress</span><span class="p">(</span><span class="s2">"n3D2YXwvpoPg8FhcWpzJiS3SvKKGD8AXZ4"</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">withValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$output</span> <span class="o">=</span> <span class="nc">TXOutputBuilder</span><span class="o">::</span><span class="nf">aTXOutput</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">addAddress</span><span class="p">(</span><span class="s2">"n3D2YXwvpoPg8FhcWpzJiS3SvKKGD8AXZ4"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">withValue</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$tx</span> <span class="o">=</span> <span class="nx">TXBuilder</span><span class="o">::</span><span class="na">aTX</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">addTXInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">addTXOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">build</span><span class="p">();</span>
+<span class="nv">$tx</span> <span class="o">=</span> <span class="nc">TXBuilder</span><span class="o">::</span><span class="nf">aTX</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">addTXInput</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">addTXOutput</span><span class="p">(</span><span class="nv">$output</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">build</span><span class="p">();</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txSkeleton</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$tx</span><span class="p">);</span>
 </code></pre></div>
 <p>Once funded, you might want to programmatically spend the money in the address at some point. Here the process is similar, but with the inputs and outputs reversed. As you can see in the code sample, you need to provide the public keys within the <strong>inputs</strong> <strong>addresses</strong> array, and the corresponding <strong>script_type</strong> of <em>multisig-n-of-m</em> (e.g., <em>multisig-2-of-3</em>). Then you follow the same process of sending to <code>/txs/new</code> and getting an array of data to be signed.</p>
 
@@ -8305,8 +8305,8 @@ curl <span class="nt">-d</span> <span class="s1">'{"data":"I am the walrus", "en
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\transaction-api\DataEndpoint.php</span>
 
-<span class="nv">$nullDataClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NullDataClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$nullData</span> <span class="o">=</span> <span class="nv">$nullDataClient</span><span class="o">-&gt;</span><span class="na">embedString</span><span class="p">(</span><span class="s1">'***BlockCypher Data Endpoint Test***'</span><span class="p">);</span> <span class="c1">// max 40 bytes</span>
+<span class="nv">$nullDataClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NullDataClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$nullData</span> <span class="o">=</span> <span class="nv">$nullDataClient</span><span class="o">-&gt;</span><span class="nf">embedString</span><span class="p">(</span><span class="s1">'***BlockCypher Data Endpoint Test***'</span><span class="p">);</span> <span class="c1">// max 40 bytes</span>
 
 <span class="p">{</span>
   <span class="s2">"data"</span><span class="o">:</span> <span class="s2">"***BlockCypher Data Endpoint Test***"</span><span class="p">,</span>
@@ -8495,8 +8495,8 @@ While we stand by our work behind our confidence research, please note that thes
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\confidence-factor\TransactionConfidenceEndpoint.php</span>
 
-<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$txConfidence</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="na">getConfidence</span><span class="p">(</span><span class="s1">'43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9'</span><span class="p">);</span>
+<span class="nv">$txClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TXClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$txConfidence</span> <span class="o">=</span> <span class="nv">$txClient</span><span class="o">-&gt;</span><span class="nf">getConfidence</span><span class="p">(</span><span class="s1">'43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"age_millis"</span><span class="o">:</span><span class="mi">2188284017</span><span class="p">,</span>
@@ -9111,11 +9111,11 @@ By default, all forwards will be debited with a <b>mining fee</b> that depends o
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\payment-api\CreatePaymentEndpoint.php</span>
 
-<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
 <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'callback_url'</span> <span class="o">=&gt;</span> <span class="s1">'http://requestb.in/rwp6jirw?uniqid='</span> <span class="o">.</span> <span class="nb">uniqid</span><span class="p">()</span>
+    <span class="s1">'callback_url'</span> <span class="o">=&gt;</span> <span class="s1">'http://requestb.in/rwp6jirw?uniqid='</span> <span class="mf">.</span> <span class="nb">uniqid</span><span class="p">()</span>
 <span class="p">);</span>
-<span class="nv">$paymentForward</span> <span class="o">=</span> <span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="na">createForwardingAddress</span><span class="p">(</span><span class="s1">'15qx9ug952GWGTNn7Uiv6vode4RcGrRemh'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<span class="nv">$paymentForward</span> <span class="o">=</span> <span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="nf">createForwardingAddress</span><span class="p">(</span><span class="s1">'15qx9ug952GWGTNn7Uiv6vode4RcGrRemh'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 
 
 <span class="p">{</span>
@@ -9211,8 +9211,8 @@ If you decide to have a <b>callback_url</b>, you'll receive a payload at that ur
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\payment-api\ListPaymentsEndpoint.php</span>
 
-<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$paymentForwardArray</span> <span class="o">=</span> <span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="na">listForwardingAddresses</span><span class="p">();</span>
+<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$paymentForwardArray</span> <span class="o">=</span> <span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="nf">listForwardingAddresses</span><span class="p">();</span>
 
 <span class="p">[</span>
   <span class="p">{</span>
@@ -9293,10 +9293,10 @@ HTTP/1.1 204 No Content
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\payment-api\DeletePaymentEndpoint.php</span>
 
-<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="na">deleteForwardingAddress</span><span class="p">(</span><span class="s1">'1fdf8f9b-cc37-4955-882b-8cbcd670a433'</span><span class="p">);</span>
+<span class="nv">$paymentForwardClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PaymentForwardClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$paymentForwardClient</span><span class="o">-&gt;</span><span class="nf">deleteForwardingAddress</span><span class="p">(</span><span class="s1">'1fdf8f9b-cc37-4955-882b-8cbcd670a433'</span><span class="p">);</span>
 
-<span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="nx">No</span> <span class="nx">Content</span>
+<span class="no">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="nc">No</span> <span class="nc">Content</span>
 </code></pre></div>
 <p>When you&#39;re done with an address forwarding address, you can delete it via its id.</p>
 
@@ -9471,13 +9471,13 @@ Testing WebHooks can be tricky; we recommend using <a href="http://requestb.in/"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\hook-api\CreateWebHookEndpoint.php</span>
 
-<span class="nv">$webHook</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebHook</span><span class="p">();</span>
-<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s2">"http://requestb.in/rwp6jirw?uniqid="</span> <span class="o">.</span> <span class="nb">uniqid</span><span class="p">());</span>
-<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="na">setEvent</span><span class="p">(</span><span class="s1">'unconfirmed-tx'</span><span class="p">);</span>
-<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="na">setHash</span><span class="p">(</span><span class="s1">'2b17f5589528f97436b5d563635b4b27ca8980aa20c300abdc538f2a8bfa871b'</span><span class="p">);</span>
+<span class="nv">$webHook</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebHook</span><span class="p">();</span>
+<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s2">"http://requestb.in/rwp6jirw?uniqid="</span> <span class="mf">.</span> <span class="nb">uniqid</span><span class="p">());</span>
+<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="nf">setEvent</span><span class="p">(</span><span class="s1">'unconfirmed-tx'</span><span class="p">);</span>
+<span class="nv">$webHook</span><span class="o">-&gt;</span><span class="nf">setHash</span><span class="p">(</span><span class="s1">'2b17f5589528f97436b5d563635b4b27ca8980aa20c300abdc538f2a8bfa871b'</span><span class="p">);</span>
 
-<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$webHook</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$webHook</span><span class="p">);</span>
+<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$webHook</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">(</span><span class="nv">$webHook</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"url"</span><span class="o">:</span><span class="s2">"http://requestb.in/rwp6jirw?uniqid=5581998e19114"</span><span class="p">,</span>
@@ -9577,8 +9577,8 @@ Testing WebHooks can be tricky; we recommend using <a href="http://requestb.in/"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\hook-api\ListWebHooksEndpoint.php</span>
 
-<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$webHooks</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="na">getAll</span><span class="p">();</span>
+<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$webHooks</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="nf">getAll</span><span class="p">();</span>
 
 <span class="p">[</span>
   <span class="p">{</span>
@@ -9669,8 +9669,8 @@ Testing WebHooks can be tricky; we recommend using <a href="http://requestb.in/"
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\hook-api\WebHookIdEndpoint.php</span>
 
-<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$webHook</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'d5ca3bd3-5dfb-477d-9fb4-ac3510af258d'</span><span class="p">);</span>
+<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$webHook</span> <span class="o">=</span> <span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'d5ca3bd3-5dfb-477d-9fb4-ac3510af258d'</span><span class="p">);</span>
 
 <span class="p">{</span>
   <span class="s2">"id"</span><span class="o">:</span><span class="s2">"d5ca3bd3-5dfb-477d-9fb4-ac3510af258d"</span><span class="p">,</span>
@@ -9738,10 +9738,10 @@ HTTP/1.1 204 OK
 <span class="c1">// Run on console:</span>
 <span class="c1">// php -f .\sample\hook-api\DeleteWebHookEndpoint.php</span>
 
-<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">'d5ca3bd3-5dfb-477d-9fb4-ac3510af258d'</span><span class="p">);</span>
+<span class="nv">$webHookClient</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">BlockCypher\Client\WebHookClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
+<span class="nv">$webHookClient</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'d5ca3bd3-5dfb-477d-9fb4-ac3510af258d'</span><span class="p">);</span>
 
-<span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="nx">OK</span>
+<span class="no">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="no">OK</span>
 </code></pre></div>
 <p>This resource deletes an active <a href="#event">Event</a> based on its <em>id</em>. Remember to include your token, or the request will fail.</p>
 
