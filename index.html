@@ -607,6 +607,9 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#updates" class="toc-h1 toc-link" data-title="Updates">Updates</a>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://accounts.blockcypher.com/'>Sign Up/Login</a></li>
@@ -785,6 +788,7 @@ Unless noted otherwise, all samples assume this initializing code:
 <li><a href="#asset-api">Asset API:</a> Create and manage your own assets---embedded on a public blockchain---via the Open Assets standard.</li>
 <li><a href="#address-forwarding">Address Forwarding:</a> Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.</li>
 <li><a href="#events-and-hooks">Events and Hooks:</a> Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.</li>
+<li><a href="#updates">Updates:</a> List all the updates, bugfixes and new features in reverse chronological order.</li>
 </ul>
 <h3 id='in-browser-code-examples'>In-Browser Code Examples</h3>
 <p>We know many learn more from code examples than specific reference documentation, which is why we have code samples in our official languages. In addition, we have a number of in-browser code examples for particular use cases, which you can see here:</p>
@@ -9776,6 +9780,40 @@ HTTP/1.1 204 OK
 </ol>
 
 <p>Once the &quot;signkey&quot; attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-12">HTTP signatures</a> specification.</p>
+<h1 id='updates'>Updates</h1>
+<p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>04/02/21 - Creation of the &quot;Updates&quot; Section</strong></p>
+
+<p>We&#39;ve created this new &quot;Updates&quot; section to let you know about the new feature and bugfixes we deployed :).</p>
+
+<p><strong>03/02/21 - Additional DNS Seeds for Doge</strong></p>
+
+<p>Following last week Dogecoin chain lag due to unhealthy network conditions, we&#39;ve added new DNS seeds thanks to <a href="https://github.com/dogecoin/dogecoin/pull/1669">Denarius</a>.</p>
+
+<p><strong>02/02/21 - Additional Support for Litecoin <code>Maddrs</code></strong></p>
+
+<p>Following previous updates to enhance the support of &quot;Maddrs&quot; on Litecoin, we&#39;ve added several bugfixes:</p>
+
+<ul>
+<li>Correctly display &quot;Maddrs&quot; webhooks with standard wallet.</li>
+<li>Correctly display wallet webhooks with &quot;Maddrs&quot;.</li>
+<li>Fix an error where a webhook will not be delivered if created with a standard wallet and a &quot;Maddr&quot;. If you encounter this issue please recreate your wallet.</li>
+<li>In standard wallet, listing all addresses will correctly convert &quot;3addrs&quot; to &quot;Maddrs&quot;.</li>
+<li>In standard wallet, getting a wallet will always show &quot;Maddrs&quot;.</li>
+</ul>
+
+<p><strong>27/11/20 - New DASH DNS Seeds</strong></p>
+
+<p>We&#39;ve updated our DASH DNS seeds in order to provide a more reliable service.</p>
+
+<p><strong>23/11/20 - Payment Forward for Litecoin MAddrs</strong></p>
+
+<p>We&#39;ve added the ability to create payment forward to Litecoin address with the M prefix.</p>
+
+<p><strong>17/11/20 - <code>OP_RETURN</code> Simplification</strong></p>
+
+<p>We&#39;ve added the ability to create <code>OP_RETURN</code> output as easily as including <code>null-data</code> as script-type. See the <code>TXOutput</code> object for more details.</p>
 
       </div>
       <div class="dark-box">
