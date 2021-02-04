@@ -76,11 +76,12 @@ GEM
       sprockets (>= 3.0)
     middleman-syntax (3.0.0)
       middleman-core (>= 3.2)
-      rouge (~> 2.0)
-    mini_portile2 (2.4.0)
+      rouge (~> 3.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.2)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     padrino-helpers (0.13.3.4)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.3.4)
@@ -89,13 +90,14 @@ GEM
       activesupport (>= 3.1)
     parallel (1.19.2)
     public_suffix (4.0.6)
+    racc (1.5.2)
     rack (2.2.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     rexml (3.2.4)
-    rouge (3.24.0)
+    rouge (3.26.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -123,14 +125,14 @@ DEPENDENCIES
   middleman (~> 4.3)
   middleman-autoprefixer (~> 2.7)
   middleman-sprockets (~> 4.1)
-  middleman-syntax (~> 3.0)
-  nokogiri (~> 1.10.8)
+  middleman-syntax (~> 3.2)
+  nokogiri (~> 1.11.0)
   redcarpet (~> 3.5.0)
   rouge (~> 3.21)
   sass
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4
