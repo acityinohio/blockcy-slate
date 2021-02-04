@@ -254,8 +254,11 @@
 .highlight .kd {
   color: #cb4b16;
 }
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
   color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
 }
 .highlight .sr {
   color: #2aa198;
@@ -5206,7 +5209,7 @@ curl https://api.blockcypher.com/v1/btc/main/wallets/hd/bob?token<span class="o"
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="o">&gt;</span> <span class="n">block_cypher</span><span class="p">.</span><span class="nf">wallet_get</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"token"</span><span class="o">=&gt;</span><span class="s2">"YOURTOKEN"</span><span class="p">,</span> <span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"addresses"</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">"1JcX75oraJEmzXXHpDjRctw3BX6qDmFM8e"</span><span class="p">]}</span>
 
-<span class="sr">//</span><span class="err">TODO: hd wall</span><span class="sr">e</span><span class="n">t</span> <span class="n">example</span>
+<span class="sr">//</span><span class="no">TODO</span><span class="p">:</span> <span class="n">hd</span> <span class="n">wallet</span> <span class="n">example</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Regular wallet
 </span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">blockcypher</span> <span class="kn">import</span> <span class="n">get_wallet_addresses</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">get_wallet_addresses</span><span class="p">(</span><span class="n">wallet_name</span><span class="o">=</span><span class="s">'alice'</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s">'YOUR_TOKEN'</span><span class="p">)</span>
