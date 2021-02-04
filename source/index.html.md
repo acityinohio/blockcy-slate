@@ -25,6 +25,7 @@ includes:
   - asset
   - payfwd
   - events
+  - updates
 
 search: true
 
@@ -241,6 +242,7 @@ In these docs you'll find everything you need to leverage BlockCypher for your a
 - [Asset API:](#asset-api) Create and manage your own assets---embedded on a public blockchain---via the Open Assets standard.
 - [Address Forwarding:](#address-forwarding) Create one-time addresses that will automatically forward to an address of your choosing, while optionally adding processing fees.
 - [Events and Hooks:](#events-and-hooks) Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.
+- [Updates:](#updates) List all the updates, bugfixes and new features in reverse chronological order.
 
 ### In-Browser Code Examples
 
