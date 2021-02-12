@@ -189,6 +189,7 @@ curl https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d58
 "total": 70320221545,
 "fees": 0,
 "size": 636,
+"vsize": 636,
 "preference": "low",
 "relayed_by": "",
 "confirmed": "2014-03-29T01:29:19Z",
@@ -238,6 +239,7 @@ Attribute | Type | Description
 **total** | *integer* | The total number of satoshis exchanged in this transaction.
 **fees** | *integer* | The total number of fees---in satoshis---collected by miners in this transaction.
 **size** | *integer* | The size of the transaction in bytes.
+**vsize** | *integer* | The virtual size of the transaction in bytes.
 **preference** | *string* | The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
 **relayed_by** | *string* | Address of the peer that sent BlockCypher's servers this transaction.
 **received** | [*time*](https://tools.ietf.org/html/rfc3339) | Time this transaction was received by BlockCypher's servers.

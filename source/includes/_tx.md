@@ -29,6 +29,7 @@ curl https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d58
 "total": 70320221545,
 "fees": 0,
 "size": 636,
+"vsize": 636,
 "preference": "low",
 "relayed_by": "",
 "confirmed": "2014-03-29T01:29:19Z",
@@ -83,6 +84,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d
 > "total": 70320221545,
 > "fees": 0,
 > "size": 636,
+> "vsize": 636,
 > "preference": "low",
 > "relayed_by": "",
 > "confirmed": "2014-03-29T01:29:19Z",
@@ -135,6 +137,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d
  "total"=>70320221545,
  "fees"=>0,
  "size"=>636,
+ "vsize"=>636,
  "preference"=>"low",
  "relayed_by"=>"",
  "confirmed"=>"2014-03-29T01:29:19Z",
@@ -211,6 +214,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs/f854aebae95150b379cc1187d848d
     "received": "datetime.datetime(2014, 3, 29, 1, 29, 19, 0, tzinfo=tzutc())",
     "relayed_by": "",
     "size": 636,
+    "vsize": 636,
     "total": 70320221545,
     "ver": 1,
     "vin_sz": 4,
@@ -237,7 +241,7 @@ func main() {
 }
 
 //Result from `go run`:
-//{BlockHash:0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328 BlockHeight:293000 Hash:f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449 Addresses:[13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy 19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L 1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy 1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq 1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV] Total:{neg:false abs:[70320221545]} Fees:{neg:false abs:[]} Size:636 Preference:low RelayedBy: Received:2014-03-29 01:29:19 +0000 UTC Confirmed:2014-03-29 01:29:19 +0000 UTC Confirmations:355807 Confidence:1 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:4 VoutSize:1 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:583910b7bf90ab802e22e5c25a89b59862b20c8c1aeb24dfb94e7a508a70f121 OutputIndex:1 OutputValue:16450000 Addresses:[1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4830450220504b1ccfddf508422bdd8b0fcda2b1483e87aee1b486c0130bc29226bbce3b4e022100b5befcfcf0d3bf6ebf0ac2f93badb19e3042c7bed456c398e743b885e782466c012103b1feb40b99e8ff18469484a50e8b52cc478d5f4f773a341fbd920a4ceaedd4bf Age:292997 WalletName:} {PrevHash:f6966bb3d3ba0eb97fd11b223fb13c793c0b4a1b3deb575e8ae38d666c1d00d9 OutputIndex:36 OutputValue:10061545 Addresses:[19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:48304502210086de855e03008abcc49335c775973eab9ace2e16c3bfe6536218c1d029287fdb0220129ced657870af63f61cdd4b941996f9a243d1f306e774fc9c5f3dea0af8d581012103cbe40d1d790799a6494c07f844eaf05b4c6deab0b9dee2ee45c8decead12c5cd Age:292998 WalletName:} {PrevHash:9ea2f9695e6694309fb0d8b966afb4678a77a59f160822e33819fada9e0c8288 OutputIndex:1 OutputValue:70000000000 Addresses:[1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:48304502201f1eb5b79279258a91c00dee09dff5d6f6ece7c01639e66a6bdd579136ecddee022100d4a9ed93183bf338e51ba80bc1dd10ff03e9e159bd8ea59db3a5c10aa0ccd3400121022667ee37e180c1ad2fef6f16aa52ed27799f629364dfe51e144dd683317dbbd2 Age:292998 WalletName:} {PrevHash:279ccbbab8605390a85fe6f0e4fb04ec1946ee6033054b16fec72e1304742d5d OutputIndex:0 OutputValue:293710000 Addresses:[13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100baac0c25867855f62592872cfac522d59fddd590a6cc290c8ad3bbe6b1151b5802204f2713c565ce6b00e5ea00e955d35e3b0878af5474feda35ebbb73232122d5480121023ed3b44ad598e3834e561efed205c221b7bc2e577e752eeaa66e85e60d0381c9 Age:292998 WalletName:}] Outputs:[{SpentBy:35832d6c70b98b54e9a53ab2d51176eb19ad11bc4505d6bb1ea6c51a68cb92ee Value:{neg:false abs:[70320221545]} Addresses:[1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV] ScriptType:pay-to-pubkey-hash Script:76a914e6aad9d712c419ea8febf009a3f3bfdd8d222fac88ac DataHex: DataString:}]}
+//{BlockHash:0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328 BlockHeight:293000 Hash:f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449 Addresses:[13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy 19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L 1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy 1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq 1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV] Total:{neg:false abs:[70320221545]} Fees:{neg:false abs:[]} Size:636 VirtualSize:636 Preference:low RelayedBy: Received:2014-03-29 01:29:19 +0000 UTC Confirmed:2014-03-29 01:29:19 +0000 UTC Confirmations:355807 Confidence:1 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:4 VoutSize:1 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:583910b7bf90ab802e22e5c25a89b59862b20c8c1aeb24dfb94e7a508a70f121 OutputIndex:1 OutputValue:16450000 Addresses:[1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4830450220504b1ccfddf508422bdd8b0fcda2b1483e87aee1b486c0130bc29226bbce3b4e022100b5befcfcf0d3bf6ebf0ac2f93badb19e3042c7bed456c398e743b885e782466c012103b1feb40b99e8ff18469484a50e8b52cc478d5f4f773a341fbd920a4ceaedd4bf Age:292997 WalletName:} {PrevHash:f6966bb3d3ba0eb97fd11b223fb13c793c0b4a1b3deb575e8ae38d666c1d00d9 OutputIndex:36 OutputValue:10061545 Addresses:[19YtzZdcfs1V2ZCgyRWo8i2wLT8ND1Tu4L] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:48304502210086de855e03008abcc49335c775973eab9ace2e16c3bfe6536218c1d029287fdb0220129ced657870af63f61cdd4b941996f9a243d1f306e774fc9c5f3dea0af8d581012103cbe40d1d790799a6494c07f844eaf05b4c6deab0b9dee2ee45c8decead12c5cd Age:292998 WalletName:} {PrevHash:9ea2f9695e6694309fb0d8b966afb4678a77a59f160822e33819fada9e0c8288 OutputIndex:1 OutputValue:70000000000 Addresses:[1BNiazBzCxJacAKo2yL83Wq1VJ18AYzNHy] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:48304502201f1eb5b79279258a91c00dee09dff5d6f6ece7c01639e66a6bdd579136ecddee022100d4a9ed93183bf338e51ba80bc1dd10ff03e9e159bd8ea59db3a5c10aa0ccd3400121022667ee37e180c1ad2fef6f16aa52ed27799f629364dfe51e144dd683317dbbd2 Age:292998 WalletName:} {PrevHash:279ccbbab8605390a85fe6f0e4fb04ec1946ee6033054b16fec72e1304742d5d OutputIndex:0 OutputValue:293710000 Addresses:[13XXaBufpMvqRqLkyDty1AXqueZHVe6iyy] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100baac0c25867855f62592872cfac522d59fddd590a6cc290c8ad3bbe6b1151b5802204f2713c565ce6b00e5ea00e955d35e3b0878af5474feda35ebbb73232122d5480121023ed3b44ad598e3834e561efed205c221b7bc2e577e752eeaa66e85e60d0381c9 Age:292998 WalletName:}] Outputs:[{SpentBy:35832d6c70b98b54e9a53ab2d51176eb19ad11bc4505d6bb1ea6c51a68cb92ee Value:{neg:false abs:[70320221545]} Addresses:[1N2f642sbgCMbNtXFajz9XDACDFnFzdXzV] ScriptType:pay-to-pubkey-hash Script:76a914e6aad9d712c419ea8febf009a3f3bfdd8d222fac88ac DataHex: DataString:}]}
 ```
 
 ```php
@@ -262,6 +266,7 @@ $transaction = $txClient->get('f854aebae95150b379cc1187d848d58225f3c4157fe992bcd
 "total": 70320221545,
 "fees": 0,
 "size": 636,
+"vsize": 636,
 "preference": "low",
 "relayed_by": "",
 "confirmed": "2014-03-29T01:29:19Z",
@@ -347,6 +352,7 @@ curl https://api.blockcypher.com/v1/btc/main/txs
   "total": 46977000,
   "fees": 10000,
   "size": 225,
+  "vsize": 225,
   "preference": "medium",
   "relayed_by": "54.209.56.58:8333",
   ...
@@ -361,6 +367,7 @@ curl https://api.blockcypher.com/v1/btc/main/txs
   "total": 1070000,
   "fees": 10000,
   "size": 225,
+  "vsize": 225,  
   "preference": "medium",
   "relayed_by": "52.1.229.213:8333",
   "received": "2015-05-21T05:44:13.878Z",
@@ -384,6 +391,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs').then(function(d) {console.l
 >   "total": 46977000,
 >   "fees": 10000,
 >   "size": 225,
+>   "vsize": 225,
 >   "preference": "medium",
 >   "relayed_by": "54.209.56.58:8333",
 >   ...
@@ -398,6 +406,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs').then(function(d) {console.l
 >   "total": 1070000,
 >   "fees": 10000,
 >   "size": 225,
+>   "vsize": 225,
 >   "preference": "medium",
 >   "relayed_by": "52.1.229.213:8333",
 >   "received": "2015-05-21T05:44:13.878Z",
@@ -419,6 +428,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs').then(function(d) {console.l
   "total"=>11357528,
   "fees"=>10000,
   "size"=>699,
+  "vsize"=>699,
   "preference"=>"low",
   "relayed_by"=>"198.27.97.172:8333",
   "received"=>"2015-06-17T20:28:04.298Z",
@@ -477,6 +487,7 @@ $.get('https://api.blockcypher.com/v1/btc/main/txs').then(function(d) {console.l
         "received": "datetime.datetime(2015, 10, 21, 19, 6, 25, 725000, tzinfo=tzutc())",
         "relayed_by": "95.211.104.246:8333",
         "size": 5837,
+        "vsize": 5837,
         "total": 1117192,
         "ver": 1,
         "vin_sz": 39,
@@ -504,7 +515,7 @@ func main() {
 }
 
 //Result from `go run`:
-//[{BlockHash: BlockHeight:-1 Hash:1cdfbc1d0261beb2fb90e5d487cc5958ca5e558303538e43e099a5a49950a4e7 Addresses:[3JMz7MeHFPsZDDk5bi73skPEFj1U5D1Qtb 3HEhppcPZd63eF2NsznskYTSG2qDPERNN3 3AtUpLCxBYEr4KAbf1KrhnRtifswKrNjGt 3C4Awf7Krjd2SQvVNLcH35iki8fWcPU74E 3NJkrHZBtAUyRCBM5fzoEQXDrtQSymUzcU 361efkmBbGnB6EhqEQ3ydfrY3NAuzyPxJy 3HbvuXMFJbMxcmuiBTHLdoWYrKcYkNRbni 37t2bpQEjJbz5Qtj4p9hhyVhJkwCpZckVR 3L2xdqCFUCTdAY2SbkH9kAnidb5dCta6cT] Total:{neg:false abs:[13272144]} Fees:{neg:false abs:[20048]} Size:522 Preference:low RelayedBy:51.159.56.35:20008 Received:2020-09-17 21:15:07.209035123 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:2 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:7 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:945d4c531def721fe6a10dfeeec073217987eff1f0cc93ada280be546cb6bfa9 OutputIndex:14 OutputValue:445112 Addresses:[3HEhppcPZd63eF2NsznskYTSG2qDPERNN3] Sequence:4294967295 ScriptType:pay-to-script-hash Script:1600140cc50ea32e3887ae8af49363555dc0303e0c475f Age:648800 WalletName:} {PrevHash:386512a1766070684f15e408a6c35e5773a2c2149fe2db496ef531144df9fce5 OutputIndex:0 OutputValue:447796 Addresses:[3HbvuXMFJbMxcmuiBTHLdoWYrKcYkNRbni] Sequence:4294967295 ScriptType:pay-to-script-hash Script:16001469616b09680ed79ab2806203eead38f1b9540bdb Age:648801 WalletName:} {PrevHash:a50195f38583a38e5baba453a7fe93ac4e66bbf30073144baf1a7398f55ef97a OutputIndex:0 OutputValue:450000 Addresses:[37t2bpQEjJbz5Qtj4p9hhyVhJkwCpZckVR] Sequence:4294967295 ScriptType:pay-to-script-hash Script:16001451991c92d4f9a57887114857c30a91d8b4e30e67 Age:648796 WalletName:} {PrevHash:e3fd7fa009269f1684fa9ae37e836a499210e6cc05e9ee82fb8729fd85f0d497 OutputIndex:1 OutputValue:10603691 Addresses:[3AtUpLCxBYEr4KAbf1KrhnRtifswKrNjGt] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014e8eb291d158e1eaca3bd7739cdbc262638d983a5 Age:638194 WalletName:} {PrevHash:ce649fa0baff4d4f48d597e99575d1c60495346cc07051d98110fb14755a53f1 OutputIndex:1 OutputValue:445764 Addresses:[3L2xdqCFUCTdAY2SbkH9kAnidb5dCta6cT] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014ead1e6d8cac4516ec0b5371ce5f260a765e54978 Age:648798 WalletName:} {PrevHash:671bf165b807746432062ac261f94f6e5004eb7cdb58fe333aaf974a65b9a652 OutputIndex:2 OutputValue:449829 Addresses:[3NJkrHZBtAUyRCBM5fzoEQXDrtQSymUzcU] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014349e80eabeca8db9338e1d966df76cebfd5000ba Age:648793 WalletName:} {PrevHash:e50b8a52dfc22a0c9557a2b4f88eeb6e6b8a3489c1e697cba9ccfd10f3eaf9fd OutputIndex:0 OutputValue:450000 Addresses:[361efkmBbGnB6EhqEQ3ydfrY3NAuzyPxJy] Sequence:4294967295 ScriptType:pay-to-script-hash Script:1600145e95efc41142e30df37e2cf7511577afb7ad6137 Age:648799 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[12268612]} Addresses:[3C4Awf7Krjd2SQvVNLcH35iki8fWcPU74E] ScriptType:pay-to-script-hash Script:a91471b1859ab3202abaf9be149b5a14e6b2dd9d379987 DataHex: DataString:} {SpentBy: Value:{neg:false abs:[1003532]} Addresses:[3JMz7MeHFPsZDDk5bi73skPEFj1U5D1Qtb] ScriptType:pay-to-script-hash Script:a914b6e0b89ddb315d44c0b38eadabe537369e44230d87 DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:05d1a6bb4301fbb7afd888b011e06892f524744a4c0ef122f7fe1cea83083a1d Addresses:[1DEzbyPer6B2VtT7gFn5jKe1MFAwUnWF41 1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] Total:{neg:false abs:[3948638]} Fees:{neg:false abs:[1362]} Size:226 Preference:low RelayedBy:162.252.84.26:8333 Received:2020-09-17 21:15:07.618 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:802cb7d2a2c096a143d2c74515b871175466d46d17562e2bb95da3de3a988757 OutputIndex:1 OutputValue:3950000 Addresses:[1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100961d30d541897b609d4284c3d98cdacef9c884dc3767196ffca17d2173e728e1022070ffdd7ad49d8fb78482adc37b295cce91358b31876fe5f68cde82eb751176540121022bbb89a2225a3906b5a11286ee33fbe516e93782384468810b1497d38f0fac8f Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[91265]} Addresses:[1DEzbyPer6B2VtT7gFn5jKe1MFAwUnWF41] ScriptType:pay-to-pubkey-hash Script:76a9148647005ec8ddcbc22c63d4436a39822bca3a8d0288ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[3857373]} Addresses:[1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] ScriptType:pay-to-pubkey-hash Script:76a914927d8fd26fbac4aa54b325cfba95c0b98fa7e9bb88ac DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:7bb3c3ed3572f78aaf773792ceb34199791a2e334124f0b6f32a66b62547db63 Addresses:[1Cmc8Pj2gmYwZkVyBGdnVFMQ3iHg9nasRv 1KtaKKnWgNqVD3AkVWNhiX7pMDPvhguco3 1N1uvydMyQVR8k5jSUdru4rRSqfYKSw7dg] Total:{neg:false abs:[4607112]} Fees:{neg:false abs:[3762]} Size:340 Preference:low RelayedBy:162.252.84.26:8333 Received:2020-09-17 21:15:07.422 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:2 VoutSize:1 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:9b92f21a6bb911dfca56aa0b6ef4cc74611cc21195c5d3145d471410e91a02cf OutputIndex:0 OutputValue:10292 Addresses:[1KtaKKnWgNqVD3AkVWNhiX7pMDPvhguco3] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100910a2f20388a1cf86cf053a19b95d03887003310110b5e36fccbf4da221cbd220220512c6e86f572e0c9ecf024a71de22449c70b18b9c0dd39be156cf5c7aad8a39c012103f2f96148e0e5187440003f1883f958eb66582ba28a49ae4ce7409beb90ab6928 Age:648764 WalletName:} {PrevHash:9b92f21a6bb911dfca56aa0b6ef4cc74611cc21195c5d3145d471410e91a02cf OutputIndex:1 OutputValue:4600582 Addresses:[1Cmc8Pj2gmYwZkVyBGdnVFMQ3iHg9nasRv] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100be8edaa188b19dc92ad2ae9bb33d1a57e7adbdda25495b068d42049cdbdafd0e02201123ad42f21db68d71700f83651a66582a9168b247c64ef9d9d350156d004e16012102c2f81c194a0469091784dfbaaa8d5c6fcb78accac7621dd2acaada744625276a Age:648764 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[4607112]} Addresses:[1N1uvydMyQVR8k5jSUdru4rRSqfYKSw7dg] ScriptType:pay-to-pubkey-hash Script:76a914e686d36274d0a3d97675703eb4d912c48b4b86ee88ac DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:1f2befc56c12871b8a4cccdece5f4e675e93f1252ed79331683886be4369a5d3 Addresses:[1LCtCWHAGJyK49AZP57Doi1E6bLwTXkorF 1MxBr1aN3Pxn2cgBJToDThPSuNrkKufk2P 1UxrZDFKTiFEezRSPZAT3SsJSK2SPsQAZ 39XftCh58MeBg5qGj49vx4EafvS9AE4uTd] Total:{neg:false abs:[1800536]} Fees:{neg:false abs:[1480]} Size:370 Preference:low RelayedBy:207.180.242.103:8333 Received:2020-09-17 21:15:07.179 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:2 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:26db4e0f1492cc689d27fd29f190a38c3a08396e6a184be09ad8178fd18cf190 OutputIndex:0 OutputValue:1796889 Addresses:[1MxBr1aN3Pxn2cgBJToDThPSuNrkKufk2P] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220162b9fb69f26f2c294c96563ce7bd20d8b6765f3d082202a3e0e91079f05bdf1022037db040ce63faaea11b55747bac355dc520be0e5a75cb2c889d70aa1d54fcf78012102411558a3b5b11199858a86889b2053fdf270642284912a3df04ff550cf3fbf3b Age:648806 WalletName:} {PrevHash:ff508647759217c1f277a9fefdbf656ac1ac12c2ee86acc75ef9c6748a1d0550 OutputIndex:0 OutputValue:5127 Addresses:[1LCtCWHAGJyK49AZP57Doi1E6bLwTXkorF] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:473044022015e127bf2682a0fbda14f0ea39ecce12e9d65186dba4614affd161e8f474d7b7022013e95a85a65c90fd40e5321e146e1a536ecc9558b67fb788d0a4454fa7a31bc20121038b148a3f47297212d586600a5f73991fc01a7abd661c32329507e623e4aac11a Age:642926 WalletName:}]...}]
+//[{BlockHash: BlockHeight:-1 Hash:1cdfbc1d0261beb2fb90e5d487cc5958ca5e558303538e43e099a5a49950a4e7 Addresses:[3JMz7MeHFPsZDDk5bi73skPEFj1U5D1Qtb 3HEhppcPZd63eF2NsznskYTSG2qDPERNN3 3AtUpLCxBYEr4KAbf1KrhnRtifswKrNjGt 3C4Awf7Krjd2SQvVNLcH35iki8fWcPU74E 3NJkrHZBtAUyRCBM5fzoEQXDrtQSymUzcU 361efkmBbGnB6EhqEQ3ydfrY3NAuzyPxJy 3HbvuXMFJbMxcmuiBTHLdoWYrKcYkNRbni 37t2bpQEjJbz5Qtj4p9hhyVhJkwCpZckVR 3L2xdqCFUCTdAY2SbkH9kAnidb5dCta6cT] Total:{neg:false abs:[13272144]} Fees:{neg:false abs:[20048]} Size:522 VirtualSize:522 Preference:low RelayedBy:51.159.56.35:20008 Received:2020-09-17 21:15:07.209035123 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:2 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:7 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:945d4c531def721fe6a10dfeeec073217987eff1f0cc93ada280be546cb6bfa9 OutputIndex:14 OutputValue:445112 Addresses:[3HEhppcPZd63eF2NsznskYTSG2qDPERNN3] Sequence:4294967295 ScriptType:pay-to-script-hash Script:1600140cc50ea32e3887ae8af49363555dc0303e0c475f Age:648800 WalletName:} {PrevHash:386512a1766070684f15e408a6c35e5773a2c2149fe2db496ef531144df9fce5 OutputIndex:0 OutputValue:447796 Addresses:[3HbvuXMFJbMxcmuiBTHLdoWYrKcYkNRbni] Sequence:4294967295 ScriptType:pay-to-script-hash Script:16001469616b09680ed79ab2806203eead38f1b9540bdb Age:648801 WalletName:} {PrevHash:a50195f38583a38e5baba453a7fe93ac4e66bbf30073144baf1a7398f55ef97a OutputIndex:0 OutputValue:450000 Addresses:[37t2bpQEjJbz5Qtj4p9hhyVhJkwCpZckVR] Sequence:4294967295 ScriptType:pay-to-script-hash Script:16001451991c92d4f9a57887114857c30a91d8b4e30e67 Age:648796 WalletName:} {PrevHash:e3fd7fa009269f1684fa9ae37e836a499210e6cc05e9ee82fb8729fd85f0d497 OutputIndex:1 OutputValue:10603691 Addresses:[3AtUpLCxBYEr4KAbf1KrhnRtifswKrNjGt] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014e8eb291d158e1eaca3bd7739cdbc262638d983a5 Age:638194 WalletName:} {PrevHash:ce649fa0baff4d4f48d597e99575d1c60495346cc07051d98110fb14755a53f1 OutputIndex:1 OutputValue:445764 Addresses:[3L2xdqCFUCTdAY2SbkH9kAnidb5dCta6cT] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014ead1e6d8cac4516ec0b5371ce5f260a765e54978 Age:648798 WalletName:} {PrevHash:671bf165b807746432062ac261f94f6e5004eb7cdb58fe333aaf974a65b9a652 OutputIndex:2 OutputValue:449829 Addresses:[3NJkrHZBtAUyRCBM5fzoEQXDrtQSymUzcU] Sequence:4294967295 ScriptType:pay-to-script-hash Script:160014349e80eabeca8db9338e1d966df76cebfd5000ba Age:648793 WalletName:} {PrevHash:e50b8a52dfc22a0c9557a2b4f88eeb6e6b8a3489c1e697cba9ccfd10f3eaf9fd OutputIndex:0 OutputValue:450000 Addresses:[361efkmBbGnB6EhqEQ3ydfrY3NAuzyPxJy] Sequence:4294967295 ScriptType:pay-to-script-hash Script:1600145e95efc41142e30df37e2cf7511577afb7ad6137 Age:648799 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[12268612]} Addresses:[3C4Awf7Krjd2SQvVNLcH35iki8fWcPU74E] ScriptType:pay-to-script-hash Script:a91471b1859ab3202abaf9be149b5a14e6b2dd9d379987 DataHex: DataString:} {SpentBy: Value:{neg:false abs:[1003532]} Addresses:[3JMz7MeHFPsZDDk5bi73skPEFj1U5D1Qtb] ScriptType:pay-to-script-hash Script:a914b6e0b89ddb315d44c0b38eadabe537369e44230d87 DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:05d1a6bb4301fbb7afd888b011e06892f524744a4c0ef122f7fe1cea83083a1d Addresses:[1DEzbyPer6B2VtT7gFn5jKe1MFAwUnWF41 1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] Total:{neg:false abs:[3948638]} Fees:{neg:false abs:[1362]} Size:226 VirtualSize:226 Preference:low RelayedBy:162.252.84.26:8333 Received:2020-09-17 21:15:07.618 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:802cb7d2a2c096a143d2c74515b871175466d46d17562e2bb95da3de3a988757 OutputIndex:1 OutputValue:3950000 Addresses:[1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100961d30d541897b609d4284c3d98cdacef9c884dc3767196ffca17d2173e728e1022070ffdd7ad49d8fb78482adc37b295cce91358b31876fe5f68cde82eb751176540121022bbb89a2225a3906b5a11286ee33fbe516e93782384468810b1497d38f0fac8f Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[91265]} Addresses:[1DEzbyPer6B2VtT7gFn5jKe1MFAwUnWF41] ScriptType:pay-to-pubkey-hash Script:76a9148647005ec8ddcbc22c63d4436a39822bca3a8d0288ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[3857373]} Addresses:[1EMa5CGu48RVvR7LiNsWhTPk9YHj1LeG2n] ScriptType:pay-to-pubkey-hash Script:76a914927d8fd26fbac4aa54b325cfba95c0b98fa7e9bb88ac DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:7bb3c3ed3572f78aaf773792ceb34199791a2e334124f0b6f32a66b62547db63 Addresses:[1Cmc8Pj2gmYwZkVyBGdnVFMQ3iHg9nasRv 1KtaKKnWgNqVD3AkVWNhiX7pMDPvhguco3 1N1uvydMyQVR8k5jSUdru4rRSqfYKSw7dg] Total:{neg:false abs:[4607112]} Fees:{neg:false abs:[3762]} Size:340 VirtualSize:340 Preference:low RelayedBy:162.252.84.26:8333 Received:2020-09-17 21:15:07.422 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:2 VoutSize:1 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:9b92f21a6bb911dfca56aa0b6ef4cc74611cc21195c5d3145d471410e91a02cf OutputIndex:0 OutputValue:10292 Addresses:[1KtaKKnWgNqVD3AkVWNhiX7pMDPvhguco3] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100910a2f20388a1cf86cf053a19b95d03887003310110b5e36fccbf4da221cbd220220512c6e86f572e0c9ecf024a71de22449c70b18b9c0dd39be156cf5c7aad8a39c012103f2f96148e0e5187440003f1883f958eb66582ba28a49ae4ce7409beb90ab6928 Age:648764 WalletName:} {PrevHash:9b92f21a6bb911dfca56aa0b6ef4cc74611cc21195c5d3145d471410e91a02cf OutputIndex:1 OutputValue:4600582 Addresses:[1Cmc8Pj2gmYwZkVyBGdnVFMQ3iHg9nasRv] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100be8edaa188b19dc92ad2ae9bb33d1a57e7adbdda25495b068d42049cdbdafd0e02201123ad42f21db68d71700f83651a66582a9168b247c64ef9d9d350156d004e16012102c2f81c194a0469091784dfbaaa8d5c6fcb78accac7621dd2acaada744625276a Age:648764 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[4607112]} Addresses:[1N1uvydMyQVR8k5jSUdru4rRSqfYKSw7dg] ScriptType:pay-to-pubkey-hash Script:76a914e686d36274d0a3d97675703eb4d912c48b4b86ee88ac DataHex: DataString:}]} {BlockHash: BlockHeight:-1 Hash:1f2befc56c12871b8a4cccdece5f4e675e93f1252ed79331683886be4369a5d3 Addresses:[1LCtCWHAGJyK49AZP57Doi1E6bLwTXkorF 1MxBr1aN3Pxn2cgBJToDThPSuNrkKufk2P 1UxrZDFKTiFEezRSPZAT3SsJSK2SPsQAZ 39XftCh58MeBg5qGj49vx4EafvS9AE4uTd] Total:{neg:false abs:[1800536]} Fees:{neg:false abs:[1480]} Size:370 VirtualSize:370 Preference:low RelayedBy:207.180.242.103:8333 Received:2020-09-17 21:15:07.179 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:2 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:26db4e0f1492cc689d27fd29f190a38c3a08396e6a184be09ad8178fd18cf190 OutputIndex:0 OutputValue:1796889 Addresses:[1MxBr1aN3Pxn2cgBJToDThPSuNrkKufk2P] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220162b9fb69f26f2c294c96563ce7bd20d8b6765f3d082202a3e0e91079f05bdf1022037db040ce63faaea11b55747bac355dc520be0e5a75cb2c889d70aa1d54fcf78012102411558a3b5b11199858a86889b2053fdf270642284912a3df04ff550cf3fbf3b Age:648806 WalletName:} {PrevHash:ff508647759217c1f277a9fefdbf656ac1ac12c2ee86acc75ef9c6748a1d0550 OutputIndex:0 OutputValue:5127 Addresses:[1LCtCWHAGJyK49AZP57Doi1E6bLwTXkorF] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:473044022015e127bf2682a0fbda14f0ea39ecce12e9d65186dba4614affd161e8f474d7b7022013e95a85a65c90fd40e5321e146e1a536ecc9558b67fb788d0a4454fa7a31bc20121038b148a3f47297212d586600a5f73991fc01a7abd661c32329507e623e4aac11a Age:642926 WalletName:}]...}]
 ```
 
 ```php
@@ -549,6 +560,7 @@ $txs = $txClient->getUnconfirmed(array(), $apiContext);
    ]
   'lock_time': 0,
   'size': 521,
+  'vsize': 521,
   'confirmations': 0},
  ...
 ]
@@ -596,6 +608,7 @@ curl -d '{"inputs":[{"addresses": ["CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9"]}],"outp
   "total": 4988000,
   "fees": 12000,
   "size": 119,
+  "vsize": 119,
   "preference": "high",
   ...,
   "confirmations": 0,
@@ -646,6 +659,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/new', JSON.stringify(newtx))
 >     "total": 4988000,
 >     "fees": 12000,
 >     "size": 119,
+>     "vsize": 119,
 >     "preference": "high",
 >     "relayed_by": "208.71.159.84",
 >     "received": "2015-05-21T19:04:14.492743867Z",
@@ -707,6 +721,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/new', JSON.stringify(newtx))
    "total"=>3856000,
    "fees"=>12000,
    "size"=>119,
+   "vsize"=>119,
    "preference"=>"high",
    "relayed_by"=>"199.83.221.11",
    "received"=>"2015-06-17T20:41:22.818882286Z",
@@ -800,6 +815,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/new', JSON.stringify(newtx))
         "received": "2015-10-21T19:11:35.774722671Z",
         "relayed_by": "207.38.134.25, 127.0.0.1",
         "size": 775,
+        "vsize": 775,
         "total": 3773210,
         "ver": 1,
         "vin_sz": 17,
@@ -846,7 +862,7 @@ func main() {
 }
 
 //Result from `go run`:
-//{Trans:{BlockHash: BlockHeight:-1 Hash:fbf755272feac2e82e86c8bd46edcf427d88667737d27557ac0ff51a347b14bc Addresses:[BuDPcfmGXfhkkVkJpNjeofiyEedHnUyJqs BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] Total:{neg:false abs:[272700]} Fees:{neg:false abs:[27300]} Size:225 Preference:high RelayedBy:147.253.37.187 Received:2020-09-17 21:16:42.749132419 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:38776ceecb3b5541e5d4863124a72dc20dc913156075b8c7f09e1435cfaded84 OutputIndex:0 OutputValue:300000 Addresses:[BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:47304402200d144dad3ca80337d33d4ab4622c2e74e97be366c3f8f752d7835dedc7a5b39902202b2ddb1b46cc82040e0821f7f6e446c8a186c77a726dfc73509ed1727deb787e0121020c78f0b849ba80d7ad91e0fac7943965380582e751376721f7180c13163ba711 Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[BuDPcfmGXfhkkVkJpNjeofiyEedHnUyJqs] ScriptType:pay-to-pubkey-hash Script:76a91416e75d6b264c4643a76bb21ead74d3a7aefce49288ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[72700]} Addresses:[BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] ScriptType:pay-to-pubkey-hash Script:76a91404ceb3e125b65c12c6bb13e20137e8d0bcefb35288ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
+//{Trans:{BlockHash: BlockHeight:-1 Hash:fbf755272feac2e82e86c8bd46edcf427d88667737d27557ac0ff51a347b14bc Addresses:[BuDPcfmGXfhkkVkJpNjeofiyEedHnUyJqs BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] Total:{neg:false abs:[272700]} Fees:{neg:false abs:[27300]} Size:225 VirtualSize:225 Preference:high RelayedBy:147.253.37.187 Received:2020-09-17 21:16:42.749132419 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:38776ceecb3b5541e5d4863124a72dc20dc913156075b8c7f09e1435cfaded84 OutputIndex:0 OutputValue:300000 Addresses:[BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:47304402200d144dad3ca80337d33d4ab4622c2e74e97be366c3f8f752d7835dedc7a5b39902202b2ddb1b46cc82040e0821f7f6e446c8a186c77a726dfc73509ed1727deb787e0121020c78f0b849ba80d7ad91e0fac7943965380582e751376721f7180c13163ba711 Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[BuDPcfmGXfhkkVkJpNjeofiyEedHnUyJqs] ScriptType:pay-to-pubkey-hash Script:76a91416e75d6b264c4643a76bb21ead74d3a7aefce49288ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[72700]} Addresses:[BsZhuenEzwAVWJC5KVKj4M4cbuownuwDsN] ScriptType:pay-to-pubkey-hash Script:76a91404ceb3e125b65c12c6bb13e20137e8d0bcefb35288ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
 ```
 
 ```php
@@ -882,6 +898,7 @@ $txSkeleton = $txClient->create($tx);
     "total":5420100,
     "fees":12000,
     "size":119,
+    "vsize":119,
     "preference":"high",
     "relayed_by":"88.7.90.149",
     "received":"2015-06-17T10:23:02.475392139Z",
@@ -1054,6 +1071,7 @@ curl -d '{"tx": {...}, "tosign": [ "32b5ea64c253b6b466366647458cfd60de9cd29d7dc5
   "total": 4988000,
   "fees": 12000,
   "size": 226,
+  "vsize": 226,
   "preference": "high",
   ...,
   "confirmations": 0,
@@ -1117,6 +1135,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/send', JSON.stringify(sendtx
 >     "total": 4988000,
 >     "fees": 12000,
 >     "size": 226,
+>     "vsize": 226,
 >     "preference": "high",
 >     "relayed_by": "73.162.198.68",
 >     "received": "2015-05-22T04:38:57.470017042Z",
@@ -1174,6 +1193,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/send', JSON.stringify(sendtx
    "total"=>3856000,
    "fees"=>12000,
    "size"=>226,
+   "vsize"=>226,
    "preference"=>"high",
    "relayed_by"=>"199.83.221.11",
    "received"=>"2015-06-17T20:47:36.092834184Z",
@@ -1243,7 +1263,7 @@ func main() {
 }
 
 //Result from `go run`:
-//{Trans:{BlockHash: BlockHeight:-1 Hash:f1bcbb63da39d00f10ba369c4a8537d11aff22184371399f391d5476644ca08a Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D C2MUyA8UcdLDKihSBS6uQGs15Fq8FsVvNj] Total:{neg:false abs:[272700]} Fees:{neg:false abs:[27300]} Size:226 Preference:high RelayedBy:147.253.37.187 Received:2020-09-17 21:17:32.844203434 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:694b9d7f7f4ce1d713335378d20af4f5674a01522c45735547fbb08d420bd0e8 OutputIndex:0 OutputValue:300000 Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100b8af200fac11459601e4bffcd63705cd64df66073114d0a9d8170999595047cb0220119ee69fa3b4e14a52fdf48c1c4cca5df67d4c38d19881f7593b7874724363aa01210333a77a74fac42bebe99e08b1ff5cc9ede404259cecbcddbce50c376c3a28943b Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[C2MUyA8UcdLDKihSBS6uQGs15Fq8FsVvNj] ScriptType:pay-to-pubkey-hash Script:76a91465380ab1a5132b4776f756c643a4a711ce33ef4188ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[72700]} Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D] ScriptType:pay-to-pubkey-hash Script:76a9146d37028fee0a1c96cb9dc4a5d6ad25ea3ab7740088ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
+//{Trans:{BlockHash: BlockHeight:-1 Hash:f1bcbb63da39d00f10ba369c4a8537d11aff22184371399f391d5476644ca08a Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D C2MUyA8UcdLDKihSBS6uQGs15Fq8FsVvNj] Total:{neg:false abs:[272700]} Fees:{neg:false abs:[27300]} Size:226 VirtualSize:226 Preference:high RelayedBy:147.253.37.187 Received:2020-09-17 21:17:32.844203434 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:694b9d7f7f4ce1d713335378d20af4f5674a01522c45735547fbb08d420bd0e8 OutputIndex:0 OutputValue:300000 Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:483045022100b8af200fac11459601e4bffcd63705cd64df66073114d0a9d8170999595047cb0220119ee69fa3b4e14a52fdf48c1c4cca5df67d4c38d19881f7593b7874724363aa01210333a77a74fac42bebe99e08b1ff5cc9ede404259cecbcddbce50c376c3a28943b Age:0 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[C2MUyA8UcdLDKihSBS6uQGs15Fq8FsVvNj] ScriptType:pay-to-pubkey-hash Script:76a91465380ab1a5132b4776f756c643a4a711ce33ef4188ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[72700]} Addresses:[C35m91DjyASyJd9HJrYpGUyWDsgg2xYf4D] ScriptType:pay-to-pubkey-hash Script:76a9146d37028fee0a1c96cb9dc4a5d6ad25ea3ab7740088ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
 ```
 
 ```python
@@ -1294,6 +1314,7 @@ func main() {
         "received": datetime.datetime(2015, 10, 21, 19, 11, 35, 774722, tzinfo=tzutc()),
         "relayed_by": "207.38.134.25, 127.0.0.1",
         "size": 192,
+        "vsize": 192,
         "total": 10000,
         "ver": 1,
         "vin_sz": 1,
@@ -1319,6 +1340,7 @@ $txSkeleton = $txClient->send($txSkeleton);
     "total":5420100,
     "fees":12000,
     "size":119,
+    "vsize":119,
     "preference":"high",
     "relayed_by":"88.7.90.149",
     "received":"2015-06-17T10:23:02.475392139Z",
@@ -1453,6 +1475,7 @@ curl -d '{"tx":"01000000011935b41d12936df99d322ac8972b74ecff7b79408bbccaf1b2eb80
   "total": 4988000,
   "fees": 12000,
   "size": 226,
+  "vsize": 226,
   "preference": "high",
   "relayed_by": "73.162.198.68",
   "received": "2015-05-22T05:10:00.305308666Z",
@@ -1513,6 +1536,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/push', JSON.stringify(pushtx
 >   "total": 4988000,
 >   "fees": 12000,
 >   "size": 226,
+>   "vsize": 226,
 >   "preference": "high",
 >   "relayed_by": "73.162.198.68",
 >   "received": "2015-05-22T05:10:00.305308666Z",
@@ -1565,6 +1589,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/push', JSON.stringify(pushtx
  "total"=>4988000,
  "fees"=>12000,
  "size"=>226,
+ "vsize"=>226,
  "preference"=>"high",
  "relayed_by"=>"199.83.221.11",
  "received"=>"2015-06-17T21:01:54.319930181Z",
@@ -1646,6 +1671,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/push', JSON.stringify(pushtx
     "received": "2015-05-22T05:10:00.305308666Z",
     "relayed_by": "73.162.198.68",
     "size": 226,
+    "vsize": 226,
     "total": 4988000,
     "ver": 1,
     "vin_sz": 1,
@@ -1673,7 +1699,7 @@ func main() {
 }
 
 //Result from `go run`:
-// {Trans:{BlockHash: BlockHeight:-1 Hash:55d6ef290774f5428b66a0a27e46a8c37032c33bc15abce4791d56a2f8adb773 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] Total:287500 Fees:12500 Size:225 Preference:high RelayedBy:52.27.84.91, 127.0.0.1 Received:2015-10-16 23:38:09.536632402 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:50c4738cb29901dc1ae3ed2692a57751653a31192176019d85d3f3922969dd1f OutputIndex:0 OutputValue:300000 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220298915c785165233e2f19192bbbb9b8c3fed6d064279cb8968af6698c783b875022037287134f9f0aaf84429ba9bb50f1efcb4cedcfbd34407c285134e068234432c012102b17f04f5fa1bd44315ef33f8759822a302a2ba7fa28c56a50fac0441a341b96a Age:0 WalletName:}] Outputs:[{SpentBy: Value:200000 Addresses:[ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] ScriptType:pay-to-pubkey-hash Script:76a91446c7681dcacaee1ea3f57eced37755d1d09e070188ac DataHex: DataString:} {SpentBy: Value:87500 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] ScriptType:pay-to-pubkey-hash Script:76a91490d969679032cc1af6a69b4161778f12e90cb13588ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
+// {Trans:{BlockHash: BlockHeight:-1 Hash:55d6ef290774f5428b66a0a27e46a8c37032c33bc15abce4791d56a2f8adb773 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] Total:287500 Fees:12500 Size:225 VirtualSize:225 Preference:high RelayedBy:52.27.84.91, 127.0.0.1 Received:2015-10-16 23:38:09.536632402 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:50c4738cb29901dc1ae3ed2692a57751653a31192176019d85d3f3922969dd1f OutputIndex:0 OutputValue:300000 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220298915c785165233e2f19192bbbb9b8c3fed6d064279cb8968af6698c783b875022037287134f9f0aaf84429ba9bb50f1efcb4cedcfbd34407c285134e068234432c012102b17f04f5fa1bd44315ef33f8759822a302a2ba7fa28c56a50fac0441a341b96a Age:0 WalletName:}] Outputs:[{SpentBy: Value:200000 Addresses:[ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] ScriptType:pay-to-pubkey-hash Script:76a91446c7681dcacaee1ea3f57eced37755d1d09e070188ac DataHex: DataString:} {SpentBy: Value:87500 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] ScriptType:pay-to-pubkey-hash Script:76a91490d969679032cc1af6a69b4161778f12e90cb13588ac DataHex: DataString:}]} ToSign:[] Signatures:[] PubKeys:[] ToSignTX:[] Errors:[]}
 ```
 
 ```php
@@ -1695,6 +1721,7 @@ $tx = $txClient->push($hexRawTx);
   "total": 4988000,
   "fees": 12000,
   "size": 226,
+  "vsize": 226,
   "preference": "high",
   "relayed_by": "73.162.198.68",
   "received": "2015-05-22T05:10:00.305308666Z",
@@ -1767,6 +1794,7 @@ curl -d '{"tx":"01000000011935b41d12936df99d322ac8972b74ecff7b79408bbccaf1b2eb80
   "total": 4988000,
   "fees": 12000,
   "size": 226,
+  "vsize": 226,
   "preference": "high",
   "relayed_by": "73.162.198.68",
   "received": "2015-05-22T05:10:00.305308666Z",
@@ -1827,6 +1855,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/decode', JSON.stringify(deco
 >   "total": 4988000,
 >   "fees": 12000,
 >   "size": 226,
+>   "vsize": 226,
 >   "preference": "high",
 >   "relayed_by": "73.162.198.68",
 >   "received": "2015-05-22T05:10:00.305308666Z",
@@ -1879,6 +1908,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/decode', JSON.stringify(deco
  "total"=>4988000,
  "fees"=>12000,
  "size"=>226,
+ "vsize"=>226,
  "preference"=>"high",
  "relayed_by"=>"199.83.221.11",
  "received"=>"2015-06-17T21:01:54.319930181Z",
@@ -1962,6 +1992,7 @@ $.post('https://api.blockcypher.com/v1/bcy/test/txs/decode', JSON.stringify(deco
     "received": "2015-06-10T23:37:05.211843254Z",
     "relayed_by": "207.38.134.25",
     "size": 226,
+    "vsize": 226,
     "total": 4988000,
     "ver": 1,
     "vin_sz": 1,
@@ -1989,7 +2020,7 @@ func main() {
 }
 
 //Result from `go run`:
-//{BlockHash: BlockHeight:-1 Hash:55d6ef290774f5428b66a0a27e46a8c37032c33bc15abce4791d56a2f8adb773 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] Total:{neg:false abs:[287500]} Fees:{neg:false abs:[12500]} Size:225 Preference:low RelayedBy:147.253.37.187 Received:2020-09-18 18:55:32.88345921 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:50c4738cb29901dc1ae3ed2692a57751653a31192176019d85d3f3922969dd1f OutputIndex:0 OutputValue:300000 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220298915c785165233e2f19192bbbb9b8c3fed6d064279cb8968af6698c783b875022037287134f9f0aaf84429ba9bb50f1efcb4cedcfbd34407c285134e068234432c012102b17f04f5fa1bd44315ef33f8759822a302a2ba7fa28c56a50fac0441a341b96a Age:495036 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] ScriptType:pay-to-pubkey-hash Script:76a91446c7681dcacaee1ea3f57eced37755d1d09e070188ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[87500]} Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] ScriptType:pay-to-pubkey-hash Script:76a91490d969679032cc1af6a69b4161778f12e90cb13588ac DataHex: DataString:}]}
+//{BlockHash: BlockHeight:-1 Hash:55d6ef290774f5428b66a0a27e46a8c37032c33bc15abce4791d56a2f8adb773 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] Total:{neg:false abs:[287500]} Fees:{neg:false abs:[12500]} Size:225 VirtualSize:225 Preference:low RelayedBy:147.253.37.187 Received:2020-09-18 18:55:32.88345921 +0000 UTC Confirmed:0001-01-01 00:00:00 +0000 UTC Confirmations:0 Confidence:0 Ver:1 LockTime:0 DoubleSpend:false DoubleOf: ReceiveCount:0 VinSize:1 VoutSize:2 Hex: DataProtocol: ChangeAddress: NextInputs: NextOutputs: Inputs:[{PrevHash:50c4738cb29901dc1ae3ed2692a57751653a31192176019d85d3f3922969dd1f OutputIndex:0 OutputValue:300000 Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] Sequence:4294967295 ScriptType:pay-to-pubkey-hash Script:4730440220298915c785165233e2f19192bbbb9b8c3fed6d064279cb8968af6698c783b875022037287134f9f0aaf84429ba9bb50f1efcb4cedcfbd34407c285134e068234432c012102b17f04f5fa1bd44315ef33f8759822a302a2ba7fa28c56a50fac0441a341b96a Age:495036 WalletName:}] Outputs:[{SpentBy: Value:{neg:false abs:[200000]} Addresses:[ByaXmP5k14WRBFLXArfCcqcpAHrUQRy3vL] ScriptType:pay-to-pubkey-hash Script:76a91446c7681dcacaee1ea3f57eced37755d1d09e070188ac DataHex: DataString:} {SpentBy: Value:{neg:false abs:[87500]} Addresses:[C6LBLb668ZTS4okXhjtzapFWAdnFjH7A4i] ScriptType:pay-to-pubkey-hash Script:76a91490d969679032cc1af6a69b4161778f12e90cb13588ac DataHex: DataString:}]}
 ```
 
 ```php
@@ -2011,6 +2042,7 @@ $tx = $txClient->decode($hexRawTx);
   "total":4988000,
   "fees":0,
   "size":226,
+  "vsize":226,
   "preference":"low",
   "relayed_by":"",
   "received":"0001-01-01T00:00:00Z",
