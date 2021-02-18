@@ -2,10 +2,13 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**18/02/21 - Virtual Size for Blocks**
+
+Virtual size (`vsize`) for blocks.
 
 **12/02/21 - Virtual Size for Segwit Transaction**
 
-We've added the virtual size (`vsize`) for segwit transaction. For regular (non-segwit)  transaction the `vsize` is the same as the `size`.
+We've added the virtual size (`vsize`) for segwit transaction. For regular (non-segwit) transaction the `vsize` is the same as the `size`.
 This is how you can see how much fees you are saving by using segwit. Enjoy!
 
 **04/02/21 - Creation of the "Updates" Section**
