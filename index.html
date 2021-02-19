@@ -810,7 +810,6 @@ Unless noted otherwise, all samples assume this initializing code:
 <li><strong>Ruby</strong> <a href="https://github.com/blockcypher/ruby-client">https://github.com/blockcypher/ruby-client</a></li>
 <li><strong>Python</strong> <a href="https://github.com/blockcypher/blockcypher-python">https://github.com/blockcypher/blockcypher-python</a></li>
 <li><strong>Go</strong> <a href="https://github.com/blockcypher/gobcy">https://github.com/blockcypher/gobcy</a></li>
-<li><strong>Node.js</strong> <a href="https://github.com/blockcypher/node-client">https://github.com/blockcypher/node-client</a></li>
 </ul>
 
 <p>If you&#39;re using these languages, we strongly encourage you to use an official SDK. Of course, all our API calls are standard HTTP endpoints using JSON formatted responses, so any language (or cURL from the command-line) will work just fine.</p>
@@ -818,6 +817,7 @@ Unless noted otherwise, all samples assume this initializing code:
 <p>Due to the lack of usage, the following SDKs have been deprecated and as such will not be updated:</p>
 
 <ul>
+<li><strong>Node.js</strong> <a href="https://github.com/blockcypher/node-client">https://github.com/blockcypher/node-client</a></li>
 <li><strong>Java</strong> <a href="https://github.com/blockcypher/java-client">https://github.com/blockcypher/java-client</a></li>
 <li><strong>PHP</strong> <a href="https://github.com/blockcypher/php-client">https://github.com/blockcypher/php-client</a></li>
 </ul>
@@ -9935,6 +9935,10 @@ HTTP/1.1 204 OK
 <p>Once the &quot;signkey&quot; attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-12">HTTP signatures</a> specification.</p>
 <h1 id='updates'>Updates</h1>
 <p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>19/02/21 - Node-Client Archived</strong></p>
+
+<p>BlockCypher Node.js <a href="https://github.com/blockcypher/node-client">SDK</a> is now archived. We recommend that javascript users use HTTP libraries such as Axios. The <a href="https://documenter.getpostman.com/view/12131330/TVCZYVRa#e2ffad48-d580-4442-8e77-2613dc16a525">POSTMAN documentation</a> contains all the examples that you need.</p>
 
 <p><strong>18/02/21 - Virtual Size for Blocks</strong></p>
 
