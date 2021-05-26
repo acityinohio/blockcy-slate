@@ -969,7 +969,7 @@ If you want to automatically empty your input address(es) without knowing their 
 </aside>
 
 <aside class="notice">
-There are many manually configurable options available via your <a href="#tx">TX</a> request object. You can read about them in more detail in the <a href="#customizing-transaction-requests">Customizing Transaction Requests</a> section below.
+If you are using a bech32 address (starting with <code>bc1</code>) be sure to add <code>01</code> (<code>SIGHASH_ALL</code>) at the end of the signature. 
 </aside>
 
 ```shell
@@ -1050,6 +1050,10 @@ $txSkeleton = $txClient->sign($txSkeleton, $privateKeys);
 With your [TXSkeleton](#txskeleton) returned from the New Transaction Endpoint, you now need to use your private key(s) to sign the data provided in the **tosign** array.
 
 Digital signing can be a difficult process, and is where the majority of issues arise when dealing with cryptocurrency transactions. We are working on integrating client-side signing solutions into our libraries to make this process easier. You can read more about [signing here.](https://bitcoin.org/en/developer-guide#term-signature) In the mean time, if you want to experiment with client-side signing, consider using our [signer tool](https://github.com/blockcypher/btcutils/tree/master/signer).
+
+<aside class="notice">
+One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
+</aside>
 
 <aside class="notice">
 One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
