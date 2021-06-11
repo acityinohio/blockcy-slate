@@ -378,9 +378,6 @@
                     <a href="#witnesstosigntx" class="toc-h2 toc-link" data-title="WitnessToSignTx">WitnessToSignTx</a>
                   </li>
                   <li>
-                    <a href="#nulldata" class="toc-h2 toc-link" data-title="NullData">NullData</a>
-                  </li>
-                  <li>
                     <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
                   </li>
                   <li>
@@ -516,9 +513,6 @@
                   </li>
                   <li>
                     <a href="#multisig-transactions" class="toc-h2 toc-link" data-title="Multisig Transactions">Multisig Transactions</a>
-                  </li>
-                  <li>
-                    <a href="#data-endpoint" class="toc-h2 toc-link" data-title="Data Endpoint">Data Endpoint</a>
                   </li>
                   <li>
                     <a href="#transaction-propagation-endpoint" class="toc-h2 toc-link" data-title="Transaction Propagation Endpoint">Transaction Propagation Endpoint</a>
@@ -2468,45 +2462,6 @@ curl <span class="nt">-d</span> <span class="s1">'{"inputs":[{"addresses": ["CEz
 <td><strong>sighash_type</strong></td>
 <td><em>integer</em></td>
 <td>sighash type of the signature.</td>
-</tr>
-</tbody></table>
-<h2 id='nulldata'>NullData</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"data":"I am the walrus", "encoding":"string"}'</span> https://api.blockcypher.com/v1/btc/main/txs/data?token<span class="o">=</span>YOURTOKEN
-
-<span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="s2">"I am the walrus"</span>,
-  <span class="s2">"encoding"</span>: <span class="s2">"string"</span>,
-  <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>,
-  <span class="s2">"hash"</span>: <span class="s2">"cb6974e0fd57c91b70403e85ef48c840eecdca4804dfc4897b1321d5328e4f18"</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>A NullData Object is used exclusively by our <a href="#data-endpoint">Data Endpoint</a> to embed small pieces of data on the blockchain. If your data is over 40 bytes, it cannot be embedded into the blockchain and will return an error</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>data</strong></td>
-<td><em>string</em></td>
-<td>The string representing the data to embed, can be either hex-encoded or plaintext.</td>
-</tr>
-<tr>
-<td><strong>token</strong></td>
-<td><em>string</em></td>
-<td><strong><em>Optional</em></strong> Your BlockCypher API token, can either be included here or as a URL Parameter in your request.</td>
-</tr>
-<tr>
-<td><strong>encoding</strong></td>
-<td><em>string</em></td>
-<td><strong><em>Optional</em></strong> The encoding of your data, can be either <em>string</em> (for plaintext) or <em>hex</em> (for hex-encoded). If not set, defaults to hex.</td>
-</tr>
-<tr>
-<td><strong>hash</strong></td>
-<td><em>string</em></td>
-<td><strong><em>Optional</em></strong> The hash of the transaction containing your data; only part of return object.</td>
 </tr>
 </tbody></table>
 <h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.blockcypher.com/v1/btc/main/addrs/1DEP8i3QJCsomS4BSMY2RpU1upv62aGvhD
@@ -8423,87 +8378,6 @@ If you only need a <i>pay-to-script-hash</i> address corresponding to N-of-M mul
 <p>Then you&#39;d need to return each piece of data signed twice, preserving order between signatures and pubkeys, resulting in four elements for the <strong>signatures</strong> and <strong>pubkeys</strong> arrays:</p>
 
 <p><code>{...,&quot;tosign&quot;:[data1,data2], &quot;signatures&quot;:[data1sig1,data1sig2,data2sig1,data2sig2], &quot;pubkeys&quot;:[pubkey1,pubkey2,pubkey1,pubkey2],...}</code></p>
-<h2 id='data-endpoint'>Data Endpoint</h2>
-<aside class="warning">
-Due to congestion on the Bitcoin network and the drastic increase in miner fees, data embedding has become uneconomical. As a result, our data endpoint isn't supported on bitcoin anymore. To continue embedding data on the bitcoin blockchain, use our <a href="#creating-transactions">transaction API</a> to build transactions with an OP_RETURN output instead.
-</aside>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Embedding (Hash) Data</span>
-curl <span class="nt">-d</span> <span class="s1">'{"data":"6cbe5d6c75bc36879b5fd32e29b325e288599d31edc76327c7889d407985e2aa"}'</span> https://api.blockcypher.com/v1/btc/main/txs/data?token<span class="o">=</span>YOURTOKEN
-
-<span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="s2">"6cbe5d6c75bc36879b5fd32e29b325e288599d31edc76327c7889d407985e2aa"</span>,
-  <span class="s2">"encoding"</span>: <span class="s2">"hex"</span>,
-  <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>,
-  <span class="s2">"hash"</span>: <span class="s2">"87d494918559a14ea6238ba0e25fb07bffb08716f4a55e25f32ea95a148c85d1"</span>
-<span class="o">}</span>
-
-<span class="c"># Embedding String Data</span>
-curl <span class="nt">-d</span> <span class="s1">'{"data":"I am the walrus", "encoding":"string"}'</span> https://api.blockcypher.com/v1/btc/main/txs/data?token<span class="o">=</span>YOURTOKEN
-
-<span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="s2">"I am the walrus"</span>,
-  <span class="s2">"encoding"</span>: <span class="s2">"string"</span>,
-  <span class="s2">"token"</span>: <span class="s2">"YOURTOKEN"</span>,
-  <span class="s2">"hash"</span>: <span class="s2">"cb6974e0fd57c91b70403e85ef48c840eecdca4804dfc4897b1321d5328e4f18"</span>
-<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Embedding (Hash) Data
-</span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">blockcypher</span> <span class="kn">import</span> <span class="n">embed_data</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">embed_data</span><span class="p">(</span><span class="n">to_embed</span><span class="o">=</span><span class="s">'6cbe5d6c75bc36879b5fd32e29b325e288599d31edc76327c7889d407985e2aa'</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s">'YOUR_TOKEN'</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">"data"</span><span class="p">:</span> <span class="s">"6cbe5d6c75bc36879b5fd32e29b325e288599d31edc76327c7889d407985e2aa"</span><span class="p">,</span>
-  <span class="s">"encoding"</span><span class="p">:</span> <span class="s">"hex"</span><span class="p">,</span>
-  <span class="s">"token"</span><span class="p">:</span> <span class="s">"YOUR_TOKEN"</span><span class="p">,</span>
-  <span class="s">"hash"</span><span class="p">:</span> <span class="s">"87d494918559a14ea6238ba0e25fb07bffb08716f4a55e25f32ea95a148c85d1"</span>
-<span class="p">}</span>
-
-<span class="c1"># Embedding String Data
-</span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">blockcypher</span> <span class="kn">import</span> <span class="n">embed_data</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">embed_data</span><span class="p">(</span><span class="n">to_embed</span><span class="o">=</span><span class="s">'I am the walrus'</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s">'YOUR_TOKEN'</span><span class="p">,</span> <span class="n">data_is_hex</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">"data"</span><span class="p">:</span> <span class="s">"I am the walrus"</span><span class="p">,</span>
-  <span class="s">"encoding"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-  <span class="s">"token"</span><span class="p">:</span> <span class="s">"YOUR_TOKEN"</span><span class="p">,</span>
-  <span class="s">"hash"</span><span class="p">:</span> <span class="s">"cb6974e0fd57c91b70403e85ef48c840eecdca4804dfc4897b1321d5328e4f18"</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-<span class="c1">// Run on console:</span>
-<span class="c1">// php -f .\sample\transaction-api\DataEndpoint.php</span>
-
-<span class="nv">$nullDataClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NullDataClient</span><span class="p">(</span><span class="nv">$apiContext</span><span class="p">);</span>
-<span class="nv">$nullData</span> <span class="o">=</span> <span class="nv">$nullDataClient</span><span class="o">-&gt;</span><span class="nf">embedString</span><span class="p">(</span><span class="s1">'***BlockCypher Data Endpoint Test***'</span><span class="p">);</span> <span class="c1">// max 40 bytes</span>
-
-<span class="p">{</span>
-  <span class="s2">"data"</span><span class="o">:</span> <span class="s2">"***BlockCypher Data Endpoint Test***"</span><span class="p">,</span>
-  <span class="s2">"encoding"</span><span class="o">:</span> <span class="s2">"string"</span><span class="p">,</span>
-  <span class="s2">"token"</span><span class="o">:</span> <span class="s2">"c0afcccdde5081d6429de37d16166ead"</span><span class="p">,</span>
-  <span class="s2">"hash"</span><span class="o">:</span> <span class="s2">"cb6974e0fd57c91b70403e85ef48c840eecdca4804dfc4897b1321d5328e4f18"</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Some of the most interesting blockchain applications involve embedding data through <em>null-data</em> (also known as OP_RETURN) output scripts with transactions. While you can certainly use our <a href="#creating-transactions">guided transaction process</a> and customize your script output, there&#39;s a simpler way: through our Data Endpoint. All you need is the data you want to embed (up to 40 bytes, inclusive) and we&#39;ll handle the rest.</p>
-
-<table><thead>
-<tr>
-<th>Resource</th>
-<th>Method</th>
-<th>Request Object</th>
-<th>Return Object</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>/txs/data</td>
-<td>POST</td>
-<td><a href="#nulldata">NullData</a></td>
-<td><a href="#nulldata">NullData</a></td>
-</tr>
-</tbody></table>
-
-<p>In your request object, simply include the <strong>data</strong> you want to embed. By default, you needn&#39;t set an <strong>encoding</strong> if your data is hex-encoded (like a hash, the typical use case for <em>null-data</em>). That said, if you want to embed plaintext messages in the blockchain, you can set <strong>encoding</strong> to <em>string</em>. If successful, the return object will include your original request along with the <strong>hash</strong> of the transaction containing your <strong>data</strong> as a <em>null-data</em> output.</p>
-
-<aside class="warning">
-While some miners have a patch allowing 80 byte <i>null-data</i> outputs on Bitcoin's blockchain, it is not yet ubiquitous. The 40 byte limit is a hard ceiling for now; pay special attention if you're embedding special characters with plaintext encoding. If your <b>data</b> is over 40 bytes, the endpoint will return an error.
-</aside>
-
-<p>To view the data output on the blockchain, simply <a href="#transaction-hash-endpoint">query the transaction</a> via the <strong>hash</strong> returned, and check the <em>null-data</em> <a href="#txoutput">output</a> within the returned transaction. Please keep in mind that it will always be represented by hex-encoding on the blockchain, even if you selected <em>string</em> as your data <strong>encoding</strong>; to see it as your original plaintext, you have to convert it client-side.</p>
 <h2 id='transaction-propagation-endpoint'>Transaction Propagation Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.blockcypher.com/v1/btc/main/txs/5cad31bd8baf5d10ecdc275193f878226bb51f549c2357658f3dd0d7c5402a7b/propagation?token<span class="o">=</span>YOURTOKEN
 
 <span class="o">{</span>
@@ -9939,6 +9813,9 @@ HTTP/1.1 204 OK
 <p>Once the &quot;signkey&quot; attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-12">HTTP signatures</a> specification.</p>
 <h1 id='updates'>Updates</h1>
 <p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>11/06/21 - Data Endpoint Terminated</strong>
+The data endpoint no longer exists as it was uneconomical and thus non functional since a long time.</p>
 
 <p><strong>19/02/21 - Node-Client Archived</strong></p>
 
