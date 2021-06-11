@@ -2,6 +2,9 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**11/06/21 - Data Endpoint Terminated**
+The data endpoint no longer exists as it was uneconomical and thus non functional since a long time.
+
 **19/02/21 - Node-Client Archived**
 
 BlockCypher Node.js [SDK](https://github.com/blockcypher/node-client) is now archived. We recommend that javascript users use HTTP libraries such as Axios. The [POSTMAN documentation](https://documenter.getpostman.com/view/12131330/TVCZYVRa#e2ffad48-d580-4442-8e77-2613dc16a525) contains all the examples that you need.
