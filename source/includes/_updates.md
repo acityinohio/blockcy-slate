@@ -3,6 +3,7 @@
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
 **11/06/21 - Data Endpoint Terminated**
+
 The data endpoint no longer exists as it was uneconomical and thus non functional since a long time.
 
 **19/02/21 - Node-Client Archived**
