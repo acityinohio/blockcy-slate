@@ -95,8 +95,6 @@ $txConfidence = $txClient->getConfidence('43fa951e1bea87c282f6725cf8bdc08bb48761
 }
 ```
 
-Our confidence interval is automatically included in any [unconfirmed transaction](#tx), but you can retrieve it through a specific endpoint too.
-
 Resource | Method | Return Object
 -------- | ------ | -------------
 /txs/$TXHASH/confidence | GET | [TXConfidence](#txconfidence)
