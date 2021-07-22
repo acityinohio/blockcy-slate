@@ -1483,7 +1483,7 @@ curl <span class="nt">-d</span> <span class="s1">'{"address": "CFqoZmZ3ePwK5wnkh
   <span class="s2">"tx_ref"</span><span class="o">:</span><span class="s2">"0fa68cf5c39dbd918a5ca49fc092be36b8bcece83cbfed919ad6c77b5f24cceb"</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='test-faucets'>Test Faucets</h3>
-<p>To help facilitate automated testing in your applications, a faucet endpoint is available on both BlockCypher&#39;s Test Chain and Bitcoin Testnet3. Calling the faucet endpoint, along with passing a valid address, will automatically create---and propagate---a new transaction funding the address with the amount you provide.</p>
+<p>To help facilitate automated testing in your applications, a faucet endpoint is available on BlockCypher&#39;s Test Chain. Calling the faucet endpoint, along with passing a valid address, will automatically create---and propagate---a new transaction funding the address with the amount you provide.</p>
 
 <p>This example shows how to leverage the faucet to programmatically fund addresses, to test your applications. While the example used BlockCypher&#39;s Test Chain, the same example could have used Bitcoin Testnet3 and worked the exact same way.</p>
 
@@ -8544,8 +8544,6 @@ While we stand by our work behind our confidence research, please note that thes
   <span class="s2">"txurl"</span><span class="o">:</span><span class="s2">"https://api.blockcypher.com/v1/btc/main/txs/43fa951e1bea87c282f6725cf8bdc08bb48761396c3af8dd5a41a085ab62acc9"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Our confidence interval is automatically included in any <a href="#tx">unconfirmed transaction</a>, but you can retrieve it through a specific endpoint too.</p>
-
 <table><thead>
 <tr>
 <th>Resource</th>
