@@ -572,6 +572,11 @@ Resource | Method | Return Object
 -------- | ------ | -------------
 /txs | GET | Array[[TX](#TX)]
 
+Flag | Type | Effect
+---- | ---- | ------
+**limit** | *integer* | Maximum number of transactions returned, if unset, default is 10. Maximum is 100.
+**minValue** | *integer* | Filter transactions that transfer a total above the minimal value provided (in satoshis).
+
 The returned object is an array of transactions that haven't been included in blocks, arranged in reverse chronological order (latest is first, then older transactions follow).
 
 <aside class="notice">
