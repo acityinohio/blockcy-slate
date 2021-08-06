@@ -2,6 +2,10 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**06/08/21 - New Filters for Uncofirmed Transactions Endpoint**
+
+We've added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint]
+
 **11/06/21 - Data Endpoint Terminated**
 
 The data endpoint no longer exists as it was uneconomical and thus non functional since a long time.
