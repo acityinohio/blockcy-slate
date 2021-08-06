@@ -6687,6 +6687,25 @@ Please note that, <b>for Litecoin only</b>, since July 1 2020:
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Flag</th>
+<th>Type</th>
+<th>Effect</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>limit</strong></td>
+<td><em>integer</em></td>
+<td>Maximum number of transactions returned, if unset, default is 10. Maximum is 100.</td>
+</tr>
+<tr>
+<td><strong>minValue</strong></td>
+<td><em>integer</em></td>
+<td>Filter transactions that transfer a total above the minimal value provided (in satoshis).</td>
+</tr>
+</tbody></table>
+
 <p>The returned object is an array of transactions that haven&#39;t been included in blocks, arranged in reverse chronological order (latest is first, then older transactions follow).</p>
 
 <aside class="notice">
@@ -9811,6 +9830,10 @@ HTTP/1.1 204 OK
 <p>Once the &quot;signkey&quot; attribute is set on a webhook, all webhook requests will be signed following the sha256-ecdsa scheme of the <a href="https://tools.ietf.org/html/draft-cavage-http-signatures-12">HTTP signatures</a> specification.</p>
 <h1 id='updates'>Updates</h1>
 <p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>06/08/21 - New Filters for Uncofirmed Transactions Endpoint</strong></p>
+
+<p>We&#39;ve added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint]</p>
 
 <p><strong>11/06/21 - Data Endpoint Terminated</strong></p>
 
