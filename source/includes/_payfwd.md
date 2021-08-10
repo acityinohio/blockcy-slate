@@ -12,11 +12,11 @@ Address forwarding is only available for paid plans with an active token, you ca
 </aside>
 
 <aside class="notice">
-Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</b> first. This can often lead to lower processing fees than expected.
+Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</b>. This can often lead to lower processing fees than expected.
 </aside>
 
 <aside class="warning">
-By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
+By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
 </aside>
 
 ## Create Forward Endpoint
