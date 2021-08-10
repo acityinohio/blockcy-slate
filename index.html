@@ -9098,11 +9098,11 @@ Address forwarding is only available for paid plans with an active token, you ca
 </aside>
 
 <aside class="notice">
-Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</b> first. This can often lead to lower processing fees than expected.
+Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</b>. This can often lead to lower processing fees than expected.
 </aside>
 
 <aside class="warning">
-By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee first. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
+By default, all forwards will be debited with a <b>mining fee</b> that depends on current network fee levels. The amount of the fee is configurable, and if a <b>processing fee</b> is set, it will be deducted from that fee. But for very small forwards, if the amount sent is even lower than the mining and user-set processing fees (or if the processing fees cannot cover the mining fee), the forward will fail.
 </aside>
 <h2 id='create-forward-endpoint'>Create Forward Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"15qx9ug952GWGTNn7Uiv6vode4RcGrRemh","callback_url": "https://my.domain.com/callbacks/new-pay"}'</span> https://api.blockcypher.com/v1/btc/main/forwards?token<span class="o">=</span>YOURTOKEN
 
