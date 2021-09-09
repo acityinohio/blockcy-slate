@@ -998,7 +998,7 @@ $faucetResponse = $faucetClient->fundAddress('Bxi1GmU6xgqgyBEzugcqFZRLyJd1cpEv2S
 
 To help facilitate automated testing in your applications, a faucet endpoint is available on BlockCypher's Test Chain. Calling the faucet endpoint, along with passing a valid address, will automatically create---and propagate---a new transaction funding the address with the amount you provide.
 
-This example shows how to leverage the faucet to programmatically fund addresses, to test your applications. While the example used BlockCypher's Test Chain, the same example could have used Bitcoin Testnet3 and worked the exact same way.
+This example shows how to leverage the faucet to programmatically fund addresses, to test your applications.
 
 <aside class="notice">
 You need <a href="https://accounts.blockcypher.com/">a token</a> to use test faucets.
