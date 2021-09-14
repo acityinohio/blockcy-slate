@@ -327,14 +327,6 @@ TXHASH is a *string* representing the hex-encoded transaction hash you're intere
 
 The returned object contains detailed information about the transaction, including the value transfered, date received, and a full listing of inputs and outputs.
 
-<aside class="warning">
-Please note that, <b>for Litecoin only</b>, since July 1 2020:
-<ul>
-<li><code>maddrs</code> flag no longer exist. Use <code>legacyaddrs</code> to display legacy 3 prefix.</li>
-<li>By default, P2SH addresses have a M prefix instead of the legacy 3.</li>
-</ul>
-</aside>
-
 ## Unconfirmed Transactions Endpoint
 
 ```shell

@@ -796,14 +796,6 @@ The returned object contains information about the address, including its balanc
 If your returned <a href="#address">Address</a> object includes the <b>hasMore</b> attribute, there are more transactions associated with the address than transfered through this endpoint. If this happens, note the block height of the last transaction in the array, and then you can use the <b>before</b> flag to page through results.
 </aside>
 
-<aside class="warning">
-Please note that, <b>for Litecoin only</b>, since July 1 2020:
-<ul>
-<li><code>maddrs</code> flag no longer exist. Use <code>legacyaddrs</code> to display legacy 3 prefix.</li>
-<li>By default, P2SH addresses have a M prefix instead of the legacy 3.</li>
-</ul>
-</aside>
-
 ## Generate Address Endpoint
 
 ```shell
