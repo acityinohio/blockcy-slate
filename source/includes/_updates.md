@@ -2,9 +2,17 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint**
+
+Previously, when using the address full endpoint with `confirmations>0`, you'd still get unconfirmed transactions. This is fixed.
+
+**14/10/21 - Fix Websocket Origin Check**
+
+We fixed an error where using blockcypher websocket would returns a 403.
+
 **06/08/21 - New Filters for Uncofirmed Transactions Endpoint**
 
-We've added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint]
+We've added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint).
 
 **11/06/21 - Data Endpoint Terminated**
 
