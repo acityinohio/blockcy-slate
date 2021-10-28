@@ -2,6 +2,11 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**28/10/21 - Partial Taproot Support**
+
+We are happy to announce that BlockCypher now support P2TR (Taproot). Please not that it is not possible to create a transaction that spend a P2TR but you can send to P2TR. 
+We support the new bech32m address format for v1 witness.
+
 **18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint**
 
 Previously, when using the address full endpoint with `confirmations>0`, you'd still get unconfirmed transactions. This is fixed.
