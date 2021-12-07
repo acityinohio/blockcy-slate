@@ -1052,10 +1052,6 @@ Digital signing can be a difficult process, and is where the majority of issues 
 One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
 </aside>
 
-<aside class="notice">
-One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
-</aside>
-
 ```shell
 # the request body is truncated because it's huge, but it's the same as the returned object from above plus the signatures and public keys
 # remember, still using bcy/test instead of btc/main
