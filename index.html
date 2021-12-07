@@ -7154,10 +7154,6 @@ If you are using a bech32 address (starting with <code>bc1</code>) be sure to ad
 <aside class="notice">
 One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
 </aside>
-
-<aside class="notice">
-One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.
-</aside>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># the request body is truncated because it's huge, but it's the same as the returned object from above plus the signatures and public keys</span>
 <span class="c"># remember, still using bcy/test instead of btc/main</span>
 curl <span class="nt">-d</span> <span class="s1">'{"tx": {...}, "tosign": [ "32b5ea64c253b6b466366647458cfd60de9cd29d7dc542293aa0b8b7300cd827" ], "signatures": [ "3045022100921fc36b911094280f07d8504a80fbab9b823a25f102e2bc69b14bcd369dfc7902200d07067d47f040e724b556e5bc3061af132d5a47bd96e901429d53c41e0f8cca" ], "pubkeys": [ "02152e2bb5b273561ece7bbe8b1df51a4c44f5ab0bc940c105045e2cc77e618044" ] }'</span> https://api.blockcypher.com/v1/bcy/test/txs/send?token<span class="o">=</span>YOURTOKEN
