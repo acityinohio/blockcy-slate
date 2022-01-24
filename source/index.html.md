@@ -30,7 +30,6 @@ includes:
 search: true
 
 code_clipboard: true
----
 
 # Introduction
 
