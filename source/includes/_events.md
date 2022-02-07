@@ -75,7 +75,7 @@ WebHooks leverage similar objects and interactions but with two key differences:
 We retry individual payloads to your **url** five times; if one fails, we wait exponentially between retries: 1 second, 2s, 4s, 8s, 16s. In order to protect against stale callback **url**s, your [Event](#event) will be deleted if it reaches 50 aggregate **callback_errors** from failed payloads.
 
 <aside class="warning">
-To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified. For more advanced setups see <a href="webhook-signing"></a>
+To prevent eavesdropping, we recommend securing your callback <b>url</b> by using SSL and providing a <i>secret</i> parameter appended to the <a href="#event">Event</a> request. We POST the payload to the unaltered <b>url</b>, which allows you to check on your server that the parameter was not modified. For more advanced setups see the <a href="webhook-signing">Webhook Signing</a> section.
 </aside>
 
 <aside class="notice">
