@@ -7104,9 +7104,13 @@ If you are using a bech32 address (starting with <code>bc1</code>) be sure to ad
 <span class="c1">// http://bitcoinjs.org/</span>
 
 <span class="kd">var</span> <span class="nx">bitcoin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">bitcoinjs-lib</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">secp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">tiny-secp256k1</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ecfacory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ecpair</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">ECPair</span> <span class="o">=</span> <span class="nx">ecfacory</span><span class="p">.</span><span class="nx">ECPairFactory</span><span class="p">(</span><span class="nx">secp</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">keyBuffer</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">my_hex_private_key</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nx">bitcoin</span><span class="p">.</span><span class="nx">ECPair</span><span class="p">.</span><span class="nx">fromPrivateKey</span><span class="p">(</span><span class="nx">keyBuffer</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nx">ECPair</span><span class="p">.</span><span class="nx">fromPrivateKey</span><span class="p">(</span><span class="nx">keyBuffer</span><span class="p">)</span>
 
 <span class="kd">var</span> <span class="nx">newtx</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">inputs</span><span class="p">:</span> <span class="p">[{</span><span class="na">addresses</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9</span><span class="dl">'</span><span class="p">]}],</span>
