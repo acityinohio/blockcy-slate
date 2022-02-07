@@ -986,9 +986,13 @@ If you are using a bech32 address (starting with <code>bc1</code>) be sure to ad
 // http://bitcoinjs.org/
 
 var bitcoin = require("bitcoinjs-lib");
+var secp = require('tiny-secp256k1');
+var ecfacory = require('ecpair');
+
+var ECPair = ecfacory.ECPairFactory(secp);
 
 const keyBuffer = Buffer.from(my_hex_private_key, 'hex')
-var keys = bitcoin.ECPair.fromPrivateKey(keyBuffer)
+var keys = ECPair.fromPrivateKey(keyBuffer)
 
 var newtx = {
   inputs: [{addresses: ['CEztKBAYNoUEEaPYbkyFeXC5v8Jz9RoZH9']}],
