@@ -23,13 +23,13 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #652d90 !default;
+$nav-bg: #8854d0 !default;
 $examples-bg: #2E3336 !default;
 $code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
-$nav-subitem-bg: #0b8ed8 !default;
-$nav-active-bg:#0da8ff !default;
-$nav-active-parent-bg: #0da8ff !default; // parent links of the current section
+$nav-subitem-bg: #5072e3 !default;
+$nav-active-bg: #345eea !default;
+$nav-active-parent-bg: #345eea !default; // parent links of the current section
 $lang-select-border: #000 !default;
 $lang-select-bg: #1E2224 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
@@ -103,6 +103,6 @@ $main-embossed-text-shadow: 0px 1px 0px #fff;
 // These settings are probably best left alone.
 
 %break-words {
-    word-break: break-all;
-    hyphens: auto;
+  word-break: break-all;
+  hyphens: auto;
 }
