@@ -566,18 +566,18 @@ We want everyone to try BlockCypher with as little friction as possible, which i
 
 We do rate-limit our free tier, with or without a token (though tokens are required for Confidence lookups, WebHooks/Sockets, Payments, and any **POST** or **DELETE** calls):
 
-- Classic requests, up to 3 requests/sec and 200 requests/hr
-- WebHooks and WebSockets, up to 200 requests sent to your servers/hr
-- WebHooks, up to 200 stored on our servers
-- Confidence lookups, up to 15 requests/hour
+- Classic requests, up to 3 requests/sec and 100 requests/hr
+- WebHooks and WebSockets, up to 100 requests sent to your servers/hr
+- WebHooks, up to 100 stored on our servers
+- Confidence lookups, up to 10 requests/hour
 
-The hourly rate limits reset on the top of the hour UTC. For example, if you're under the free tier, and you have used 200 regular requests by 03:58 UTC, you'll hit a rate limit until it resets at 04:00 UTC.
+The hourly rate limits reset on the top of the hour UTC. For example, if you're under the free tier, and you have used 100 regular requests by 03:58 UTC, you'll hit a rate limit until it resets at 04:00 UTC.
 
 <aside class="warning">
 If you exceed these limits, your requests will return an HTTP Status Code 429!
 </aside>
 
-On [the accounts page](https://accounts.blockcypher.com/), you'll find paid plans starting at $75 a month (with a 10% discount if you pay with Bitcoin). To request higher limits or SLAs beyond what's offered on the accounts page, please [email us.](mailto:contact@blockcypher.com)
+On [the accounts page](https://accounts.blockcypher.com/), you'll find paid plans starting at $119 a month (with a 10% discount if you pay with Bitcoin). To request higher limits or SLAs beyond what's offered on the accounts page, please [email us.](mailto:contact@blockcypher.com)
 
 You can check your current limits and usage via a **GET** on the following endpoint, outside of our normal coin/chain pattern:
 
