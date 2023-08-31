@@ -1091,19 +1091,19 @@ curl https://api.blockcypher.com/v1/tokens/<span class="nv">$YOURTOKEN</span>
 <p>We do rate-limit our free tier, with or without a token (though tokens are required for Confidence lookups, WebHooks/Sockets, Payments, and any <strong>POST</strong> or <strong>DELETE</strong> calls):</p>
 
 <ul>
-<li>Classic requests, up to 3 requests/sec and 200 requests/hr</li>
-<li>WebHooks and WebSockets, up to 200 requests sent to your servers/hr</li>
-<li>WebHooks, up to 200 stored on our servers</li>
-<li>Confidence lookups, up to 15 requests/hour</li>
+<li>Classic requests, up to 3 requests/sec and 100 requests/hr</li>
+<li>WebHooks and WebSockets, up to 100 requests sent to your servers/hr</li>
+<li>WebHooks, up to 100 stored on our servers</li>
+<li>Confidence lookups, up to 10 requests/hour</li>
 </ul>
 
-<p>The hourly rate limits reset on the top of the hour UTC. For example, if you&#39;re under the free tier, and you have used 200 regular requests by 03:58 UTC, you&#39;ll hit a rate limit until it resets at 04:00 UTC.</p>
+<p>The hourly rate limits reset on the top of the hour UTC. For example, if you&#39;re under the free tier, and you have used 100 regular requests by 03:58 UTC, you&#39;ll hit a rate limit until it resets at 04:00 UTC.</p>
 
 <aside class="warning">
 If you exceed these limits, your requests will return an HTTP Status Code 429!
 </aside>
 
-<p>On <a href="https://accounts.blockcypher.com/">the accounts page</a>, you&#39;ll find paid plans starting at $75 a month (with a 10% discount if you pay with Bitcoin). To request higher limits or SLAs beyond what&#39;s offered on the accounts page, please <a href="mailto:contact@blockcypher.com">email us.</a></p>
+<p>On <a href="https://accounts.blockcypher.com/">the accounts page</a>, you&#39;ll find paid plans starting at $119 a month (with a 10% discount if you pay with Bitcoin). To request higher limits or SLAs beyond what&#39;s offered on the accounts page, please <a href="mailto:contact@blockcypher.com">email us.</a></p>
 
 <p>You can check your current limits and usage via a <strong>GET</strong> on the following endpoint, outside of our normal coin/chain pattern:</p>
 
